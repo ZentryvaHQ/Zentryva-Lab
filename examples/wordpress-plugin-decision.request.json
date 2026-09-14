@@ -1,0 +1,25 @@
+{
+  "question": "Should Zentryva use a native WordPress block-first adapter or make a third-party page builder the canonical website representation?",
+  "decisionContext": "The Website Factory must support visual previews, WordPress delivery, static HTML export, upgrades, and rollback without locking its canonical representation to one vendor.",
+  "queries": [
+    "WordPress block editor plugin developer handbook blocks metadata compatibility",
+    "WordPress plugin update failures support forum page builder lock in",
+    "WordPress security advisories plugin vulnerabilities update maintenance",
+    "WordPress core release developer notes editor compatibility"
+  ],
+  "constraints": {
+    "includeDomains": [],
+    "excludeDomains": [],
+    "maxSourceAgeDays": 365
+  },
+  "requiredSourceClasses": [
+    "official-documentation",
+    "release-notes-or-changelog",
+    "issue-tracker-or-support-forum"
+  ],
+  "metadata": {
+    "pilot": "wordpress",
+    "owner": "WEBSITE-FACTORY",
+    "governedBy": "RELEASEPROOF"
+  }
+}

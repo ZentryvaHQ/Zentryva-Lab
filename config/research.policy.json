@@ -1,0 +1,21 @@
+{
+  "policyVersion": "1.0.0",
+  "minimumDistinctDomains": 3,
+  "minimumClaims": 3,
+  "maximumSourceAgeDays": 365,
+  "requiredSourceClasses": [
+    "official-documentation",
+    "release-notes-or-changelog",
+    "issue-tracker-or-support-forum"
+  ],
+  "discoverySurfaces": [
+    "official-documentation",
+    "security-advisories",
+    "release-notes",
+    "source-repositories",
+    "issue-trackers",
+    "support-forums",
+    "independent-technical-analysis"
+  ],
+  "failOnUnresolvedMaterialContradiction": true
+}
