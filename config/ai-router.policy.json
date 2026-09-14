@@ -1,0 +1,27 @@
+{
+  "policyVersion": "1.0.0",
+  "service": "research-intelligence",
+  "selection": {
+    "primary": {
+      "model": "gpt-6-astra",
+      "reasoningEffort": "ultra"
+    },
+    "fallback": {
+      "model": "gpt-5.6-sol",
+      "reasoningEffort": "high"
+    }
+  },
+  "roles": {
+    "queryPlanning": "primary",
+    "evidenceExtraction": "primary",
+    "contradictionAnalysis": "primary",
+    "synthesis": "primary"
+  },
+  "requirements": {
+    "webGroundingRequired": true,
+    "citationsRequired": true,
+    "contradictionsRequired": true,
+    "releaseProofRequired": true,
+    "silentModelFallbackAllowed": false
+  }
+}

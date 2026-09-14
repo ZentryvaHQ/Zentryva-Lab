@@ -1,0 +1,13 @@
+{
+  "name": "@zentryva/research-intelligence",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test",
+    "pilot": "node examples/wordpress-plugin-decision.mjs"
+  }
+}
