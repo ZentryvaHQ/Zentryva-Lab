@@ -7,7 +7,7 @@ import re
 import shutil
 import tempfile
 from urllib.parse import urlencode, urlsplit, urlunsplit, parse_qsl
-from .core import digest, record, scoped, number, timestamp, validate
+from .core import digest, record, scoped, number, timestamp, validate, runtime_provenance
 from .intelligence import research, competitors, strategy
 
 def review(tenant, objective, content, brand, now):
@@ -17,7 +17,7 @@ def review(tenant, objective, content, brand, now):
         reasons.append('Brand profile not approved for this shadow fixture')
     if brand.get('sensitive_targeting') is not False:
         reasons.append('Sensitive targeting prohibited')
-    copy=content['copy'].casefold()
+    copy=' '.join(str(content.get(key,'')) for key in ('copy','cta','creative_brief','tracking_url','audience')).casefold()
     terms=set(brand.get('forbidden_terms',[])) | {'guaranteed cure','treats cancer','cures cancer'}
     if any(term.casefold() in copy for term in terms):
         reasons.append('Prohibited claim')
@@ -46,8 +46,12 @@ def delivery(tenant, objective, publication, receipt, now):
 
 def normalize(tenant, objective, raw, campaign_id, now):
     scoped(tenant,[raw])
+    if raw.get('campaign_id',campaign_id)!=campaign_id or raw.get('objective',objective)!=objective:
+        raise ValueError('Metric campaign or objective mismatch')
     if raw.get('source_type') not in ('synthetic','authorized_client_data'):
         raise ValueError('Metric provenance required')
+    if raw['source_type'] != 'synthetic' and raw.get('campaign_id')!=campaign_id:
+        raise ValueError('Explicit campaign binding required for imported client metrics')
     if timestamp(raw.get('observed_at')) > timestamp(now):
         raise ValueError('Future metrics')
     uri=urlsplit(raw.get('source_uri',''))
@@ -59,6 +63,8 @@ def normalize(tenant, objective, raw, campaign_id, now):
             raise ValueError('Integer count required')
     if values['leads'] > values['visits']:
         raise ValueError('Leads exceed visits in this funnel')
+    if values['conversions'] > values['visits']:
+        raise ValueError('Conversions exceed visits in this funnel')
     if raw.get('attribution_evidence') not in ('none','temporal','survey','tracked'):
         raise ValueError('Unknown attribution evidence')
     tracked=number(raw.get('tracked_revenue',0))
@@ -67,7 +73,9 @@ def normalize(tenant, objective, raw, campaign_id, now):
     ids=raw.get('verified_conversion_ids',[])
     if not isinstance(ids,list) or any(not isinstance(i,str) or not i.strip() for i in ids) or len(ids)!=len(set(ids)):
         raise ValueError('Invalid conversion evidence')
-    item=record(tenant,'metric',objective,now,campaign_id=campaign_id,**values,
+    if len(ids)>values['conversions']:
+        raise ValueError('Conversion references exceed measured conversions')
+    item=record(tenant,'metric',objective,now,[campaign_id],campaign_id=campaign_id,**values,
         attribution_evidence=raw['attribution_evidence'],tracking_campaign_id=raw.get('tracking_campaign_id'),
         verified_conversion_ids=ids,tracked_revenue=tracked,synthetic=raw['source_type']=='synthetic',source_sha256=digest(raw))
     item['provenance'].update(source_type=raw['source_type'],source_uri=raw['source_uri'],observed_at=raw['observed_at'])
@@ -87,6 +95,8 @@ def attribute(tenant, objective, metric, now):
 
 def learn(tenant, objective, metric, baseline, window_days, now):
     scoped(tenant,[metric,baseline])
+    if baseline.get('objective',objective)!=objective:
+        raise ValueError('Baseline objective mismatch')
     visits=number(baseline.get('visits'));leads=number(baseline.get('leads'))
     if leads>visits:
         raise ValueError('Invalid baseline funnel')
@@ -124,19 +134,29 @@ def run(data, output_root, now):
     _brand(data['brand'])
     if data.get('analytics') and (data['analytics'].get('spend') != 0 or data['analytics'].get('source_type')!='synthetic'):
         raise ValueError('No-spend shadow loop accepts synthetic metrics only')
-    run_id='run-'+digest(dict(inputs=data,now=now))[:20]
+    runtime=runtime_provenance()
+    run_id='run-'+digest(dict(inputs=data,now=now,source_sha256=runtime['source_sha256'],python=runtime['python'],jsonschema=runtime['jsonschema']))[:20]
     target=Path(output_root).resolve()/tenant_id/run_id
     if target.exists():
         manifest=json.loads((target/'manifest.json').read_text(encoding='utf-8'))
+        replay=json.loads((target/'result.json').read_text(encoding='utf-8'))
+        expected_files={'result.json','inputs.json','records.jsonl','command-center-status.json','dashboard.html'}
+        if replay.get('publication'):
+            expected_files.add('handoff.md')
+        if (manifest.get('run_id')!=run_id or replay.get('run_id')!=run_id
+                or manifest.get('runtime',{}).get('source_sha256')!=runtime['source_sha256']
+                or set(manifest.get('files',{}))!=expected_files):
+            raise ValueError('Evidence manifest identity or inventory mismatch')
         for name,expected in manifest['files'].items():
             if Path(name).name!=name or digest((target/name).read_text(encoding='utf-8'))!=expected:
                 raise ValueError('Existing evidence modified; preserve and investigate')
-        return json.loads((target/'result.json').read_text(encoding='utf-8'))
+        replay['output_dir']=str(target)
+        return replay
     evidence=research(tenant_id,objective,data['sources'],now)
     rivals=competitors(tenant_id,objective,evidence,now)
     decision=strategy(tenant_id,objective,evidence,rivals,now)
     result=dict(run_id=run_id,tenant_id=tenant_id,mode='shadow',production_published=False,
-        cost_usd=0,output_dir=str(target),evidence=evidence,competitors=rivals,strategy=decision)
+        cost_usd=0,output_dir=str(target),runtime=runtime,evidence=evidence,competitors=rivals,strategy=decision)
     records=evidence+rivals+[decision]
     if decision['action']=='HOLD':
         result['state']='EVIDENCE_HOLD'
@@ -214,7 +234,7 @@ def _persist(target,result,records,inputs):
         files['dashboard.html']='<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Salem shadow review</title><style>body{font:16px system-ui;background:#101820;color:#eaf4ed;max-width:1100px;margin:40px auto;padding:20px}h1{color:#9bdeb4}section{background:#1c2932;padding:20px;margin:16px 0;border-radius:12px}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:14px monospace}.flag{color:#ffd185}</style><h1>Marketing Center — '+html.escape(result['tenant_id'])+'</h1><p class="flag">SYNTHETIC SHADOW • $0 spend • Nothing published • Live integrations unverified</p><h2>'+html.escape(result['state'])+'</h2>'+sections+'</html>'
         for name,text in files.items():
             (temp/name).write_text(text,encoding='utf-8')
-        (temp/'manifest.json').write_text(json.dumps(dict(run_id=result['run_id'],files={name:digest(text) for name,text in files.items()}),indent=2),encoding='utf-8')
+        (temp/'manifest.json').write_text(json.dumps(dict(run_id=result['run_id'],runtime=result['runtime'],hash_method='SHA256 of canonical JSON string of UTF-8 text',files={name:digest(text) for name,text in files.items()}),indent=2),encoding='utf-8')
         # Rename publishes a complete evidence directory, never a partially written run.
         os.rename(temp,target)
     finally:

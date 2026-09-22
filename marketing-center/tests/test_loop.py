@@ -92,7 +92,7 @@ class Loop(unittest.TestCase):
             data=inputs();data['analytics']['leads']=leads
             with tempfile.TemporaryDirectory() as directory:
                 self.assertEqual(run(data,directory,NOW)['learning']['recommendation'],expected)
-        data=inputs();data['analytics']['visits']=0;data['analytics']['leads']=0
+        data=inputs();data['analytics']['visits']=0;data['analytics']['leads']=0;data['analytics']['conversions']=0
         with tempfile.TemporaryDirectory() as directory:
             self.assertEqual(run(data,directory,NOW)['learning']['recommendation'],'HOLD')
 

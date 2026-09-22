@@ -1,0 +1,100 @@
+test_impossible_conversions_and_overcredited_orders_rejected (test_hardening.Hardening.test_impossible_conversions_and_overcredited_orders_rejected) ... 
+  test_impossible_conversions_and_overcredited_orders_rejected (test_hardening.Hardening.test_impossible_conversions_and_overcredited_orders_rejected) (changes={'conversions': 101}) ... FAIL
+  test_impossible_conversions_and_overcredited_orders_rejected (test_hardening.Hardening.test_impossible_conversions_and_overcredited_orders_rejected) (changes={'conversions': 0, 'verified_conversion_ids': ['order1']}) ... FAIL
+  test_impossible_conversions_and_overcredited_orders_rejected (test_hardening.Hardening.test_impossible_conversions_and_overcredited_orders_rejected) (changes={'conversions': 1, 'verified_conversion_ids': ['a', 'b']}) ... FAIL
+test_manifest_records_runtime_provenance (test_hardening.Hardening.test_manifest_records_runtime_provenance) ... FAIL
+test_metrics_and_baseline_cannot_be_rebound (test_hardening.Hardening.test_metrics_and_baseline_cannot_be_rebound) ... 
+  test_metrics_and_baseline_cannot_be_rebound (test_hardening.Hardening.test_metrics_and_baseline_cannot_be_rebound) (patch={'campaign_id': 'other-campaign'}) ... FAIL
+  test_metrics_and_baseline_cannot_be_rebound (test_hardening.Hardening.test_metrics_and_baseline_cannot_be_rebound) (patch={'objective': 'unrelated-objective'}) ... FAIL
+test_metrics_and_baseline_cannot_be_rebound (test_hardening.Hardening.test_metrics_and_baseline_cannot_be_rebound) ... FAIL
+test_replay_after_copy_uses_current_location (test_hardening.Hardening.test_replay_after_copy_uses_current_location) ... FAIL
+test_review_covers_cta_and_creative_fields (test_hardening.Hardening.test_review_covers_cta_and_creative_fields) ... FAIL
+
+======================================================================
+FAIL: test_impossible_conversions_and_overcredited_orders_rejected (test_hardening.Hardening.test_impossible_conversions_and_overcredited_orders_rejected) (changes={'conversions': 101})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_hardening.py", line 28, in test_impossible_conversions_and_overcredited_orders_rejected
+    with self.subTest(changes=changes),self.assertRaises(ValueError):
+                                       ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_impossible_conversions_and_overcredited_orders_rejected (test_hardening.Hardening.test_impossible_conversions_and_overcredited_orders_rejected) (changes={'conversions': 0, 'verified_conversion_ids': ['order1']})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_hardening.py", line 28, in test_impossible_conversions_and_overcredited_orders_rejected
+    with self.subTest(changes=changes),self.assertRaises(ValueError):
+                                       ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_impossible_conversions_and_overcredited_orders_rejected (test_hardening.Hardening.test_impossible_conversions_and_overcredited_orders_rejected) (changes={'conversions': 1, 'verified_conversion_ids': ['a', 'b']})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_hardening.py", line 28, in test_impossible_conversions_and_overcredited_orders_rejected
+    with self.subTest(changes=changes),self.assertRaises(ValueError):
+                                       ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_manifest_records_runtime_provenance (test_hardening.Hardening.test_manifest_records_runtime_provenance)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_hardening.py", line 42, in test_manifest_records_runtime_provenance
+    self.assertIn('runtime',manifest)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'runtime' not found in {'run_id': 'run-8d67a878c197a73a0a1f', 'files': {'result.json': '0848d060a6b8be526760f990e4e607013f1802127dde06bbdf902b3f0281087a', 'inputs.json': '68641bc332f38514f29cd3144cff89c84404b4f1652fa41053ac381e76a5dc1e', 'records.jsonl': '138d5c5871c42a502172d172fa19255e9d86e923da3f369cc15b4877443d3955', 'command-center-status.json': '669d6818688ebcb0b49f9692c91ad83dadafcce702399afd2c0a4dd4c500e5b9', 'handoff.md': '0b842c6e09766f41121c1357b0b6b4d66c3b0f56466c75ec9c17ad58b89d3f68', 'dashboard.html': '88b1ce4f4b7de942768cb2e3b52c1f9b0b27ba7e6473b1d5fbe853a4e9b151bd'}}
+
+======================================================================
+FAIL: test_metrics_and_baseline_cannot_be_rebound (test_hardening.Hardening.test_metrics_and_baseline_cannot_be_rebound) (patch={'campaign_id': 'other-campaign'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_hardening.py", line 20, in test_metrics_and_baseline_cannot_be_rebound
+    with self.subTest(patch=patch),self.assertRaises(ValueError):
+                                   ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_metrics_and_baseline_cannot_be_rebound (test_hardening.Hardening.test_metrics_and_baseline_cannot_be_rebound) (patch={'objective': 'unrelated-objective'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_hardening.py", line 20, in test_metrics_and_baseline_cannot_be_rebound
+    with self.subTest(patch=patch),self.assertRaises(ValueError):
+                                   ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_metrics_and_baseline_cannot_be_rebound (test_hardening.Hardening.test_metrics_and_baseline_cannot_be_rebound)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_hardening.py", line 23, in test_metrics_and_baseline_cannot_be_rebound
+    with tempfile.TemporaryDirectory() as directory,self.assertRaises(ValueError):
+                                                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_replay_after_copy_uses_current_location (test_hardening.Hardening.test_replay_after_copy_uses_current_location)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_hardening.py", line 36, in test_replay_after_copy_uses_current_location
+    self.assertEqual(Path(copied['output_dir']).parent.parent,Path(second))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: WindowsPath('C:/Users/festg/AppData/Local/Temp/tmp7d8ckf57') != WindowsPath('C:/Users/festg/AppData/Local/Temp/tmpd6a9umf5')
+
+======================================================================
+FAIL: test_review_covers_cta_and_creative_fields (test_hardening.Hardening.test_review_covers_cta_and_creative_fields)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_hardening.py", line 16, in test_review_covers_cta_and_creative_fields
+    self.assertEqual(result['state'],'REVIEW_BLOCKED')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'SHADOW_COMPLETE' != 'REVIEW_BLOCKED'
+- SHADOW_COMPLETE
++ REVIEW_BLOCKED
+
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.104s
+
+FAILED (failures=9)

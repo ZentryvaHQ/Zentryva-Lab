@@ -1,11 +1,24 @@
 import hashlib
 import json
 import math
+import platform
+import subprocess
+from importlib.metadata import version
 from datetime import datetime
 from pathlib import Path
 from jsonschema import Draft202012Validator, FormatChecker, ValidationError
 
 ROOT = Path(__file__).resolve().parents[1]
+
+def runtime_provenance():
+    paths = sorted(list((ROOT/'mc').glob('*.py')) + list((ROOT/'schemas').glob('*.json'))
+                   + list((ROOT/'contracts').glob('*.json')) + [ROOT/'requirements.txt'])
+    source_hash = digest({str(p.relative_to(ROOT)).replace('\\','/'):p.read_text(encoding='utf-8') for p in paths})
+    try:
+        commit = subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,stderr=subprocess.DEVNULL,text=True).strip()
+    except (OSError,subprocess.CalledProcessError):
+        commit = None
+    return dict(source_sha256=source_hash,git_commit=commit,python=platform.python_version(),jsonschema=version('jsonschema'))
 
 def digest(value):
     return hashlib.sha256(json.dumps(value, sort_keys=True, ensure_ascii=False, allow_nan=False).encode()).hexdigest()

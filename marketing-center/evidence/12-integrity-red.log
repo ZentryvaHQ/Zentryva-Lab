@@ -1,0 +1,42 @@
+test_code_fingerprint_change_generates_new_run (test_hardening.Hardening.test_code_fingerprint_change_generates_new_run) ... ok
+test_impossible_conversions_and_overcredited_orders_rejected (test_hardening.Hardening.test_impossible_conversions_and_overcredited_orders_rejected) ... ok
+test_manifest_cannot_drop_required_handoff_or_change_run_identity (test_hardening.Hardening.test_manifest_cannot_drop_required_handoff_or_change_run_identity) ... 
+  test_manifest_cannot_drop_required_handoff_or_change_run_identity (test_hardening.Hardening.test_manifest_cannot_drop_required_handoff_or_change_run_identity) (mutation='omit') ... FAIL
+  test_manifest_cannot_drop_required_handoff_or_change_run_identity (test_hardening.Hardening.test_manifest_cannot_drop_required_handoff_or_change_run_identity) (mutation='identity') ... FAIL
+test_manifest_records_runtime_provenance (test_hardening.Hardening.test_manifest_records_runtime_provenance) ... ok
+test_metrics_and_baseline_cannot_be_rebound (test_hardening.Hardening.test_metrics_and_baseline_cannot_be_rebound) ... ok
+test_non_synthetic_metrics_require_explicit_campaign_binding (test_hardening.Hardening.test_non_synthetic_metrics_require_explicit_campaign_binding) ... FAIL
+test_replay_after_copy_uses_current_location (test_hardening.Hardening.test_replay_after_copy_uses_current_location) ... ok
+test_review_covers_cta_and_creative_fields (test_hardening.Hardening.test_review_covers_cta_and_creative_fields) ... ok
+
+======================================================================
+FAIL: test_manifest_cannot_drop_required_handoff_or_change_run_identity (test_hardening.Hardening.test_manifest_cannot_drop_required_handoff_or_change_run_identity) (mutation='omit')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_hardening.py", line 22, in test_manifest_cannot_drop_required_handoff_or_change_run_identity
+    with self.assertRaises(ValueError):run(inputs(),directory,NOW)
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_manifest_cannot_drop_required_handoff_or_change_run_identity (test_hardening.Hardening.test_manifest_cannot_drop_required_handoff_or_change_run_identity) (mutation='identity')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_hardening.py", line 22, in test_manifest_cannot_drop_required_handoff_or_change_run_identity
+    with self.assertRaises(ValueError):run(inputs(),directory,NOW)
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_non_synthetic_metrics_require_explicit_campaign_binding (test_hardening.Hardening.test_non_synthetic_metrics_require_explicit_campaign_binding)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_hardening.py", line 34, in test_non_synthetic_metrics_require_explicit_campaign_binding
+    with self.assertRaises(ValueError):normalize(TENANT,OBJECTIVE,raw,'c1',NOW)
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.810s
+
+FAILED (failures=3)
