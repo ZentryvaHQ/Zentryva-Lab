@@ -3,9 +3,9 @@
 | ID | Work | Status | Gate |
 |---|---|---|---|
 | MC-001 | Architecture boundary | VERIFIED | Command Center/Marketing Center split recorded |
-| MC-002 | Command Center contract | TESTING | Schema validation |
-| MC-003 | Tenant core | TESTING | Salem config validates |
-| MC-004 | Traceable marketing identity | TESTING | Schema validation |
+| MC-002 | Command Center contract | VERIFIED | evidence/02-contracts-green.log; negative validation checks |
+| MC-003 | Tenant core | VERIFIED | Tenant schema; safety policy checks |
+| MC-004 | Traceable marketing identity | VERIFIED | evidence/02-contracts-green.log; negative validation checks |
 | MC-005 | Research evidence engine | READY | Evidence records validated |
 | MC-006 | Competitor intelligence | READY | Structured competitor records |
 | MC-007 | Strategy engine | READY | Evidence -> decision trace |
@@ -22,3 +22,4 @@
 
 ## Hard blocker policy
 Owner-dependent production access/approval is isolated at MC-017. It does not block MC-001 through MC-016.
+

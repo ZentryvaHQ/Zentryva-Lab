@@ -1,0 +1,54 @@
+test_mc002_status_accepts_valid_and_rejects_invalid (test_contracts.Contracts.test_mc002_status_accepts_valid_and_rejects_invalid) ... 
+  test_mc002_status_accepts_valid_and_rejects_invalid (test_contracts.Contracts.test_mc002_status_accepts_valid_and_rejects_invalid) (field='updated_at') ... FAIL
+  test_mc002_status_accepts_valid_and_rejects_invalid (test_contracts.Contracts.test_mc002_status_accepts_valid_and_rejects_invalid) (field='tenant_id') ... FAIL
+test_mc003_tenant_and_safety_boundaries (test_contracts.Contracts.test_mc003_tenant_and_safety_boundaries) ... ERROR
+test_mc004_identity_provenance (test_contracts.Contracts.test_mc004_identity_provenance) ... FAIL
+
+======================================================================
+ERROR: test_mc003_tenant_and_safety_boundaries (test_contracts.Contracts.test_mc003_tenant_and_safety_boundaries)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_contracts.py", line 25, in test_mc003_tenant_and_safety_boundaries
+    v = validator('schemas/tenant.schema.json')
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_contracts.py", line 10, in validator
+    schema = json.loads((ROOT / path).read_text())
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Python314\Lib\pathlib\__init__.py", line 787, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\pathlib\__init__.py", line 771, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\festg\\.codex\\.chatgpt-projects\\g-p-6ab1f727c52c8191968d451f3328652c\\work\\marketing-center\\schemas\\tenant.schema.json'
+
+======================================================================
+FAIL: test_mc002_status_accepts_valid_and_rejects_invalid (test_contracts.Contracts.test_mc002_status_accepts_valid_and_rejects_invalid) (field='updated_at')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_contracts.py", line 22, in test_mc002_status_accepts_valid_and_rejects_invalid
+    self.assertFalse(v.is_valid(dict(good, **{field:value})))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_mc002_status_accepts_valid_and_rejects_invalid (test_contracts.Contracts.test_mc002_status_accepts_valid_and_rejects_invalid) (field='tenant_id')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_contracts.py", line 22, in test_mc002_status_accepts_valid_and_rejects_invalid
+    self.assertFalse(v.is_valid(dict(good, **{field:value})))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_mc004_identity_provenance (test_contracts.Contracts.test_mc004_identity_provenance)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_contracts.py", line 43, in test_mc004_identity_provenance
+    self.assertFalse(v.is_valid(dict(good, **{field:''})), field)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : objective
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.062s
+
+FAILED (failures=3, errors=1)

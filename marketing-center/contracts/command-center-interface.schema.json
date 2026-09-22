@@ -5,9 +5,9 @@
   "type": "object",
   "required": ["work_id","tenant_id","component","state","updated_at","evidence_refs"],
   "properties": {
-    "work_id":{"type":"string"},
-    "tenant_id":{"type":"string"},
-    "component":{"type":"string"},
+    "work_id":{"type":"string","minLength":1},
+    "tenant_id":{"type":"string","minLength":1},
+    "component":{"type":"string","minLength":1},
     "state":{"enum":["BACKLOG","READY","IN_PROGRESS","TESTING","VERIFIED","COMPLETE","BLOCKED_AWAITING_RICHARD","FAILED","DIAGNOSING","RETESTING"]},
     "updated_at":{"type":"string","format":"date-time"},
     "heartbeat_at":{"type":["string","null"],"format":"date-time"},
