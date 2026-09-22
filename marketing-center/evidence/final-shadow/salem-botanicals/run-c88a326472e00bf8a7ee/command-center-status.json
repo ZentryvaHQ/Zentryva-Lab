@@ -1,0 +1,27 @@
+{
+  "work_id": "MC-R1-SALEM-001",
+  "tenant_id": "salem-botanicals",
+  "component": "shadow-loop",
+  "state": "VERIFIED",
+  "updated_at": "2026-09-22T12:00:00Z",
+  "heartbeat_at": "2026-09-22T12:00:00Z",
+  "cost_usd": 0,
+  "blocker_id": null,
+  "evidence_refs": [
+    "research-fee2b52ff9bb491e74e7",
+    "competitor-3c42e2be697946fda5e9",
+    "strategy-a2e2016581c94267c8dc",
+    "campaign-7818524d69e499e17e80",
+    "content-ff2b3ca9361ffcf06b46",
+    "review-5e1501da691a647f68a8",
+    "publication-12f62b56da6b9e82892d",
+    "delivery-fd00ee96943d13ddf6e0",
+    "metric-d3caef51dc810360d24e",
+    "attribution-3489fcd941ab34aeae79",
+    "learning-6f801d75e576459f2b7f",
+    "experiment-ae9e5fadccb58903cb81",
+    "strategy-2be369ece42e5e3e0524",
+    "memory-0085d14b08d8b95ef0bb"
+  ],
+  "message": "SHADOW_COMPLETE; local adapter only; Command Center integration UNVERIFIED; MC-017 isolated"
+}

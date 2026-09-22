@@ -1,0 +1,18 @@
+{
+  "run_id": "run-c88a326472e00bf8a7ee",
+  "runtime": {
+    "source_sha256": "7d05a3bb5d2eee701d958a68b42df6f5334c84fc07ed206baaadf4c0cba08e1e",
+    "git_commit": "28a33c5e87390e494aa678df9d64cac0a9eece55",
+    "python": "3.14.7",
+    "jsonschema": "4.26.0"
+  },
+  "hash_method": "SHA256 of canonical JSON string of UTF-8 text",
+  "files": {
+    "result.json": "0394f72044d2abfa7617c83cbda875ed284d617b8825fe0b74a8553f004b5e6e",
+    "inputs.json": "68641bc332f38514f29cd3144cff89c84404b4f1652fa41053ac381e76a5dc1e",
+    "records.jsonl": "1f9ed010e3f945fef3a67522029e01e7b67ba23183ae345105c9bec261bda922",
+    "command-center-status.json": "515d863f9f6b750c65beace7c5a98f73d8e024a967ae2214717a1f3fd8b658fb",
+    "handoff.md": "0b842c6e09766f41121c1357b0b6b4d66c3b0f56466c75ec9c17ad58b89d3f68",
+    "dashboard.html": "9e8570ed123ced48e464fbd0dd1d5721b59f3b313f98240da848ad22cf7b9c8f"
+  }
+}
