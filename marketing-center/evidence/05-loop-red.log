@@ -1,0 +1,103 @@
+test_mc002_status_accepts_valid_and_rejects_invalid (test_contracts.Contracts.test_mc002_status_accepts_valid_and_rejects_invalid) ... ok
+test_mc003_tenant_and_safety_boundaries (test_contracts.Contracts.test_mc003_tenant_and_safety_boundaries) ... ok
+test_mc004_identity_provenance (test_contracts.Contracts.test_mc004_identity_provenance) ... ok
+test_mc005_preserves_evidence_and_computes_freshness (test_intelligence.Intelligence.test_mc005_preserves_evidence_and_computes_freshness) ... ok
+test_mc005_rejects_bad_evidence_and_cross_tenant (test_intelligence.Intelligence.test_mc005_rejects_bad_evidence_and_cross_tenant) ... ok
+test_mc006_competitors_link_to_observed_evidence (test_intelligence.Intelligence.test_mc006_competitors_link_to_observed_evidence) ... ok
+test_mc007_cannot_consume_foreign_records (test_intelligence.Intelligence.test_mc007_cannot_consume_foreign_records) ... ok
+test_mc007_decision_changes_with_evidence_and_abstains_without_it (test_intelligence.Intelligence.test_mc007_decision_changes_with_evidence_and_abstains_without_it) ... ok
+test_mc008_to_016_persistent_end_to_end_and_replay (test_loop.Loop.test_mc008_to_016_persistent_end_to_end_and_replay) ... FAIL
+test_mc010_risky_or_unapproved_content_cannot_handoff (test_loop.Loop.test_mc010_risky_or_unapproved_content_cannot_handoff) ... FAIL
+test_mc012_acceptance_is_not_delivery_and_missing_tracking_fails (test_loop.Loop.test_mc012_acceptance_is_not_delivery_and_missing_tracking_fails) ... FAIL
+test_mc013_invalid_or_foreign_metrics_rejected (test_loop.Loop.test_mc013_invalid_or_foreign_metrics_rejected) ... FAIL
+test_mc014_classifications_never_invent_roi (test_loop.Loop.test_mc014_classifications_never_invent_roi) ... FAIL
+test_mc015_outcomes_change_recommendation_and_insufficient_data_holds (test_loop.Loop.test_mc015_outcomes_change_recommendation_and_insufficient_data_holds) ... FAIL
+test_missing_analytics_is_visible_and_recoverable (test_loop.Loop.test_missing_analytics_is_visible_and_recoverable) ... FAIL
+test_no_production_mode_and_no_paid_spend (test_loop.Loop.test_no_production_mode_and_no_paid_spend) ... FAIL
+test_tenant_isolation_at_each_input (test_loop.Loop.test_tenant_isolation_at_each_input) ... FAIL
+
+======================================================================
+FAIL: test_mc008_to_016_persistent_end_to_end_and_replay (test_loop.Loop.test_mc008_to_016_persistent_end_to_end_and_replay)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_loop.py", line 30, in setUp
+    def setUp(self): self.assertTrue(callable(run),'Shadow workflow must exist')
+                     ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Shadow workflow must exist
+
+======================================================================
+FAIL: test_mc010_risky_or_unapproved_content_cannot_handoff (test_loop.Loop.test_mc010_risky_or_unapproved_content_cannot_handoff)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_loop.py", line 30, in setUp
+    def setUp(self): self.assertTrue(callable(run),'Shadow workflow must exist')
+                     ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Shadow workflow must exist
+
+======================================================================
+FAIL: test_mc012_acceptance_is_not_delivery_and_missing_tracking_fails (test_loop.Loop.test_mc012_acceptance_is_not_delivery_and_missing_tracking_fails)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_loop.py", line 30, in setUp
+    def setUp(self): self.assertTrue(callable(run),'Shadow workflow must exist')
+                     ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Shadow workflow must exist
+
+======================================================================
+FAIL: test_mc013_invalid_or_foreign_metrics_rejected (test_loop.Loop.test_mc013_invalid_or_foreign_metrics_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_loop.py", line 30, in setUp
+    def setUp(self): self.assertTrue(callable(run),'Shadow workflow must exist')
+                     ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Shadow workflow must exist
+
+======================================================================
+FAIL: test_mc014_classifications_never_invent_roi (test_loop.Loop.test_mc014_classifications_never_invent_roi)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_loop.py", line 30, in setUp
+    def setUp(self): self.assertTrue(callable(run),'Shadow workflow must exist')
+                     ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Shadow workflow must exist
+
+======================================================================
+FAIL: test_mc015_outcomes_change_recommendation_and_insufficient_data_holds (test_loop.Loop.test_mc015_outcomes_change_recommendation_and_insufficient_data_holds)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_loop.py", line 30, in setUp
+    def setUp(self): self.assertTrue(callable(run),'Shadow workflow must exist')
+                     ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Shadow workflow must exist
+
+======================================================================
+FAIL: test_missing_analytics_is_visible_and_recoverable (test_loop.Loop.test_missing_analytics_is_visible_and_recoverable)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_loop.py", line 30, in setUp
+    def setUp(self): self.assertTrue(callable(run),'Shadow workflow must exist')
+                     ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Shadow workflow must exist
+
+======================================================================
+FAIL: test_no_production_mode_and_no_paid_spend (test_loop.Loop.test_no_production_mode_and_no_paid_spend)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_loop.py", line 30, in setUp
+    def setUp(self): self.assertTrue(callable(run),'Shadow workflow must exist')
+                     ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Shadow workflow must exist
+
+======================================================================
+FAIL: test_tenant_isolation_at_each_input (test_loop.Loop.test_tenant_isolation_at_each_input)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_loop.py", line 30, in setUp
+    def setUp(self): self.assertTrue(callable(run),'Shadow workflow must exist')
+                     ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Shadow workflow must exist
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.022s
+
+FAILED (failures=9)

@@ -1,0 +1,82 @@
+{
+  "tenant": {
+    "tenant_id": "salem-botanicals",
+    "status": "CONFIGURATION_PENDING_VALIDATION",
+    "objectives": [
+      "increase attributable or credibly influenced revenue",
+      "increase qualified website/store traffic",
+      "increase qualified leads",
+      "grow permissioned email audience"
+    ],
+    "pilot_mode": "SHADOW_THEN_HUMAN_APPROVED",
+    "budget": {
+      "currency": "USD",
+      "paid_media_authorized": false
+    },
+    "policies": {
+      "production_publish_requires_owner_approval": true,
+      "spending_requires_owner_approval": true,
+      "prohibit_sensitive_targeting": true
+    },
+    "connectors": {},
+    "baseline": {
+      "status": "AWAITING_CLIENT_DATA"
+    }
+  },
+  "objective": "increase qualified leads",
+  "sources": [
+    {
+      "tenant_id": "salem-botanicals",
+      "source_id": "source-1",
+      "source_uri": "https://example.org/fixture",
+      "source_type": "synthetic",
+      "observed_at": "2026-09-21T12:00:00Z",
+      "confidence": 0.8,
+      "relevance": 0.9,
+      "applicability": "Prospective customers seeking product information",
+      "finding": "Product FAQs are an information gap",
+      "channel": "website",
+      "format": "FAQ",
+      "competitor": "Synthetic competitor A",
+      "positioning": "Educational",
+      "offers": [],
+      "reactions": [],
+      "limitations": [
+        "Fixture only; no real competitor observation"
+      ]
+    }
+  ],
+  "brand": {
+    "tenant_id": "salem-botanicals",
+    "name": "Salem Botanicals",
+    "status": "SYNTHETIC_SHADOW_PROFILE",
+    "approved_copy": "Explore Salem Botanicals product information. Read our product FAQ and send us your questions.",
+    "cta": "Read the FAQ",
+    "landing_url": "https://example.org/salem-shadow",
+    "forbidden_terms": [
+      "guaranteed cure",
+      "treats cancer"
+    ],
+    "sensitive_targeting": false
+  },
+  "analytics": {
+    "tenant_id": "salem-botanicals",
+    "source_type": "synthetic",
+    "source_uri": "https://example.org/analytics-fixture",
+    "observed_at": "2026-09-22T12:00:00Z",
+    "visits": 100,
+    "leads": 12,
+    "conversions": 3,
+    "revenue": 90,
+    "spend": 0,
+    "attribution_evidence": "none"
+  },
+  "baseline": {
+    "tenant_id": "salem-botanicals",
+    "source_type": "synthetic",
+    "visits": 100,
+    "leads": 5,
+    "window_days": 7
+  },
+  "window_days": 7
+}

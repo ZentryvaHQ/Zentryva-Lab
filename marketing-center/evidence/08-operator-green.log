@@ -1,0 +1,26 @@
+test_cli_writes_report_and_handles_invalid_input_without_payload_leak (test_cli.Operator.test_cli_writes_report_and_handles_invalid_input_without_payload_leak) ... ok
+test_replay_checks_evidence_integrity (test_cli.Operator.test_replay_checks_evidence_integrity) ... ok
+test_traceability_graph_and_tenant_portability (test_cli.Operator.test_traceability_graph_and_tenant_portability) ... ok
+test_untrusted_text_is_escaped_in_dashboard (test_cli.Operator.test_untrusted_text_is_escaped_in_dashboard) ... ok
+test_mc002_status_accepts_valid_and_rejects_invalid (test_contracts.Contracts.test_mc002_status_accepts_valid_and_rejects_invalid) ... ok
+test_mc003_tenant_and_safety_boundaries (test_contracts.Contracts.test_mc003_tenant_and_safety_boundaries) ... ok
+test_mc004_identity_provenance (test_contracts.Contracts.test_mc004_identity_provenance) ... ok
+test_mc005_preserves_evidence_and_computes_freshness (test_intelligence.Intelligence.test_mc005_preserves_evidence_and_computes_freshness) ... ok
+test_mc005_rejects_bad_evidence_and_cross_tenant (test_intelligence.Intelligence.test_mc005_rejects_bad_evidence_and_cross_tenant) ... ok
+test_mc006_competitors_link_to_observed_evidence (test_intelligence.Intelligence.test_mc006_competitors_link_to_observed_evidence) ... ok
+test_mc007_cannot_consume_foreign_records (test_intelligence.Intelligence.test_mc007_cannot_consume_foreign_records) ... ok
+test_mc007_decision_changes_with_evidence_and_abstains_without_it (test_intelligence.Intelligence.test_mc007_decision_changes_with_evidence_and_abstains_without_it) ... ok
+test_mc008_to_016_persistent_end_to_end_and_replay (test_loop.Loop.test_mc008_to_016_persistent_end_to_end_and_replay) ... ok
+test_mc010_risky_or_unapproved_content_cannot_handoff (test_loop.Loop.test_mc010_risky_or_unapproved_content_cannot_handoff) ... ok
+test_mc012_acceptance_is_not_delivery_and_missing_tracking_fails (test_loop.Loop.test_mc012_acceptance_is_not_delivery_and_missing_tracking_fails) ... ok
+test_mc013_invalid_or_foreign_metrics_rejected (test_loop.Loop.test_mc013_invalid_or_foreign_metrics_rejected) ... ok
+test_mc014_classifications_never_invent_roi (test_loop.Loop.test_mc014_classifications_never_invent_roi) ... ok
+test_mc015_outcomes_change_recommendation_and_insufficient_data_holds (test_loop.Loop.test_mc015_outcomes_change_recommendation_and_insufficient_data_holds) ... ok
+test_missing_analytics_is_visible_and_recoverable (test_loop.Loop.test_missing_analytics_is_visible_and_recoverable) ... ok
+test_no_production_mode_and_no_paid_spend (test_loop.Loop.test_no_production_mode_and_no_paid_spend) ... ok
+test_tenant_isolation_at_each_input (test_loop.Loop.test_tenant_isolation_at_each_input) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 0.787s
+
+OK

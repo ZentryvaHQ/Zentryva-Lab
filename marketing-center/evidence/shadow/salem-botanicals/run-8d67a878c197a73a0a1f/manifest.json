@@ -1,0 +1,11 @@
+{
+  "run_id": "run-8d67a878c197a73a0a1f",
+  "files": {
+    "result.json": "07bde9d3eb9947c4c3fb9512382ed9110af74355f4597d8192311c18ba6cf6ec",
+    "inputs.json": "68641bc332f38514f29cd3144cff89c84404b4f1652fa41053ac381e76a5dc1e",
+    "records.jsonl": "138d5c5871c42a502172d172fa19255e9d86e923da3f369cc15b4877443d3955",
+    "command-center-status.json": "669d6818688ebcb0b49f9692c91ad83dadafcce702399afd2c0a4dd4c500e5b9",
+    "handoff.md": "0b842c6e09766f41121c1357b0b6b4d66c3b0f56466c75ec9c17ad58b89d3f68",
+    "dashboard.html": "88b1ce4f4b7de942768cb2e3b52c1f9b0b27ba7e6473b1d5fbe853a4e9b151bd"
+  }
+}
