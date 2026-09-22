@@ -1,0 +1,19 @@
+{
+  "tenant_id":"salem-botanicals",
+  "status":"CONFIGURATION_PENDING_VALIDATION",
+  "objectives":[
+    "increase attributable or credibly influenced revenue",
+    "increase qualified website/store traffic",
+    "increase qualified leads",
+    "grow permissioned email audience"
+  ],
+  "pilot_mode":"SHADOW_THEN_HUMAN_APPROVED",
+  "budget":{"currency":"USD","paid_media_authorized":false},
+  "policies":{
+    "production_publish_requires_owner_approval":true,
+    "spending_requires_owner_approval":true,
+    "prohibit_sensitive_targeting":true
+  },
+  "connectors":{},
+  "baseline":{"status":"AWAITING_CLIENT_DATA"}
+}
