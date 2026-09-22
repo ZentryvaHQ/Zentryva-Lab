@@ -1,0 +1,35 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"zentryva://marketing-center/marketing-record/v1",
+  "title":"Traceable Marketing Record",
+  "type":"object",
+  "required":["tenant_id","record_id","record_type","objective","created_at","provenance"],
+  "properties":{
+    "tenant_id":{"type":"string","minLength":1},
+    "record_id":{"type":"string","minLength":1},
+    "record_type":{"enum":["research","opportunity","strategy","campaign","content","publication","metric","attribution","experiment","learning"]},
+    "campaign_id":{"type":["string","null"]},
+    "content_id":{"type":["string","null"]},
+    "platform":{"type":["string","null"]},
+    "objective":{"type":"string"},
+    "audience":{"type":["string","null"]},
+    "format":{"type":["string","null"]},
+    "product_service":{"type":["string","null"]},
+    "cta":{"type":["string","null"]},
+    "created_at":{"type":"string","format":"date-time"},
+    "provenance":{
+      "type":"object",
+      "required":["source_type","confidence"],
+      "properties":{
+        "source_type":{"type":"string"},
+        "source_uri":{"type":["string","null"]},
+        "observed_at":{"type":["string","null"],"format":"date-time"},
+        "freshness":{"type":["string","null"]},
+        "relevance":{"type":["number","null"],"minimum":0,"maximum":1},
+        "confidence":{"type":"number","minimum":0,"maximum":1}
+      },
+      "additionalProperties":false
+    }
+  },
+  "additionalProperties":true
+}
