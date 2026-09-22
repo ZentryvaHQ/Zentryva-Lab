@@ -1,0 +1,13 @@
+test_mc002_status_accepts_valid_and_rejects_invalid (test_contracts.Contracts.test_mc002_status_accepts_valid_and_rejects_invalid) ... ok
+test_mc003_tenant_and_safety_boundaries (test_contracts.Contracts.test_mc003_tenant_and_safety_boundaries) ... ok
+test_mc004_identity_provenance (test_contracts.Contracts.test_mc004_identity_provenance) ... ok
+test_mc005_preserves_evidence_and_computes_freshness (test_intelligence.Intelligence.test_mc005_preserves_evidence_and_computes_freshness) ... ok
+test_mc005_rejects_bad_evidence_and_cross_tenant (test_intelligence.Intelligence.test_mc005_rejects_bad_evidence_and_cross_tenant) ... ok
+test_mc006_competitors_link_to_observed_evidence (test_intelligence.Intelligence.test_mc006_competitors_link_to_observed_evidence) ... ok
+test_mc007_cannot_consume_foreign_records (test_intelligence.Intelligence.test_mc007_cannot_consume_foreign_records) ... ok
+test_mc007_decision_changes_with_evidence_and_abstains_without_it (test_intelligence.Intelligence.test_mc007_decision_changes_with_evidence_and_abstains_without_it) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.022s
+
+OK

@@ -6,9 +6,9 @@
 | MC-002 | Command Center contract | VERIFIED | evidence/02-contracts-green.log; negative validation checks |
 | MC-003 | Tenant core | VERIFIED | Tenant schema; safety policy checks |
 | MC-004 | Traceable marketing identity | VERIFIED | evidence/02-contracts-green.log; negative validation checks |
-| MC-005 | Research evidence engine | READY | Evidence records validated |
-| MC-006 | Competitor intelligence | READY | Structured competitor records |
-| MC-007 | Strategy engine | READY | Evidence -> decision trace |
+| MC-005 | Research evidence engine | VERIFIED (SHADOW) | Imported records validated; source hashes/freshness |
+| MC-006 | Competitor intelligence | VERIFIED (SHADOW) | Structured observations linked to evidence |
+| MC-007 | Strategy engine | VERIFIED (SHADOW) | Traceability, abstention, tenant isolation tested |
 | MC-008 | Campaign planner | BACKLOG | Strategy -> campaign |
 | MC-009 | Content engine | BACKLOG | Campaign -> assets |
 | MC-010 | Brand/compliance gates | BACKLOG | Unsafe/off-brand rejected |
@@ -22,4 +22,5 @@
 
 ## Hard blocker policy
 Owner-dependent production access/approval is isolated at MC-017. It does not block MC-001 through MC-016.
+
 

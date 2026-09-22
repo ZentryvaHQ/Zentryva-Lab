@@ -7,7 +7,7 @@
   "properties":{
     "tenant_id":{"type":"string","minLength":1},
     "record_id":{"type":"string","minLength":1},
-    "record_type":{"enum":["research","opportunity","strategy","campaign","content","publication","metric","attribution","experiment","learning"]},
+    "record_type":{"enum":["research","competitor","opportunity","strategy","campaign","content","publication","metric","attribution","experiment","learning","review","delivery","memory"]},
     "campaign_id":{"type":["string","null"]},
     "content_id":{"type":["string","null"]},
     "platform":{"type":["string","null"]},

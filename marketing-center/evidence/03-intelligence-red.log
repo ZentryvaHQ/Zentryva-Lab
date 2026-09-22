@@ -1,0 +1,58 @@
+test_mc002_status_accepts_valid_and_rejects_invalid (test_contracts.Contracts.test_mc002_status_accepts_valid_and_rejects_invalid) ... ok
+test_mc003_tenant_and_safety_boundaries (test_contracts.Contracts.test_mc003_tenant_and_safety_boundaries) ... ok
+test_mc004_identity_provenance (test_contracts.Contracts.test_mc004_identity_provenance) ... ok
+test_mc005_preserves_evidence_and_computes_freshness (test_intelligence.Intelligence.test_mc005_preserves_evidence_and_computes_freshness) ... FAIL
+test_mc005_rejects_bad_evidence_and_cross_tenant (test_intelligence.Intelligence.test_mc005_rejects_bad_evidence_and_cross_tenant) ... FAIL
+test_mc006_competitors_link_to_observed_evidence (test_intelligence.Intelligence.test_mc006_competitors_link_to_observed_evidence) ... FAIL
+test_mc007_cannot_consume_foreign_records (test_intelligence.Intelligence.test_mc007_cannot_consume_foreign_records) ... FAIL
+test_mc007_decision_changes_with_evidence_and_abstains_without_it (test_intelligence.Intelligence.test_mc007_decision_changes_with_evidence_and_abstains_without_it) ... FAIL
+
+======================================================================
+FAIL: test_mc005_preserves_evidence_and_computes_freshness (test_intelligence.Intelligence.test_mc005_preserves_evidence_and_computes_freshness)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_intelligence.py", line 26, in setUp
+    self.assertTrue(callable(research), 'Research engine must exist')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Research engine must exist
+
+======================================================================
+FAIL: test_mc005_rejects_bad_evidence_and_cross_tenant (test_intelligence.Intelligence.test_mc005_rejects_bad_evidence_and_cross_tenant)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_intelligence.py", line 26, in setUp
+    self.assertTrue(callable(research), 'Research engine must exist')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Research engine must exist
+
+======================================================================
+FAIL: test_mc006_competitors_link_to_observed_evidence (test_intelligence.Intelligence.test_mc006_competitors_link_to_observed_evidence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_intelligence.py", line 26, in setUp
+    self.assertTrue(callable(research), 'Research engine must exist')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Research engine must exist
+
+======================================================================
+FAIL: test_mc007_cannot_consume_foreign_records (test_intelligence.Intelligence.test_mc007_cannot_consume_foreign_records)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_intelligence.py", line 26, in setUp
+    self.assertTrue(callable(research), 'Research engine must exist')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Research engine must exist
+
+======================================================================
+FAIL: test_mc007_decision_changes_with_evidence_and_abstains_without_it (test_intelligence.Intelligence.test_mc007_decision_changes_with_evidence_and_abstains_without_it)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_intelligence.py", line 26, in setUp
+    self.assertTrue(callable(research), 'Research engine must exist')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Research engine must exist
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.041s
+
+FAILED (failures=5)
