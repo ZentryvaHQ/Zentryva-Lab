@@ -83,7 +83,7 @@ class Modules(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             result=run(inputs(),directory,NOW)
             self.assertIn('modules',result['runtime'])
-            self.assertEqual(result['runtime']['modules'][0]['manifest']['module_id'],'intelligence')
+            self.assertIn('intelligence',{m['manifest']['module_id'] for m in result['runtime']['modules']})
             self.assertEqual(result['state'],'SHADOW_COMPLETE')
 
 if __name__=='__main__':unittest.main()

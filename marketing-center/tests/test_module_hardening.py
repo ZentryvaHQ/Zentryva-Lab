@@ -42,11 +42,13 @@ class ModuleHardening(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             before=run(inputs(),directory,NOW)
             registry=configured_registry(before['tenant_id'])
-            registry.disable('intelligence')
+            for name in ('optimization','measurement','publishing','content','planning','intelligence'):
+                registry.disable(name)
             from mc.catalog import research,competitors,strategy
-            manifest=registry.snapshot()[0]['manifest'];manifest['version']='1.0.1'
+            manifest=next(m['manifest'] for m in registry.snapshot() if m['manifest']['module_id']=='intelligence');manifest['version']='1.0.1'
             registry.replace(manifest,{'research':research,'competitors':competitors,'strategy':strategy})
             registry.enable('intelligence',{})
+            for name in ('planning','content','publishing','measurement','optimization'):registry.enable(name,{})
             with patch('mc.workflow.configured_registry',return_value=registry):after=run(inputs(),directory,NOW)
             self.assertNotEqual(before['run_id'],after['run_id'])
 

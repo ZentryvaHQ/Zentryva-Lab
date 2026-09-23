@@ -1,0 +1,40 @@
+test_disabled_content_cannot_generate_assets (test_stage_modules.StageModules.test_disabled_content_cannot_generate_assets) ... FAIL
+test_every_marketing_stage_has_lifecycle_identity (test_stage_modules.StageModules.test_every_marketing_stage_has_lifecycle_identity) ... FAIL
+test_planning_rejects_foreign_strategy (test_stage_modules.StageModules.test_planning_rejects_foreign_strategy) ... FAIL
+
+======================================================================
+FAIL: test_disabled_content_cannot_generate_assets (test_stage_modules.StageModules.test_disabled_content_cannot_generate_assets)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_stage_modules.py", line 19, in test_disabled_content_cannot_generate_assets
+    self.assertIn('content',names)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+AssertionError: 'content' not found in {'intelligence'}
+
+======================================================================
+FAIL: test_every_marketing_stage_has_lifecycle_identity (test_stage_modules.StageModules.test_every_marketing_stage_has_lifecycle_identity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_stage_modules.py", line 13, in test_every_marketing_stage_has_lifecycle_identity
+    self.assertEqual(names,{'intelligence','planning','content','publishing','measurement','optimization'})
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Items in the second set but not the first:
+'publishing'
+'content'
+'measurement'
+'planning'
+'optimization'
+
+======================================================================
+FAIL: test_planning_rejects_foreign_strategy (test_stage_modules.StageModules.test_planning_rejects_foreign_strategy)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_stage_modules.py", line 26, in test_planning_rejects_foreign_strategy
+    self.assertIn('planning',{m['manifest']['module_id'] for m in registry.snapshot()})
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'planning' not found in {'intelligence'}
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.059s
+
+FAILED (failures=3)
