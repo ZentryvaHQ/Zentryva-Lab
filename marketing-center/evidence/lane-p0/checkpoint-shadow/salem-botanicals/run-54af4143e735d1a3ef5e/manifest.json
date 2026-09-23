@@ -1,0 +1,49 @@
+{
+  "run_id": "run-54af4143e735d1a3ef5e",
+  "runtime": {
+    "source_sha256": "30828ebd03e003723c09dc9943b48bf5e89bd4e3762b56b6a6f68af78304b3fa",
+    "git_commit": "e3bd9a4e7a5bbcba5843c36e7fba15cbfae48275",
+    "python": "3.14.7",
+    "jsonschema": "4.26.0",
+    "modules": [
+      {
+        "manifest": {
+          "module_id": "intelligence",
+          "version": "1.0.0",
+          "core_api": 1,
+          "dependencies": [],
+          "config_schema": {
+            "type": "object",
+            "maxProperties": 0
+          }
+        },
+        "implementations": {
+          "research": {
+            "callable": "research",
+            "source_sha256": "bb29045f7078e2682bd8989ddebc77e446bcd10f5a20290e5d9c7056a3200687"
+          },
+          "competitors": {
+            "callable": "competitors",
+            "source_sha256": "bb29045f7078e2682bd8989ddebc77e446bcd10f5a20290e5d9c7056a3200687"
+          },
+          "strategy": {
+            "callable": "strategy",
+            "source_sha256": "bb29045f7078e2682bd8989ddebc77e446bcd10f5a20290e5d9c7056a3200687"
+          }
+        },
+        "enabled": true,
+        "config_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "health": "READY"
+      }
+    ]
+  },
+  "hash_method": "SHA256 of canonical JSON string of UTF-8 text",
+  "files": {
+    "result.json": "3f417a409b43bda8bbb6920428ae1643181e83562d859729c9f96736778109c8",
+    "inputs.json": "68641bc332f38514f29cd3144cff89c84404b4f1652fa41053ac381e76a5dc1e",
+    "records.jsonl": "1f9ed010e3f945fef3a67522029e01e7b67ba23183ae345105c9bec261bda922",
+    "command-center-status.json": "2034bbee15268f8e2f5ee7093f4198c3fd3d0fee82d02f7159fdc9cfd77ffcb4",
+    "handoff.md": "0b842c6e09766f41121c1357b0b6b4d66c3b0f56466c75ec9c17ad58b89d3f68",
+    "dashboard.html": "3c3423b12ad93ae8f2810cec5bc2e3024b873675beebd23fbfaf5c46e685d365"
+  }
+}

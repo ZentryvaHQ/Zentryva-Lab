@@ -1,0 +1,80 @@
+{
+  "checkpoint": "P0-module-foundation-1",
+  "created_at": "2026-09-23T02:55:03.798717+00:00",
+  "repository": "https://github.com/ZentryvaHQ/Zentryva-Lab.git",
+  "local_repository": "C:\\Users\\festg\\.codex\\.chatgpt-projects\\g-p-6ab1f727c52c8191968d451f3328652c\\work",
+  "branch": "mc-r1-salem-sprint",
+  "baseline_commit": "970a4ac297a7a5465ca3740c98abf1a7c941d357",
+  "tested_code_commit": "e3bd9a4e7a5bbcba5843c36e7fba15cbfae48275",
+  "implementation_status": "VERIFIED_LOCAL_SCOPE",
+  "commercial_release": "HOLD",
+  "commands": [
+    {
+      "command": "../.venv/Scripts/python.exe -m unittest discover -s tests -v",
+      "exit_code": 0,
+      "tests": 40,
+      "passed": 40,
+      "log": "evidence/lane-p0/06-checkpoint-tests.log"
+    },
+    {
+      "command": "../.venv/Scripts/python.exe -m pip check",
+      "exit_code": 0,
+      "log": "evidence/lane-p0/05-dependencies.log"
+    },
+    {
+      "command": "../.venv/Scripts/python.exe -m mc --input fixtures/salem-shadow.json --output evidence/lane-p0/checkpoint-shadow --at 2026-09-22T12:00:00Z",
+      "exit_code": 0,
+      "log": "evidence/lane-p0/07-checkpoint-cli.log"
+    }
+  ],
+  "independent_review": "evidence/lane-p0/08-independent-review.md",
+  "production_published": false,
+  "cost_usd": 0,
+  "security_scope": "Tenant/configuration/input/replay regression checks only; dependency vulnerability scan and full audit not performed",
+  "source_file_sha256": {
+    "contracts/command-center-interface.schema.json": "6c1408f35cec8dab9deb8b220dbadb05afd6184dae16d941f1bf9a9d31c02e0b",
+    "mc/__init__.py": "fea03c375d8fde1c0d3b230e04afa1dcfb49e25675fae014ac19f66d422bdb34",
+    "mc/__main__.py": "a95963b29abef2616c48e53503f7aa6effae074075ae9f23682eacca534c40dd",
+    "mc/catalog.py": "bb29045f7078e2682bd8989ddebc77e446bcd10f5a20290e5d9c7056a3200687",
+    "mc/core.py": "94ea5f12cbdcedfeb0a2ec0610f2d80e5816a01d8349cf73cf196a7123a2cfde",
+    "mc/intelligence.py": "a4db47ec3243a770061f57800d328385a76849be3785c09e601e66742dce6198",
+    "mc/modules.py": "6ed380da7be5e1c2075e8deb6b3b7360cf0cfd10b79bd0378982839ab4bb15cb",
+    "mc/workflow.py": "7c6955f92c7d8efec5e455f996a57eb0cf8af32ac6dad354c44ea24377ed324b",
+    "requirements.txt": "d0bc9baee84543883a0a966d477620161876536b552742ab6409d1da50251405",
+    "schemas/marketing-record.schema.json": "659020816d1312f0dd370656119f2460b893464bd2ca5c056c6daab72bd64747",
+    "schemas/tenant.schema.json": "37e7b244f77b2b2e764d36b30f4a3efd6550be2deb60794a2680faa5dfe0c1bc",
+    "tests/test_cli.py": "96b40db01ae9d0b8300c17e9f5971ab61e03a9ffcd555f1ec5c9a461a5c60fc3",
+    "tests/test_contracts.py": "2b7682d19c5975dc2f5f1a515a26f60f699eacf03799aeb600902509afa8198e",
+    "tests/test_hardening.py": "65f124e2bb4d12f0174bc7d4882fac61854adbfff83e518815fa487126b11a1f",
+    "tests/test_intelligence.py": "f76f1ddac90a853970f6c094f3dc52f463af6d961ad4e22233a8f55f43f721ed",
+    "tests/test_loop.py": "4ad3c05a9a4b3ecde584593fc1fce8b464f28aa6b308f827420ff8998985d7a1",
+    "tests/test_module_hardening.py": "98c4f219976b811e493ffdb82470ebc9e7d94797da234a97d7f34c8d569f679d",
+    "tests/test_modules.py": "53972735c7af3747a894c0568e064a8804637c0e76163e304f4efa1953a1b05b"
+  },
+  "evidence_file_sha256": {
+    "evidence/lane-p0/01-modules-red.log": "8a6b3263e688cb1ba8251482f309e2f91a418ed840ce49e1e25743185b74a46e",
+    "evidence/lane-p0/02-modules-green.log": "a224dde3e34418f30c5f8f24c751248a7ebcf7a311a92dd4c8648961ec7abb83",
+    "evidence/lane-p0/03-hardening-red.log": "1c5c2392390128365ae6ce20aa9fad25fe98cb92ea373c9fd7d9a065f6759f5f",
+    "evidence/lane-p0/04-hardening-green.log": "50cb4f72585aa70a7af95dd12f089081040673d894c1ee55aa0ee36b0849628d",
+    "evidence/lane-p0/05-dependencies.log": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf",
+    "evidence/lane-p0/06-checkpoint-tests.log": "c00cc369bd9af21fb5ce8ebb62756a584fdd7760a7c4bef4bec90f2f23e55f45",
+    "evidence/lane-p0/07-checkpoint-cli.log": "3ff6fc945f786e2111228038b2e3514dfa8667180de8f1456602f6a3f1cc66df",
+    "evidence/lane-p0/08-independent-review.md": "44a752e539650ee909edf26e7aaad1060bd6ef963eeca7173484c00fb2c2c645",
+    "evidence/lane-p0/checkpoint-shadow/salem-botanicals/run-54af4143e735d1a3ef5e/command-center-status.json": "b9ca67900458d988ec3942d5939f78e23c2ab305742bde5b210a845bae4d6510",
+    "evidence/lane-p0/checkpoint-shadow/salem-botanicals/run-54af4143e735d1a3ef5e/dashboard.html": "76e7e274930669a7358cba373e8b0a19c1bf630a093010f7b0c06c5e3f03c8b5",
+    "evidence/lane-p0/checkpoint-shadow/salem-botanicals/run-54af4143e735d1a3ef5e/handoff.md": "69a6a28c9f3ea3ab459ae46d82f7fec428fcd01b1594c66e75d0e66dda21f840",
+    "evidence/lane-p0/checkpoint-shadow/salem-botanicals/run-54af4143e735d1a3ef5e/inputs.json": "aa08238a063e19ce84f70cb0fa2c6d838c33521422b54961a1c8e9f6869b4140",
+    "evidence/lane-p0/checkpoint-shadow/salem-botanicals/run-54af4143e735d1a3ef5e/manifest.json": "cfa64f132458d6aca868da8a72d2c805e27bc3867b73407f022cb32083b2b464",
+    "evidence/lane-p0/checkpoint-shadow/salem-botanicals/run-54af4143e735d1a3ef5e/records.jsonl": "4f20152c1b41d06d84d25f08fd118e3d06f22df501c30f36698013bf007045d1",
+    "evidence/lane-p0/checkpoint-shadow/salem-botanicals/run-54af4143e735d1a3ef5e/result.json": "55180cf7ce9635ca1e0cdbcd49df9ccf4de352ddac0cbc00d2aec34b162cbf1c"
+  },
+  "limitations": [
+    "Remaining legacy marketing stages need module extraction",
+    "Durable task recovery and provider retry/timeout qualification remain open",
+    "Trusted local plugins are not sandboxed; external dependency graphs are not qualified",
+    "Receipt identity validation remains a known baseline follow-up",
+    "Real Salem facts, baseline, access and launch approval await Richard"
+  ],
+  "next_task": "ML-003: extract remaining marketing stages behind module contracts without V2 scope",
+  "rollback": "Use a separate checkout of baseline commit 970a4ac297a7a5465ca3740c98abf1a7c941d357 for the previous local shadow behavior; preserve evidence directories. No production deployment occurred."
+}

@@ -1,3 +1,5 @@
+Current authoritative status: [MARKETING_STATUS.md](MARKETING_STATUS.md). The following is the preserved R1 shadow checkpoint.
+
 # MC-R1-SALEM-001 Tracker
 
 Updated 2026-09-22: internal shadow loop working; production R1 pilot is NOT complete.
