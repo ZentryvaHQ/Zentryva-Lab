@@ -47,6 +47,22 @@ class Loop(unittest.TestCase):
             again=run(inputs(),directory,NOW)
             self.assertEqual(again,result)
 
+    def test_control_hook_stops_between_stages_and_reuses_checkpoints(self):
+        calls={'count':0}
+        def control():
+            calls['count']+=1
+            if calls['count']==4:
+                raise RuntimeError('fixture control stop')
+        with tempfile.TemporaryDirectory() as directory:
+            with self.assertRaisesRegex(RuntimeError,'fixture control stop'):
+                run(inputs(),directory,NOW,control=control)
+            checkpoints=list(Path(directory).rglob('step-*.json'))
+            self.assertGreaterEqual(len(checkpoints),3)
+            self.assertFalse(list(Path(directory).glob(f'{TENANT}/run-*/result.json')))
+            result=run(inputs(),directory,NOW)
+            self.assertEqual(result['state'],'SHADOW_COMPLETE')
+            self.assertGreaterEqual(len(list(Path(directory).rglob('step-*.json'))),len(checkpoints))
+
     def test_mc010_risky_or_unapproved_content_cannot_handoff(self):
         for patch in [dict(approved_copy='This guaranteed cure treats cancer'),dict(sensitive_targeting=True),dict(status='UNKNOWN')]:
             data=inputs(); data['brand'].update(patch)
