@@ -1,0 +1,58 @@
+{
+  "settings": {
+    "stall_after_seconds": 900
+  },
+  "projects": [
+    {
+      "id": "p1",
+      "status": "COMPLETE",
+      "desired_state": "RUNNING",
+      "assigned_worker_id": "w1",
+      "updated_at": "2026-09-23T11:51:02.384941Z"
+    }
+  ],
+  "workers": [
+    {
+      "id": "w1",
+      "state": "COMPLETE",
+      "current_project_id": "p1",
+      "last_heartbeat_at": "2026-09-23T11:51:02.400816Z",
+      "last_progress_at": "2026-09-23T11:51:02.400828Z"
+    }
+  ],
+  "providers": [
+    {
+      "id": "local",
+      "enabled": true
+    }
+  ],
+  "attention": [],
+  "runs": [
+    {
+      "id": "cc-r1",
+      "project_id": "p1",
+      "provider_id": "local",
+      "worker_id": "w1",
+      "action": "marketing.shadow.verify",
+      "status": "COMPLETE",
+      "requires_owner_approval": false,
+      "created_at": "2026-09-23T11:51:01.560000Z",
+      "updated_at": "2026-09-23T11:51:02.384910Z",
+      "input": {
+        "tenant_id": "salem-botanicals",
+        "input_sha256": "7f74b50c51ae809626f066dcd2331ade68313edfd7731d9567d34dee7a655ba8",
+        "at": "2026-09-22T12:00:00Z",
+        "source_sha256": "7f2d1dacf20ee22468db460cdaffab48c262b8c0ccd2d1c2c4c57248db340d08"
+      },
+      "request_event_id": "d06516c9-7a81-4f2d-83b1-b7ba37dcaae0",
+      "receipt_ref": "sha256:aad00905601f41fac7064dff8de337c9f8891788564d12031981c7648065b490",
+      "checkpoint_ref": "sha256:687de4612c6885a196e363a5bfe2d431722c6735e472e865943ad2f38839b41e",
+      "acknowledged_at": "2026-09-23T11:51:01.684079Z",
+      "acknowledgement_event_id": "3460d9d4-884d-481e-9434-102a587b4b61",
+      "completed_at": "2026-09-23T11:51:02.384910Z",
+      "evidence_ref": "sha256:06c8462300e16c4999a1ea217b4458bf8ce4be81a46392fd441cd738e61c2ee0",
+      "summary": "Synthetic local shadow only; MC-017 remains gated",
+      "completion_event_id": "103cf907-a5cf-4b6b-9136-d6164d877fec"
+    }
+  ]
+}

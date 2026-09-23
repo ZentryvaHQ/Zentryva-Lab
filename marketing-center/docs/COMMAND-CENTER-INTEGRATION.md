@@ -62,9 +62,13 @@ not an owner-data request and not a reason to label local qualification producti
 
 ## Repeat qualification
 
-Use a clean reference checkout at the exact commit above. From the Marketing
-repository root, set `MC_CC_SOURCE` to that checkout and run the full unittest
-suite. Integration tests verify the reference HEAD before loading its handler,
+Use a clean reference checkout at the exact commit above and the dedicated
+Marketing `.venv` with `marketing-center/requirements.txt` installed. Global
+Python environments relying on per-user packages are not the qualification
+runtime: fixture subprocesses intentionally do not inherit user-package paths.
+From the Marketing repository root, set `MC_CC_SOURCE` to that checkout and run
+`.venv/Scripts/python.exe -m unittest discover -s marketing-center/tests -v`.
+Integration tests verify the reference HEAD and tracked-file cleanliness before loading its handler,
 start a real HTTP listener on an ephemeral loopback port, generate disposable
 test tokens, use temporary state/evidence, and shut it down afterwards.
 Without `MC_CC_SOURCE`, these integration tests are explicitly skipped.

@@ -1,0 +1,207 @@
+{
+  "command_center_sha": "6c50292cf91fb4ea94f08e833e899d555290b714",
+  "marketing_runtime": {
+    "source_sha256": "7f2d1dacf20ee22468db460cdaffab48c262b8c0ccd2d1c2c4c57248db340d08",
+    "git_commit": null,
+    "python": "3.14.7",
+    "jsonschema": "4.26.0",
+    "modules": [
+      {
+        "manifest": {
+          "module_id": "content",
+          "version": "1.0.0",
+          "core_api": 1,
+          "dependencies": [
+            "planning"
+          ],
+          "config_schema": {
+            "type": "object",
+            "maxProperties": 0
+          }
+        },
+        "implementations": {
+          "create": {
+            "callable": "create",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          },
+          "review": {
+            "callable": "review",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          }
+        },
+        "enabled": true,
+        "config_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "health": "READY"
+      },
+      {
+        "manifest": {
+          "module_id": "intelligence",
+          "version": "1.0.0",
+          "core_api": 1,
+          "dependencies": [],
+          "config_schema": {
+            "type": "object",
+            "maxProperties": 0
+          }
+        },
+        "implementations": {
+          "research": {
+            "callable": "research",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          },
+          "competitors": {
+            "callable": "competitors",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          },
+          "strategy": {
+            "callable": "strategy",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          }
+        },
+        "enabled": true,
+        "config_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "health": "READY"
+      },
+      {
+        "manifest": {
+          "module_id": "measurement",
+          "version": "1.0.0",
+          "core_api": 1,
+          "dependencies": [
+            "publishing"
+          ],
+          "config_schema": {
+            "type": "object",
+            "maxProperties": 0
+          }
+        },
+        "implementations": {
+          "normalize": {
+            "callable": "normalize",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          },
+          "attribute": {
+            "callable": "attribute",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          }
+        },
+        "enabled": true,
+        "config_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "health": "READY"
+      },
+      {
+        "manifest": {
+          "module_id": "optimization",
+          "version": "1.0.0",
+          "core_api": 1,
+          "dependencies": [
+            "measurement"
+          ],
+          "config_schema": {
+            "type": "object",
+            "maxProperties": 0
+          }
+        },
+        "implementations": {
+          "learn": {
+            "callable": "learn",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          },
+          "next": {
+            "callable": "optimize",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          }
+        },
+        "enabled": true,
+        "config_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "health": "READY"
+      },
+      {
+        "manifest": {
+          "module_id": "planning",
+          "version": "1.0.0",
+          "core_api": 1,
+          "dependencies": [
+            "intelligence"
+          ],
+          "config_schema": {
+            "type": "object",
+            "maxProperties": 0
+          }
+        },
+        "implementations": {
+          "campaign": {
+            "callable": "campaign",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          }
+        },
+        "enabled": true,
+        "config_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "health": "READY"
+      },
+      {
+        "manifest": {
+          "module_id": "publishing",
+          "version": "1.0.0",
+          "core_api": 1,
+          "dependencies": [
+            "content"
+          ],
+          "config_schema": {
+            "type": "object",
+            "maxProperties": 0
+          }
+        },
+        "implementations": {
+          "handoff": {
+            "callable": "handoff",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          },
+          "delivery": {
+            "callable": "delivery",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          }
+        },
+        "enabled": true,
+        "config_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "health": "READY"
+      }
+    ]
+  },
+  "command_center_files": {
+    "server.py": "c6b04cfdabc3d94937a47e21fe012c7a25dcfbbd0f1fdbd7dc4c45df2b989c86",
+    "state_backend.py": "e491ad4f891be049ffee8cb8afedf1b68f965411388be2bd09c95c55a1469f0a",
+    "transactional_store.py": "8565288a8ab832f015c9ef4a865354119b6eb79db6202ffa5c53f3f8733dcfcf"
+  },
+  "state": "SHADOW_COMPLETE",
+  "production_published": false,
+  "cost_usd": 0,
+  "transport": "real HTTP on ephemeral 127.0.0.1 port",
+  "provider_supervision": "UNVERIFIED",
+  "remote_run": {
+    "id": "cc-r1",
+    "project_id": "p1",
+    "provider_id": "local",
+    "worker_id": "w1",
+    "action": "marketing.shadow.verify",
+    "status": "COMPLETE",
+    "requires_owner_approval": false,
+    "created_at": "2026-09-23T11:51:01.560000Z",
+    "updated_at": "2026-09-23T11:51:02.384910Z",
+    "input": {
+      "tenant_id": "salem-botanicals",
+      "input_sha256": "7f74b50c51ae809626f066dcd2331ade68313edfd7731d9567d34dee7a655ba8",
+      "at": "2026-09-22T12:00:00Z",
+      "source_sha256": "7f2d1dacf20ee22468db460cdaffab48c262b8c0ccd2d1c2c4c57248db340d08"
+    },
+    "request_event_id": "d06516c9-7a81-4f2d-83b1-b7ba37dcaae0",
+    "receipt_ref": "sha256:aad00905601f41fac7064dff8de337c9f8891788564d12031981c7648065b490",
+    "checkpoint_ref": "sha256:687de4612c6885a196e363a5bfe2d431722c6735e472e865943ad2f38839b41e",
+    "acknowledged_at": "2026-09-23T11:51:01.684079Z",
+    "acknowledgement_event_id": "3460d9d4-884d-481e-9434-102a587b4b61",
+    "completed_at": "2026-09-23T11:51:02.384910Z",
+    "evidence_ref": "sha256:06c8462300e16c4999a1ea217b4458bf8ce4be81a46392fd441cd738e61c2ee0",
+    "summary": "Synthetic local shadow only; MC-017 remains gated",
+    "completion_event_id": "103cf907-a5cf-4b6b-9136-d6164d877fec"
+  }
+}

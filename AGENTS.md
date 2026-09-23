@@ -9,6 +9,6 @@ Before any future Marketing Center execution, inspect task activity and this own
 
 Authoritative current tracker: `marketing-center/MARKETING_STATUS.md`.
 Governing directive: `marketing-center/docs/MARKETING-LANE-DIRECTIVE.md`, with the user's completion-first/no-routine-prompts authority and R1 scope freeze. Command Center remains the shared control plane; do not duplicate its infrastructure.
-Next work: ML-003 capability extraction, then ML-004 reliability and ML-005 qualification. MC-017 remains the later owner-dependent live pilot gate; it does not stop safe local P0 work.
+Current checkpoint: ML-003 extraction, local ML-004 recovery/Command Center roundtrip and scoped ML-005 source audit verified. Next P0 dependency is the shared Command Center running-state/pause/recovery protocol; follow MARKETING_STATUS.md and docs/COMMAND-CENTER-INTEGRATION.md. MC-017 remains the later owner-dependent live pilot gate; it does not stop safe local P0 work.
 
 No production publishing/deployment, spend, secret disclosure, legal acceptance, or destructive/irreversible action. No claim of background execution unless actually configured and verified.

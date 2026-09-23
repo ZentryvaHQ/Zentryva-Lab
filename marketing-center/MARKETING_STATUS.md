@@ -1,35 +1,50 @@
 # Zentryva AI Marketing Center — authoritative MARKETING_STATUS
 
-Last Activity: 2026-09-23T03:43:54.239672+00:00. Engine: Marketing Factory. Pilot: Salem Botanicals.
+Last Activity: 2026-09-23T11:57:49.011137+00:00. Engine: Marketing Factory. Pilot: Salem Botanicals.
 Repository: https://github.com/ZentryvaHQ/Zentryva-Lab.git
-Branch: mc-r1-salem-sprint. Original verified baseline: 970a4ac297a7a5465ca3740c98abf1a7c941d357.
-Tested implementation commit: e3bd9a4e7a5bbcba5843c36e7fba15cbfae48275.
-Release readiness: HOLD. Synthetic local shadow verification is not a live pilot or commercial qualification.
-This tracker supersedes TRACKER.md for current status; that file retains historical MC-001–017 detail.
+Branch: mc-r1-salem-sprint. Tested implementation: c2fe5611e195f864c6c3fa168b0f723a23c24e24.
+Release readiness: HOLD. Current evidence qualifies synthetic local shadow work, not live publishing or a commercial release.
 
-| Work ID | Phase | Task | Priority | Status | Last Activity (UTC) | Dependencies | Test Status | Repository | Branch | Commit SHA | Evidence | Blocker | Next Action |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| ML-001 | Scope | Freeze V1 and record Core/module boundary | P0 | VERIFIED (design only) | 2026-09-23T02:55:03.798717+00:00 | Recovered directive | Baseline 29/29 | ZentryvaHQ/Zentryva-Lab | mc-r1-salem-sprint | 970a4ac297a7a5465ca3740c98abf1a7c941d357 | docs/V1-CORE-MODULE-DESIGN.md | None | Preserve checkpoint |
-| ML-002 | Core | Module registry and intelligence integration | P0 | VERIFIED (local foundation) | 2026-09-23T02:55:03.798717+00:00 | ML-001 | 40/40 tests; independent review 40/40 | ZentryvaHQ/Zentryva-Lab | mc-r1-salem-sprint | e3bd9a4e7a5bbcba5843c36e7fba15cbfae48275 | evidence/lane-p0/ReleaseProof.json; docs/MODULES.md | None | Complete; continue ML-003 |
-| ML-003 | Architecture | Extract remaining marketing capabilities | P0 | VERIFIED (local shadow) | 2026-09-23T03:43:54.239672+00:00 | ML-002 | 54/54 tests | ZentryvaHQ/Zentryva-Lab | mc-r1-salem-sprint | e75f521aa13ec3cd46b9df2dfabdaf85955950f3 | evidence/unified-p0/ReleaseProof.json | None | Preserve module boundaries |
-| ML-004 | Reliability | Durable state, restart, retry/deadline boundaries | P0 | VERIFIED LOCAL / integration pending | 2026-09-23T03:43:54.239672+00:00 | ML-003 | Crash/restart, lock, retry budget tests pass | ZentryvaHQ/Zentryva-Lab | mc-r1-salem-sprint | e75f521aa13ec3cd46b9df2dfabdaf85955950f3 | docs/LOCAL-RECOVERY.md | Live Command Center supervision unverified | Qualify provider cancellation and automatic recovery at integration |
-| ML-005 | Security | Input/receipt/replay/dependency qualification | P0 | PARTIAL — local checks verified | 2026-09-23T03:43:54.239672+00:00 | ML-003 | 54/54; dependency scan: no known vulnerabilities | ZentryvaHQ/Zentryva-Lab | mc-r1-salem-sprint | e75f521aa13ec3cd46b9df2dfabdaf85955950f3 | evidence/unified-p0 | Full source audit and production access controls unverified | Complete broader source/integration qualification before live release |
-| MC-017 | Pilot | Real Salem controlled pilot | P0 | AWAITING RICHARD | 2026-09-23T02:55:03.798717+00:00 | Local Core gates | Live pilot unverified | ZentryvaHQ/Zentryva-Lab | mc-r1-salem-sprint | 970a4ac297a7a5465ca3740c98abf1a7c941d357 | TRACKER.md | Approved real brand/product facts and baseline, authorized account access, launch approval | Richard supplies approved facts/data and secure access; explicit approval only at launch |
-| ML-006 | Commercial | Packaging, onboarding, upgrade/rollback and commercial ReleaseProof | P1 | DEFERRED | 2026-09-23T02:55:03.798717+00:00 | P0 | Unverified | ZentryvaHQ/Zentryva-Lab | mc-r1-salem-sprint | e3bd9a4e7a5bbcba5843c36e7fba15cbfae48275 | docs/R1-SCOPE.md | Unfinished P0 | Finish Core first |
-| ML-007 | Expansion | V2 / innovation backlog | P2 | DEFERRED | 2026-09-23T02:55:03.798717+00:00 | Qualified V1 | Not applicable | ZentryvaHQ/Zentryva-Lab | mc-r1-salem-sprint | e3bd9a4e7a5bbcba5843c36e7fba15cbfae48275 | docs/R1-SCOPE.md | V1 scope freeze | No implementation |
+| Work | Priority | Status | Evidence | Remaining work |
+|---|---|---|---|---|
+| MC-002–004 contracts, tenant and identity | P0 | VERIFIED LOCAL | 65/65 full suite; prior contract regressions retained | Preserve contracts |
+| MC-005–007 research, competitors, strategy | P0 | VERIFIED LOCAL | Structured synthetic evidence and traceable strategy tests | Real approved pilot inputs later |
+| MC-008–016 shadow loop | P0 | VERIFIED LOCAL | final-roundtrip; SHADOW_COMPLETE; zero spend, no publication | MC-017 live validation later |
+| ML-001–003 Core and six modules | P0 | VERIFIED LOCAL | Prior unified-p0 proof plus 65-test regression suite | Preserve lifecycle boundaries |
+| ML-004 local recovery and shared integration | P0 | VERIFIED LOCAL / continuous supervision UNVERIFIED | evidence/command-center/ReleaseProof.json | Shared worker running-state, pause and recovery protocol; no duplicate Marketing scheduler |
+| ML-005 security qualification | P0 | VERIFIED SCOPED SOURCE / production UNVERIFIED | Sealed source-audit/report.md at 7d6c60b; later adapter independent review and 11 HTTP/CLI tests | Service authentication/authorization and production controls need separate qualification |
+| MC-017 controlled live pilot | P0 | AWAITING RICHARD — LATER | Historical TRACKER.md | Approved real brand/product facts and baseline, secure authorized access, explicit launch approval |
+| ML-006 commercialization | P1 | DEFERRED | R1-SCOPE.md | Finish required P0 gates; no SaaS expansion |
+| ML-007 expansion | P2 | DEFERRED | R1-SCOPE.md | Qualified V1 first |
 
-Owner isolation: MC-017 blocks live pilot evidence only. ML-002–005 remain actionable locally. No credentials, money, terms, destructive action or publishing authorized. No watchdog automation created; no background execution is implied by this tracker.
+## Current checkpoint
 
-## Checkpoint results
+65 tests passed, zero failures or skips. The full suite used the dedicated .venv
+and a clean local Command Center development reference at
+6c50292cf91fb4ea94f08e833e899d555290b714. Real ephemeral loopback HTTP exercised
+receipt, checkpoint, acknowledgement, shadow execution, result evidence and
+completion. The subprocess operator command passed with credentials kept out of
+arguments, artifacts and output. Test listeners were stopped afterwards.
 
-Local module lifecycle, dependency/configuration isolation, failure sanitization, replay module identity and tenant-neutral labels are verified. Initial failures and their passing regressions are preserved in evidence/lane-p0. Fresh CLI result: SHADOW_COMPLETE; production_published=false; cost_usd=0. pip check passed; no vulnerability scan or commercial security qualification is claimed.
+Code and exact source hashes: evidence/command-center/ReleaseProof.json.
+Preserved test failures include pause/failure-state handling and the Windows
+subprocess environment issue; their passing regressions are in the final suite.
+The source audit precedes the adapter and does not silently certify later code.
 
-Next qualification: broader ML-005 source/integration audit and ML-004 Command Center supervision. ML-003 is complete for bundled shadow modules. No production/commercial release is claimed.
+## Execution ownership and next dependency
 
-## Single execution task — 2026-09-23T03:27:58.0331543Z
+Canonical task: 01a0c8ac-0afe-7572-b3ab-99cda493e643 (Zentryva AI Marketing Center — Master Build).
+Resume Marketing Center P0 work remains archived/reference-only. One writer owns
+this branch. Historical work and exact prior checkpoints remain in Git and
+EXECUTION-LEDGER.md; TRACKER.md retains original MC scope.
 
-Canonical task: 01a0c8ac-0afe-7572-b3ab-99cda493e643 (Zentryva AI Marketing Center — Master Build). Resume Marketing Center P0 work is retired/reference-only. Both checkpoints share this repository; no code merge required. Current checkpoint before consolidation: 84629600f555ae4e8580b24d3f1ca107bdf95958. ML-003 remains next. See docs/TASK-CONSOLIDATION.md and repository AGENTS.md.
+The next P0 integration dependency belongs to the shared Command Center worker
+protocol: authenticated running-run/control reads and safe pause/resume/recovery
+semantics. It is a technical dependency, not AWAITING RICHARD. Existing pauses
+visible at acknowledgement are honored; pauses during execution cannot yet be
+observed. See docs/COMMAND-CENTER-INTEGRATION.md. Do not silently promote this
+one-shot adapter into a continuous or production worker.
 
-## Unified continuation checkpoint — 2026-09-23T03:43:54.239672+00:00
-
-54/54 tests; fresh CLI SHADOW_COMPLETE, zero spend, no publication. Tested code e75f521aa13ec3cd46b9df2dfabdaf85955950f3. Receipt identity follow-up is fixed. All exact evidence: evidence/unified-p0/ReleaseProof.json. No running/background worker implied.
+MC-017 alone requires Richard's later real-data/access/launch decisions. It does
+not block safe local engineering. No background worker or scheduler is running
+or implied by this checkpoint.

@@ -1,0 +1,180 @@
+{
+  "run_id": "run-8409948e839d531e85d6",
+  "runtime": {
+    "source_sha256": "dce814bc5509a99894d4c5ff9d821d8ae618f6c8286afbf994dac68dbd077f10",
+    "git_commit": "c2fe5611e195f864c6c3fa168b0f723a23c24e24",
+    "python": "3.14.7",
+    "jsonschema": "4.26.0",
+    "modules": [
+      {
+        "manifest": {
+          "module_id": "content",
+          "version": "1.0.0",
+          "core_api": 1,
+          "dependencies": [
+            "planning"
+          ],
+          "config_schema": {
+            "type": "object",
+            "maxProperties": 0
+          }
+        },
+        "implementations": {
+          "create": {
+            "callable": "create",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          },
+          "review": {
+            "callable": "review",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          }
+        },
+        "enabled": true,
+        "config_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "health": "READY"
+      },
+      {
+        "manifest": {
+          "module_id": "intelligence",
+          "version": "1.0.0",
+          "core_api": 1,
+          "dependencies": [],
+          "config_schema": {
+            "type": "object",
+            "maxProperties": 0
+          }
+        },
+        "implementations": {
+          "research": {
+            "callable": "research",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          },
+          "competitors": {
+            "callable": "competitors",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          },
+          "strategy": {
+            "callable": "strategy",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          }
+        },
+        "enabled": true,
+        "config_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "health": "READY"
+      },
+      {
+        "manifest": {
+          "module_id": "measurement",
+          "version": "1.0.0",
+          "core_api": 1,
+          "dependencies": [
+            "publishing"
+          ],
+          "config_schema": {
+            "type": "object",
+            "maxProperties": 0
+          }
+        },
+        "implementations": {
+          "normalize": {
+            "callable": "normalize",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          },
+          "attribute": {
+            "callable": "attribute",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          }
+        },
+        "enabled": true,
+        "config_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "health": "READY"
+      },
+      {
+        "manifest": {
+          "module_id": "optimization",
+          "version": "1.0.0",
+          "core_api": 1,
+          "dependencies": [
+            "measurement"
+          ],
+          "config_schema": {
+            "type": "object",
+            "maxProperties": 0
+          }
+        },
+        "implementations": {
+          "learn": {
+            "callable": "learn",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          },
+          "next": {
+            "callable": "optimize",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          }
+        },
+        "enabled": true,
+        "config_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "health": "READY"
+      },
+      {
+        "manifest": {
+          "module_id": "planning",
+          "version": "1.0.0",
+          "core_api": 1,
+          "dependencies": [
+            "intelligence"
+          ],
+          "config_schema": {
+            "type": "object",
+            "maxProperties": 0
+          }
+        },
+        "implementations": {
+          "campaign": {
+            "callable": "campaign",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          }
+        },
+        "enabled": true,
+        "config_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "health": "READY"
+      },
+      {
+        "manifest": {
+          "module_id": "publishing",
+          "version": "1.0.0",
+          "core_api": 1,
+          "dependencies": [
+            "content"
+          ],
+          "config_schema": {
+            "type": "object",
+            "maxProperties": 0
+          }
+        },
+        "implementations": {
+          "handoff": {
+            "callable": "handoff",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          },
+          "delivery": {
+            "callable": "delivery",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          }
+        },
+        "enabled": true,
+        "config_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "health": "READY"
+      }
+    ]
+  },
+  "hash_method": "SHA256 of canonical JSON string of UTF-8 text",
+  "files": {
+    "result.json": "351098fc56d989f4cdf9a618f0ca56000b37e9accfaaaa4956a326af979b1f1c",
+    "inputs.json": "68641bc332f38514f29cd3144cff89c84404b4f1652fa41053ac381e76a5dc1e",
+    "records.jsonl": "1f9ed010e3f945fef3a67522029e01e7b67ba23183ae345105c9bec261bda922",
+    "command-center-status.json": "2034bbee15268f8e2f5ee7093f4198c3fd3d0fee82d02f7159fdc9cfd77ffcb4",
+    "handoff.md": "0b842c6e09766f41121c1357b0b6b4d66c3b0f56466c75ec9c17ad58b89d3f68",
+    "dashboard.html": "f6cc7968a060efc84e24c350d4e98e7664901ee5dcdd086c8ec601695dcf1bc0"
+  }
+}

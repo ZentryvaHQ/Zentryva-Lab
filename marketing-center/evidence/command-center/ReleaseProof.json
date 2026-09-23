@@ -1,0 +1,269 @@
+{
+  "status": "PASS_LOCAL_SHADOW_INTEGRATION",
+  "release_readiness": "HOLD",
+  "created_at": "2026-09-23T11:57:49.011137+00:00",
+  "repository": "https://github.com/ZentryvaHQ/Zentryva-Lab.git",
+  "branch": "mc-r1-salem-sprint",
+  "source_commit": "c2fe5611e195f864c6c3fa168b0f723a23c24e24",
+  "command_center_repository": "https://github.com/ZentryvaHQ/Zentryva-Command-Center-Core.git",
+  "command_center_commit": "6c50292cf91fb4ea94f08e833e899d555290b714",
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m unittest discover -s marketing-center/tests -v",
+    "passed": 65,
+    "failed": 0,
+    "skipped": 0,
+    "exit_code": 0,
+    "environment": "Dedicated .venv; MC_CC_SOURCE pinned clean checkout; MC_CC_EVIDENCE final-roundtrip"
+  },
+  "runtime": {
+    "source_sha256": "dce814bc5509a99894d4c5ff9d821d8ae618f6c8286afbf994dac68dbd077f10",
+    "git_commit": "c2fe5611e195f864c6c3fa168b0f723a23c24e24",
+    "python": "3.14.7",
+    "jsonschema": "4.26.0",
+    "modules": [
+      {
+        "manifest": {
+          "module_id": "content",
+          "version": "1.0.0",
+          "core_api": 1,
+          "dependencies": [
+            "planning"
+          ],
+          "config_schema": {
+            "type": "object",
+            "maxProperties": 0
+          }
+        },
+        "implementations": {
+          "create": {
+            "callable": "create",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          },
+          "review": {
+            "callable": "review",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          }
+        },
+        "enabled": true,
+        "config_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "health": "READY"
+      },
+      {
+        "manifest": {
+          "module_id": "intelligence",
+          "version": "1.0.0",
+          "core_api": 1,
+          "dependencies": [],
+          "config_schema": {
+            "type": "object",
+            "maxProperties": 0
+          }
+        },
+        "implementations": {
+          "research": {
+            "callable": "research",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          },
+          "competitors": {
+            "callable": "competitors",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          },
+          "strategy": {
+            "callable": "strategy",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          }
+        },
+        "enabled": true,
+        "config_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "health": "READY"
+      },
+      {
+        "manifest": {
+          "module_id": "measurement",
+          "version": "1.0.0",
+          "core_api": 1,
+          "dependencies": [
+            "publishing"
+          ],
+          "config_schema": {
+            "type": "object",
+            "maxProperties": 0
+          }
+        },
+        "implementations": {
+          "normalize": {
+            "callable": "normalize",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          },
+          "attribute": {
+            "callable": "attribute",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          }
+        },
+        "enabled": true,
+        "config_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "health": "READY"
+      },
+      {
+        "manifest": {
+          "module_id": "optimization",
+          "version": "1.0.0",
+          "core_api": 1,
+          "dependencies": [
+            "measurement"
+          ],
+          "config_schema": {
+            "type": "object",
+            "maxProperties": 0
+          }
+        },
+        "implementations": {
+          "learn": {
+            "callable": "learn",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          },
+          "next": {
+            "callable": "optimize",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          }
+        },
+        "enabled": true,
+        "config_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "health": "READY"
+      },
+      {
+        "manifest": {
+          "module_id": "planning",
+          "version": "1.0.0",
+          "core_api": 1,
+          "dependencies": [
+            "intelligence"
+          ],
+          "config_schema": {
+            "type": "object",
+            "maxProperties": 0
+          }
+        },
+        "implementations": {
+          "campaign": {
+            "callable": "campaign",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          }
+        },
+        "enabled": true,
+        "config_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "health": "READY"
+      },
+      {
+        "manifest": {
+          "module_id": "publishing",
+          "version": "1.0.0",
+          "core_api": 1,
+          "dependencies": [
+            "content"
+          ],
+          "config_schema": {
+            "type": "object",
+            "maxProperties": 0
+          }
+        },
+        "implementations": {
+          "handoff": {
+            "callable": "handoff",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          },
+          "delivery": {
+            "callable": "delivery",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          }
+        },
+        "enabled": true,
+        "config_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "health": "READY"
+      }
+    ]
+  },
+  "production_published": false,
+  "cost_usd": 0,
+  "security": {
+    "scan_id": "9f04aa79-5eb7-474f-8f1c-056ec4896faf",
+    "scanned_commit": "7d6c60bc245cd39f9c533bb5957b05e5675ba763",
+    "findings": 0,
+    "scope": "Pre-adapter local source; adapter separately tested/reviewed",
+    "report": "../source-audit/report.md",
+    "reported_token_usage": {
+      "total": 5376804,
+      "input": 5354852,
+      "cached_input": 5166848,
+      "coverage": "complete"
+    }
+  },
+  "limits": [
+    "Synthetic one-shot local HTTP only; no production qualification",
+    "Shared worker API lacks in-flight pause/status/recovery protocol",
+    "No preemptive provider deadline or automatic remote resume",
+    "MC-017 approved facts, access and launch approval remain owner gated"
+  ],
+  "artifact_sha256": {
+    "01-red.log": "ff761c3ac1f28a8756f3d45d306d35b006e98d45e5b86769f62cca407c549df8",
+    "02-green.log": "7ac5db5f26e0d85d86f46da6b6578e23b8b3879679cedc865e12601260a1fbc0",
+    "03-failure-red.log": "720ca40671448153f89f2118187f5a96db9afaa2ad5a4d71b79f39c1ba03136b",
+    "04-full-green.log": "72a94a97b3db1d2ebf2230e850241a8eda39c3d943a6b7fea417d35120166df3",
+    "05-final-tests.log": "a54e101c2b3f0fe2a4371c8d3a037336117c6a2e84b52aee192021970faa7b68",
+    "06-cli-red.log": "adf02071d82d45c49724a6cce7fda1b53c9207a96d394abaa066868141d0b3df",
+    "07-cli-green.log": "a1f3404b55c93b8bf98f95319605db18af48ef0486b005bfd48bbca890219b0f",
+    "08-cli-windows-green.log": "4498261007cc50ddc0fcbac664a8841a687022fd11b71ba2f25dc0feb0e1dbab",
+    "09-final-qualification.log": "29cfd8275918ad1be75bc7fc95dfbaecd747dd9e087dd7357a39041339ed1c67",
+    "final-roundtrip/command-center/events.jsonl": "32519f11c024150926f8e228265e6d8a856dc0cfa2576dddcfe3799162fd7603",
+    "final-roundtrip/command-center/evidence/02f82d228cff2f26fcfcaa31945e207e6d760faa89c0dac435e62bf2823d27b6.json": "02f82d228cff2f26fcfcaa31945e207e6d760faa89c0dac435e62bf2823d27b6",
+    "final-roundtrip/command-center/evidence/42eb5bf8ef7d432ca7bc4af81635a4c1e5235dc62b93121856bd1a04f79df161.json": "42eb5bf8ef7d432ca7bc4af81635a4c1e5235dc62b93121856bd1a04f79df161",
+    "final-roundtrip/command-center/evidence/44c40738719fcd23f2ff26e7fd29d10e4e804b6eec2f95222c5c0aa364581b8a.json": "44c40738719fcd23f2ff26e7fd29d10e4e804b6eec2f95222c5c0aa364581b8a",
+    "final-roundtrip/command-center/state.json": "b0db7a18fc0bcc2bb096f268c97c59881019274ef6c9d9a68397e9293ea16f22",
+    "final-roundtrip/marketing/salem-botanicals/.checkpoints/run-8409948e839d531e85d6/step-29d9477ca6bf34390476cc770f1544dffd9589b8c084af39babe8d94223b1a41.json": "2ad0606c196ed6760b750ba1df03486556992c3ab84b2dad9dc096e81d43582b",
+    "final-roundtrip/marketing/salem-botanicals/.checkpoints/run-8409948e839d531e85d6/step-3935590f599e551848666107e783fdd2daad41d2349dc5855c21e61606178774.json": "40ae4f79e55c72b866426a569040c0ddba15eb158ddba108568a1f75cb805129",
+    "final-roundtrip/marketing/salem-botanicals/.checkpoints/run-8409948e839d531e85d6/step-404f743d444e7790db45097d7a7fb55aa70bc23eb5d60fe788baafc1ca5a10b8.json": "08bfabddae1ae0e27a40957537c67b07fa8142f539fb664916d57022e6fe0586",
+    "final-roundtrip/marketing/salem-botanicals/.checkpoints/run-8409948e839d531e85d6/step-48ea8c62d0d96f2acf3542bc71bc4e320979112498acbdcabbda70cc473a8fd4.json": "08c6d066f59694fef09230c0baad1d483ef3debbfe9983a61fdccd6934d0dd18",
+    "final-roundtrip/marketing/salem-botanicals/.checkpoints/run-8409948e839d531e85d6/step-56016c92a7ccb40854872b7d2b17c5dc8190963791641d7c99ce835900908b23.json": "f3d31299c9ab79858f5077f8a4aa85654f837849221cafd04b161a1fcc79078a",
+    "final-roundtrip/marketing/salem-botanicals/.checkpoints/run-8409948e839d531e85d6/step-69c5ad081050f470c0d7adbb7ad878d17ce09184e5de9052780539b31fc5371a.json": "576e8b57f39a5ebf87e58659c000a87526d720537db4362fdc666ca806046409",
+    "final-roundtrip/marketing/salem-botanicals/.checkpoints/run-8409948e839d531e85d6/step-6da30e83369586e2252cc694c8af8df4c641765bfbdfef960016282559688610.json": "696bfd2ba24e135e0c006bdf76286bb0a6d074f4b9fa42e6a0c9b11709589547",
+    "final-roundtrip/marketing/salem-botanicals/.checkpoints/run-8409948e839d531e85d6/step-8d2b00ef2e384d1235a5f177f7499f7d58f20c9beababf8644b9c2c83d0b9575.json": "829a74105d2d33c4cb38e4f5ca36beb8207eaa2310a9a27ef533a2cbda3cadb6",
+    "final-roundtrip/marketing/salem-botanicals/.checkpoints/run-8409948e839d531e85d6/step-8eb7bd81abb3e26cf04df0e299b4f18953c155ce9c9b44cf5fceda37b9e77275.json": "14eca348de8d4155d52b8d79d8f3e7fbace42f0e0dfaea1c923363db7ffa736d",
+    "final-roundtrip/marketing/salem-botanicals/.checkpoints/run-8409948e839d531e85d6/step-a11226614bb2c849a5e7d65b716bc063f9525b33fba918e2094f7199e8cb08b6.json": "e71adbff9c833b9fd3d3d82351ec66e2e13cc8f03700f272385005776d405c5d",
+    "final-roundtrip/marketing/salem-botanicals/.checkpoints/run-8409948e839d531e85d6/step-a8ab8d38d925b00a845dbf1045faa4fbc76ad4c04a784089b29d10596bcb22fb.json": "49d69204a460eae88c261e566a6e9a814e5f665528ae790b6b9d5547bb2bbcbe",
+    "final-roundtrip/marketing/salem-botanicals/.checkpoints/run-8409948e839d531e85d6/step-ee3f214469013e41a0176df61c335aaebab686b08400d98d8693f0ce75794e07.json": "75437624c8b7d5a0ccb1890bf292e00b8a492d1b3acb5b985dd8405d5352f439",
+    "final-roundtrip/marketing/salem-botanicals/run-8409948e839d531e85d6/command-center-status.json": "b9ca67900458d988ec3942d5939f78e23c2ab305742bde5b210a845bae4d6510",
+    "final-roundtrip/marketing/salem-botanicals/run-8409948e839d531e85d6/dashboard.html": "3e62142d4459ee6214dcfe216ddae403df80d64c751b2764dc776187d98b1931",
+    "final-roundtrip/marketing/salem-botanicals/run-8409948e839d531e85d6/handoff.md": "69a6a28c9f3ea3ab459ae46d82f7fec428fcd01b1594c66e75d0e66dda21f840",
+    "final-roundtrip/marketing/salem-botanicals/run-8409948e839d531e85d6/inputs.json": "aa08238a063e19ce84f70cb0fa2c6d838c33521422b54961a1c8e9f6869b4140",
+    "final-roundtrip/marketing/salem-botanicals/run-8409948e839d531e85d6/manifest.json": "6d1a343f72f164c258bce7a67aa20131618236191314aeb52b2a1854deada920",
+    "final-roundtrip/marketing/salem-botanicals/run-8409948e839d531e85d6/records.jsonl": "4f20152c1b41d06d84d25f08fd118e3d06f22df501c30f36698013bf007045d1",
+    "final-roundtrip/marketing/salem-botanicals/run-8409948e839d531e85d6/result.json": "0673158ef5ee72e7e003db0646cf4f2d8eb4cb7c86cdf7e4444928c3371ffb39",
+    "final-roundtrip/qualification.json": "04b7fc26a8aa388c2cc39f24e17e7d303a306cedb99279ac0ad231c4c3456da1",
+    "independent-review.md": "b6de0f0cf0a9aa6f596d507571bb85dba4c13d89dd1b3473a2c1c1bf567ec97e",
+    "roundtrip/command-center/events.jsonl": "04b64b127664a294433430bd9c8d3734a79661346a18ff61dce6208ff99dfe41",
+    "roundtrip/command-center/evidence/06c8462300e16c4999a1ea217b4458bf8ce4be81a46392fd441cd738e61c2ee0.json": "06c8462300e16c4999a1ea217b4458bf8ce4be81a46392fd441cd738e61c2ee0",
+    "roundtrip/command-center/evidence/687de4612c6885a196e363a5bfe2d431722c6735e472e865943ad2f38839b41e.json": "687de4612c6885a196e363a5bfe2d431722c6735e472e865943ad2f38839b41e",
+    "roundtrip/command-center/evidence/aad00905601f41fac7064dff8de337c9f8891788564d12031981c7648065b490.json": "aad00905601f41fac7064dff8de337c9f8891788564d12031981c7648065b490",
+    "roundtrip/command-center/state.json": "8cbe01ac1aeb532b8262bb067408a2ad3c3b8ad00196f0cf04ade5bb1dd47ab3",
+    "roundtrip/marketing/salem-botanicals/.checkpoints/run-03afe9f20d381600d938/step-29d9477ca6bf34390476cc770f1544dffd9589b8c084af39babe8d94223b1a41.json": "2ad0606c196ed6760b750ba1df03486556992c3ab84b2dad9dc096e81d43582b",
+    "roundtrip/marketing/salem-botanicals/.checkpoints/run-03afe9f20d381600d938/step-3935590f599e551848666107e783fdd2daad41d2349dc5855c21e61606178774.json": "40ae4f79e55c72b866426a569040c0ddba15eb158ddba108568a1f75cb805129",
+    "roundtrip/marketing/salem-botanicals/.checkpoints/run-03afe9f20d381600d938/step-404f743d444e7790db45097d7a7fb55aa70bc23eb5d60fe788baafc1ca5a10b8.json": "08bfabddae1ae0e27a40957537c67b07fa8142f539fb664916d57022e6fe0586",
+    "roundtrip/marketing/salem-botanicals/.checkpoints/run-03afe9f20d381600d938/step-48ea8c62d0d96f2acf3542bc71bc4e320979112498acbdcabbda70cc473a8fd4.json": "08c6d066f59694fef09230c0baad1d483ef3debbfe9983a61fdccd6934d0dd18",
+    "roundtrip/marketing/salem-botanicals/.checkpoints/run-03afe9f20d381600d938/step-56016c92a7ccb40854872b7d2b17c5dc8190963791641d7c99ce835900908b23.json": "f3d31299c9ab79858f5077f8a4aa85654f837849221cafd04b161a1fcc79078a",
+    "roundtrip/marketing/salem-botanicals/.checkpoints/run-03afe9f20d381600d938/step-69c5ad081050f470c0d7adbb7ad878d17ce09184e5de9052780539b31fc5371a.json": "576e8b57f39a5ebf87e58659c000a87526d720537db4362fdc666ca806046409",
+    "roundtrip/marketing/salem-botanicals/.checkpoints/run-03afe9f20d381600d938/step-6da30e83369586e2252cc694c8af8df4c641765bfbdfef960016282559688610.json": "696bfd2ba24e135e0c006bdf76286bb0a6d074f4b9fa42e6a0c9b11709589547",
+    "roundtrip/marketing/salem-botanicals/.checkpoints/run-03afe9f20d381600d938/step-8d2b00ef2e384d1235a5f177f7499f7d58f20c9beababf8644b9c2c83d0b9575.json": "829a74105d2d33c4cb38e4f5ca36beb8207eaa2310a9a27ef533a2cbda3cadb6",
+    "roundtrip/marketing/salem-botanicals/.checkpoints/run-03afe9f20d381600d938/step-8eb7bd81abb3e26cf04df0e299b4f18953c155ce9c9b44cf5fceda37b9e77275.json": "14eca348de8d4155d52b8d79d8f3e7fbace42f0e0dfaea1c923363db7ffa736d",
+    "roundtrip/marketing/salem-botanicals/.checkpoints/run-03afe9f20d381600d938/step-a11226614bb2c849a5e7d65b716bc063f9525b33fba918e2094f7199e8cb08b6.json": "e71adbff9c833b9fd3d3d82351ec66e2e13cc8f03700f272385005776d405c5d",
+    "roundtrip/marketing/salem-botanicals/.checkpoints/run-03afe9f20d381600d938/step-a8ab8d38d925b00a845dbf1045faa4fbc76ad4c04a784089b29d10596bcb22fb.json": "49d69204a460eae88c261e566a6e9a814e5f665528ae790b6b9d5547bb2bbcbe",
+    "roundtrip/marketing/salem-botanicals/.checkpoints/run-03afe9f20d381600d938/step-ee3f214469013e41a0176df61c335aaebab686b08400d98d8693f0ce75794e07.json": "75437624c8b7d5a0ccb1890bf292e00b8a492d1b3acb5b985dd8405d5352f439",
+    "roundtrip/marketing/salem-botanicals/run-03afe9f20d381600d938/command-center-status.json": "b9ca67900458d988ec3942d5939f78e23c2ab305742bde5b210a845bae4d6510",
+    "roundtrip/marketing/salem-botanicals/run-03afe9f20d381600d938/dashboard.html": "457c10f880f37ffd8766fcabf1ba4164d1432e98d5dce9d11eb41c5a29f45d5d",
+    "roundtrip/marketing/salem-botanicals/run-03afe9f20d381600d938/handoff.md": "69a6a28c9f3ea3ab459ae46d82f7fec428fcd01b1594c66e75d0e66dda21f840",
+    "roundtrip/marketing/salem-botanicals/run-03afe9f20d381600d938/inputs.json": "aa08238a063e19ce84f70cb0fa2c6d838c33521422b54961a1c8e9f6869b4140",
+    "roundtrip/marketing/salem-botanicals/run-03afe9f20d381600d938/manifest.json": "bf437f92d91d9a38e1cb2906bb4ec27aa1823d2b444e3f4a8783b78e6b91b0d7",
+    "roundtrip/marketing/salem-botanicals/run-03afe9f20d381600d938/records.jsonl": "4f20152c1b41d06d84d25f08fd118e3d06f22df501c30f36698013bf007045d1",
+    "roundtrip/marketing/salem-botanicals/run-03afe9f20d381600d938/result.json": "1f2d8fab4319eb05e336056bc5474f1f3581f7e6399cf523800b78593fee5d5b",
+    "roundtrip/qualification.json": "a1b1335de4a466ddf44efbf7576f1c2c4dac3fe77a89195ba104e90b4306492d"
+  }
+}

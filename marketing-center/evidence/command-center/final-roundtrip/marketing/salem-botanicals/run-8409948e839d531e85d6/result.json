@@ -1,0 +1,543 @@
+{
+  "run_id": "run-8409948e839d531e85d6",
+  "tenant_id": "salem-botanicals",
+  "mode": "shadow",
+  "production_published": false,
+  "cost_usd": 0,
+  "output_dir": "C:\\Users\\festg\\AppData\\Local\\Temp\\tmpso573lw1\\marketing\\salem-botanicals\\run-8409948e839d531e85d6",
+  "runtime": {
+    "source_sha256": "dce814bc5509a99894d4c5ff9d821d8ae618f6c8286afbf994dac68dbd077f10",
+    "git_commit": "c2fe5611e195f864c6c3fa168b0f723a23c24e24",
+    "python": "3.14.7",
+    "jsonschema": "4.26.0",
+    "modules": [
+      {
+        "manifest": {
+          "module_id": "content",
+          "version": "1.0.0",
+          "core_api": 1,
+          "dependencies": [
+            "planning"
+          ],
+          "config_schema": {
+            "type": "object",
+            "maxProperties": 0
+          }
+        },
+        "implementations": {
+          "create": {
+            "callable": "create",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          },
+          "review": {
+            "callable": "review",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          }
+        },
+        "enabled": true,
+        "config_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "health": "READY"
+      },
+      {
+        "manifest": {
+          "module_id": "intelligence",
+          "version": "1.0.0",
+          "core_api": 1,
+          "dependencies": [],
+          "config_schema": {
+            "type": "object",
+            "maxProperties": 0
+          }
+        },
+        "implementations": {
+          "research": {
+            "callable": "research",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          },
+          "competitors": {
+            "callable": "competitors",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          },
+          "strategy": {
+            "callable": "strategy",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          }
+        },
+        "enabled": true,
+        "config_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "health": "READY"
+      },
+      {
+        "manifest": {
+          "module_id": "measurement",
+          "version": "1.0.0",
+          "core_api": 1,
+          "dependencies": [
+            "publishing"
+          ],
+          "config_schema": {
+            "type": "object",
+            "maxProperties": 0
+          }
+        },
+        "implementations": {
+          "normalize": {
+            "callable": "normalize",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          },
+          "attribute": {
+            "callable": "attribute",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          }
+        },
+        "enabled": true,
+        "config_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "health": "READY"
+      },
+      {
+        "manifest": {
+          "module_id": "optimization",
+          "version": "1.0.0",
+          "core_api": 1,
+          "dependencies": [
+            "measurement"
+          ],
+          "config_schema": {
+            "type": "object",
+            "maxProperties": 0
+          }
+        },
+        "implementations": {
+          "learn": {
+            "callable": "learn",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          },
+          "next": {
+            "callable": "optimize",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          }
+        },
+        "enabled": true,
+        "config_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "health": "READY"
+      },
+      {
+        "manifest": {
+          "module_id": "planning",
+          "version": "1.0.0",
+          "core_api": 1,
+          "dependencies": [
+            "intelligence"
+          ],
+          "config_schema": {
+            "type": "object",
+            "maxProperties": 0
+          }
+        },
+        "implementations": {
+          "campaign": {
+            "callable": "campaign",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          }
+        },
+        "enabled": true,
+        "config_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "health": "READY"
+      },
+      {
+        "manifest": {
+          "module_id": "publishing",
+          "version": "1.0.0",
+          "core_api": 1,
+          "dependencies": [
+            "content"
+          ],
+          "config_schema": {
+            "type": "object",
+            "maxProperties": 0
+          }
+        },
+        "implementations": {
+          "handoff": {
+            "callable": "handoff",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          },
+          "delivery": {
+            "callable": "delivery",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          }
+        },
+        "enabled": true,
+        "config_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "health": "READY"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "tenant_id": "salem-botanicals",
+      "record_type": "research",
+      "objective": "increase qualified leads",
+      "created_at": "2026-09-22T12:00:00Z",
+      "provenance": {
+        "source_type": "synthetic",
+        "source_uri": "https://example.org/fixture",
+        "observed_at": "2026-09-21T12:00:00Z",
+        "freshness": "fresh",
+        "relevance": 0.9,
+        "confidence": 0.8
+      },
+      "evidence_refs": [],
+      "source_id": "source-1",
+      "source_sha256": "41b37ded1467553e6821233f4f040d4db2bda001caa9b8d6156bf5ccd75acb24",
+      "finding": "Product FAQs are an information gap",
+      "applicability": "Prospective customers seeking product information",
+      "age_days": 1.0,
+      "channel": "website",
+      "format": "FAQ",
+      "competitor": "Synthetic competitor A",
+      "positioning": "Educational",
+      "offers": [],
+      "reactions": [],
+      "limitations": [
+        "Fixture only; no real competitor observation"
+      ],
+      "record_id": "research-fee2b52ff9bb491e74e7"
+    }
+  ],
+  "competitors": [
+    {
+      "tenant_id": "salem-botanicals",
+      "record_type": "competitor",
+      "objective": "increase qualified leads",
+      "created_at": "2026-09-22T12:00:00Z",
+      "provenance": {
+        "source_type": "derived-shadow",
+        "confidence": 0.8
+      },
+      "evidence_refs": [
+        "research-fee2b52ff9bb491e74e7"
+      ],
+      "name": "Synthetic competitor A",
+      "channels": [
+        "website"
+      ],
+      "formats": [
+        "FAQ"
+      ],
+      "positioning": "Educational",
+      "offers": [],
+      "reactions": [],
+      "observed_patterns": [
+        "Product FAQs are an information gap"
+      ],
+      "limitations": [
+        "Fixture only; no real competitor observation"
+      ],
+      "record_id": "competitor-3c42e2be697946fda5e9"
+    }
+  ],
+  "strategy": {
+    "tenant_id": "salem-botanicals",
+    "record_type": "strategy",
+    "objective": "increase qualified leads",
+    "created_at": "2026-09-22T12:00:00Z",
+    "provenance": {
+      "source_type": "derived-shadow",
+      "confidence": 0.8
+    },
+    "evidence_refs": [
+      "research-fee2b52ff9bb491e74e7",
+      "competitor-3c42e2be697946fda5e9"
+    ],
+    "action": "EXPERIMENT",
+    "channel": "website",
+    "format": "FAQ",
+    "opportunity": "Product FAQs are an information gap",
+    "audience": "Prospective customers seeking product information",
+    "reason": "Highest confidence × relevance among fresh evidence for allowed channels; test the information gap",
+    "expected_outcome": "More qualified visits and leads",
+    "risk": "Observed patterns may not generalize; no causal claim",
+    "measurement": "Qualified leads per tracked visit against comparable baseline",
+    "cadence": "One controlled experiment; reassess after measurement, no recurring publishing schedule",
+    "budget_recommendation_usd": 0,
+    "synthetic": true,
+    "record_id": "strategy-a2e2016581c94267c8dc"
+  },
+  "campaign": {
+    "tenant_id": "salem-botanicals",
+    "record_type": "campaign",
+    "objective": "increase qualified leads",
+    "created_at": "2026-09-22T12:00:00Z",
+    "provenance": {
+      "source_type": "derived-shadow",
+      "confidence": 0.5
+    },
+    "evidence_refs": [
+      "strategy-a2e2016581c94267c8dc"
+    ],
+    "audience": "Prospective customers seeking product information",
+    "platform": "website",
+    "format": "FAQ",
+    "hypothesis": "Answering the evidenced information gap will improve qualified lead rate",
+    "budget_usd": 0,
+    "schedule": "Await human selection after shadow review",
+    "record_id": "campaign-7818524d69e499e17e80",
+    "campaign_id": "campaign-7818524d69e499e17e80"
+  },
+  "content": {
+    "tenant_id": "salem-botanicals",
+    "record_type": "content",
+    "objective": "increase qualified leads",
+    "created_at": "2026-09-22T12:00:00Z",
+    "provenance": {
+      "source_type": "derived-shadow",
+      "confidence": 0.5
+    },
+    "evidence_refs": [
+      "campaign-7818524d69e499e17e80"
+    ],
+    "campaign_id": "campaign-7818524d69e499e17e80",
+    "platform": "website",
+    "format": "FAQ",
+    "audience": "Prospective customers seeking product information",
+    "copy": "Explore Salem Botanicals product information. Read our product FAQ and send us your questions.",
+    "cta": "Read the FAQ",
+    "tracking_url": "https://example.org/salem-shadow?utm_source=website&utm_medium=organic&utm_campaign=campaign-7818524d69e499e17e80",
+    "creative_brief": "Use a text-first FAQ with approved product information; no unsupported benefit claims. Human-selected approved imagery only.",
+    "generation_method": "Allowlisted template; no paid AI provider",
+    "synthetic": true,
+    "record_id": "content-ff2b3ca9361ffcf06b46",
+    "content_id": "content-ff2b3ca9361ffcf06b46"
+  },
+  "review": {
+    "tenant_id": "salem-botanicals",
+    "record_type": "review",
+    "objective": "increase qualified leads",
+    "created_at": "2026-09-22T12:00:00Z",
+    "provenance": {
+      "source_type": "derived-shadow",
+      "confidence": 0.5
+    },
+    "evidence_refs": [
+      "content-ff2b3ca9361ffcf06b46"
+    ],
+    "state": "SHADOW_REVIEW_PASSED",
+    "reasons": [],
+    "production_approved": false,
+    "limitation": "Mechanical fixture gate; human brand/compliance review required before any live use",
+    "record_id": "review-5e1501da691a647f68a8"
+  },
+  "publication": {
+    "tenant_id": "salem-botanicals",
+    "record_type": "publication",
+    "objective": "increase qualified leads",
+    "created_at": "2026-09-22T12:00:00Z",
+    "provenance": {
+      "source_type": "derived-shadow",
+      "confidence": 0.5
+    },
+    "evidence_refs": [
+      "content-ff2b3ca9361ffcf06b46",
+      "review-5e1501da691a647f68a8"
+    ],
+    "campaign_id": "campaign-7818524d69e499e17e80",
+    "content_id": "content-ff2b3ca9361ffcf06b46",
+    "platform": "website",
+    "adapter": "manual-shadow",
+    "state": "HANDOFF_READY",
+    "idempotency_key": "6e7af8dae9d5c64b9b7e265c94028b9ee43e1e595980c08b7d2f3ed41880171e",
+    "production_approved": false,
+    "record_id": "publication-12f62b56da6b9e82892d"
+  },
+  "delivery": {
+    "tenant_id": "salem-botanicals",
+    "record_type": "delivery",
+    "objective": "increase qualified leads",
+    "created_at": "2026-09-22T12:00:00Z",
+    "provenance": {
+      "source_type": "derived-shadow",
+      "confidence": 0.5
+    },
+    "evidence_refs": [
+      "publication-12f62b56da6b9e82892d"
+    ],
+    "campaign_id": "campaign-7818524d69e499e17e80",
+    "content_id": "content-ff2b3ca9361ffcf06b46",
+    "state": "NOT_PUBLISHED",
+    "receipt": null,
+    "production_verified": false,
+    "recovery": null,
+    "record_id": "delivery-fd00ee96943d13ddf6e0"
+  },
+  "state": "SHADOW_COMPLETE",
+  "metrics": {
+    "tenant_id": "salem-botanicals",
+    "record_type": "metric",
+    "objective": "increase qualified leads",
+    "created_at": "2026-09-22T12:00:00Z",
+    "provenance": {
+      "source_type": "synthetic",
+      "confidence": 0.5,
+      "source_uri": "https://example.org/analytics-fixture",
+      "observed_at": "2026-09-22T12:00:00Z"
+    },
+    "evidence_refs": [
+      "campaign-7818524d69e499e17e80"
+    ],
+    "campaign_id": "campaign-7818524d69e499e17e80",
+    "visits": 100,
+    "leads": 12,
+    "conversions": 3,
+    "revenue": 90,
+    "spend": 0,
+    "attribution_evidence": "none",
+    "tracking_campaign_id": null,
+    "verified_conversion_ids": [],
+    "tracked_revenue": 0,
+    "synthetic": true,
+    "source_sha256": "484011baee84163149ef864a642d5070a0d99029fad31b413a3b56b3c878cb49",
+    "record_id": "metric-d3caef51dc810360d24e"
+  },
+  "attribution": {
+    "tenant_id": "salem-botanicals",
+    "record_type": "attribution",
+    "objective": "increase qualified leads",
+    "created_at": "2026-09-22T12:00:00Z",
+    "provenance": {
+      "source_type": "derived-shadow",
+      "confidence": 0.5
+    },
+    "evidence_refs": [
+      "metric-d3caef51dc810360d24e"
+    ],
+    "campaign_id": "campaign-7818524d69e499e17e80",
+    "classification": "UNKNOWN",
+    "attributed_revenue": null,
+    "roas": null,
+    "synthetic": true,
+    "causality_proven": false,
+    "record_id": "attribution-3489fcd941ab34aeae79"
+  },
+  "learning": {
+    "tenant_id": "salem-botanicals",
+    "record_type": "learning",
+    "objective": "increase qualified leads",
+    "created_at": "2026-09-22T12:00:00Z",
+    "provenance": {
+      "source_type": "derived-shadow",
+      "confidence": 0.3
+    },
+    "evidence_refs": [
+      "metric-d3caef51dc810360d24e"
+    ],
+    "campaign_id": "campaign-7818524d69e499e17e80",
+    "baseline_sha256": "1b84e445539d473b3b7e77fe9417e832d6d0954ea619348e082dbd950852c403",
+    "lead_rate_delta": 0.07,
+    "recommendation": "EXPERIMENT",
+    "reason": "Observed lead-rate change; test a CTA variant before scaling",
+    "spend_recommendation_usd": 0,
+    "causal_claim": false,
+    "measurement": "Compare qualified lead rate in equal observation windows",
+    "risk": "No randomized control; changes are not proof of causation",
+    "synthetic": true,
+    "record_id": "learning-6f801d75e576459f2b7f"
+  },
+  "experiment": {
+    "tenant_id": "salem-botanicals",
+    "record_type": "experiment",
+    "objective": "increase qualified leads",
+    "created_at": "2026-09-22T12:00:00Z",
+    "provenance": {
+      "source_type": "derived-shadow",
+      "confidence": 0.5
+    },
+    "evidence_refs": [
+      "campaign-7818524d69e499e17e80",
+      "learning-6f801d75e576459f2b7f"
+    ],
+    "campaign_id": "campaign-7818524d69e499e17e80",
+    "variable": "CTA",
+    "control": "Read the FAQ",
+    "variant": "Ask a product question",
+    "state": "PROPOSED",
+    "success_metric": "qualified leads / visits",
+    "baseline": {
+      "tenant_id": "salem-botanicals",
+      "source_type": "synthetic",
+      "visits": 100,
+      "leads": 5,
+      "window_days": 7
+    },
+    "minimum_visits_per_arm": 30,
+    "limitation": "No experiment has been run; threshold is a screening floor, not statistical significance",
+    "record_id": "experiment-ae9e5fadccb58903cb81"
+  },
+  "next_strategy": {
+    "tenant_id": "salem-botanicals",
+    "record_type": "strategy",
+    "objective": "increase qualified leads",
+    "created_at": "2026-09-22T12:00:00Z",
+    "provenance": {
+      "source_type": "derived-shadow",
+      "confidence": 0.5
+    },
+    "evidence_refs": [
+      "strategy-a2e2016581c94267c8dc",
+      "learning-6f801d75e576459f2b7f",
+      "experiment-ae9e5fadccb58903cb81"
+    ],
+    "action": "EXPERIMENT",
+    "channel": "website",
+    "reason": "Observed lead-rate change; test a CTA variant before scaling",
+    "next_test": "experiment-ae9e5fadccb58903cb81",
+    "budget_recommendation_usd": 0,
+    "record_id": "strategy-2be369ece42e5e3e0524"
+  },
+  "memory": {
+    "tenant_id": "salem-botanicals",
+    "record_type": "memory",
+    "objective": "increase qualified leads",
+    "created_at": "2026-09-22T12:00:00Z",
+    "provenance": {
+      "source_type": "derived-shadow",
+      "confidence": 0.5
+    },
+    "evidence_refs": [
+      "learning-6f801d75e576459f2b7f",
+      "strategy-2be369ece42e5e3e0524"
+    ],
+    "memory_type": "CAMPAIGN_MEMORY",
+    "scope": "tenant_only",
+    "lesson": "Observed lead-rate change; test a CTA variant before scaling",
+    "synthetic": true,
+    "record_id": "memory-0085d14b08d8b95ef0bb"
+  },
+  "status": {
+    "work_id": "MC-R1-salem-botanicals",
+    "tenant_id": "salem-botanicals",
+    "component": "shadow-loop",
+    "state": "VERIFIED",
+    "updated_at": "2026-09-22T12:00:00Z",
+    "heartbeat_at": "2026-09-22T12:00:00Z",
+    "cost_usd": 0,
+    "blocker_id": null,
+    "evidence_refs": [
+      "research-fee2b52ff9bb491e74e7",
+      "competitor-3c42e2be697946fda5e9",
+      "strategy-a2e2016581c94267c8dc",
+      "campaign-7818524d69e499e17e80",
+      "content-ff2b3ca9361ffcf06b46",
+      "review-5e1501da691a647f68a8",
+      "publication-12f62b56da6b9e82892d",
+      "delivery-fd00ee96943d13ddf6e0",
+      "metric-d3caef51dc810360d24e",
+      "attribution-3489fcd941ab34aeae79",
+      "learning-6f801d75e576459f2b7f",
+      "experiment-ae9e5fadccb58903cb81",
+      "strategy-2be369ece42e5e3e0524",
+      "memory-0085d14b08d8b95ef0bb"
+    ],
+    "message": "SHADOW_COMPLETE; local adapter only; Command Center integration UNVERIFIED; MC-017 isolated"
+  }
+}
