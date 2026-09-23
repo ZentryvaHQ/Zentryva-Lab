@@ -14,7 +14,7 @@ from .input_safety import check_input
 # Compatibility exports for existing local consumers.
 from .stages import review, delivery, normalize, attribute, learn, _brand
 
-def run(data, output_root, now):
+def run(data, output_root, now, control=None):
     check_input(data)
     if data.get('mode','shadow')!='shadow':
         raise ValueError('Only shadow mode is implemented; MC-017 gates production')
@@ -51,35 +51,39 @@ def run(data, output_root, now):
         replay['output_dir']=str(target)
         return replay
     with Journal(target.parent/'.checkpoints'/run_id) as steps:
-        evidence=steps.operation(registry,'intelligence','research',objective,data['sources'],now)
-        rivals=steps.operation(registry,'intelligence','competitors',objective,evidence,now)
-        decision=steps.operation(registry,'intelligence','strategy',objective,evidence,rivals,now)
+        def stage(module, operation, *args):
+            if control is not None:
+                control()
+            return steps.operation(registry,module,operation,*args)
+        evidence=stage('intelligence','research',objective,data['sources'],now)
+        rivals=stage('intelligence','competitors',objective,evidence,now)
+        decision=stage('intelligence','strategy',objective,evidence,rivals,now)
         result=dict(run_id=run_id,tenant_id=tenant_id,mode='shadow',production_published=False,
             cost_usd=0,output_dir=str(target),runtime=runtime,evidence=evidence,competitors=rivals,strategy=decision)
         records=evidence+rivals+[decision]
         if decision['action']=='HOLD':
             result['state']='EVIDENCE_HOLD'
         else:
-            campaign=steps.operation(registry,'planning','campaign',objective,decision,now)
+            campaign=stage('planning','campaign',objective,decision,now)
             brand=data['brand']
-            content=steps.operation(registry,'content','create',objective,decision,campaign,brand,now)
-            gate=steps.operation(registry,'content','review',objective,content,brand,now)
+            content=stage('content','create',objective,decision,campaign,brand,now)
+            gate=stage('content','review',objective,content,brand,now)
             result.update(campaign=campaign,content=content,review=gate)
             records += [campaign,content,gate]
             if gate['state']=='REJECTED':
                 result['state']='REVIEW_BLOCKED'
             else:
-                publication=steps.operation(registry,'publishing','handoff',objective,decision,campaign,content,gate,now)
-                delivered=steps.operation(registry,'publishing','delivery',objective,publication,None,now)
+                publication=stage('publishing','handoff',objective,decision,campaign,content,gate,now)
+                delivered=stage('publishing','delivery',objective,publication,None,now)
                 result.update(publication=publication,delivery=delivered)
                 records += [publication,delivered]
                 if data.get('analytics') is None:
                     result['state']='WAITING_ANALYTICS'
                 else:
-                    metric=steps.operation(registry,'measurement','normalize',objective,data['analytics'],campaign['campaign_id'],now)
-                    attribution=steps.operation(registry,'measurement','attribute',objective,metric,now)
-                    learning=steps.operation(registry,'optimization','learn',objective,metric,data['baseline'],data['window_days'],now)
-                    experiment,next_decision,memory=steps.operation(registry,'optimization','next',objective,decision,campaign,brand,data['baseline'],learning,now)
+                    metric=stage('measurement','normalize',objective,data['analytics'],campaign['campaign_id'],now)
+                    attribution=stage('measurement','attribute',objective,metric,now)
+                    learning=stage('optimization','learn',objective,metric,data['baseline'],data['window_days'],now)
+                    experiment,next_decision,memory=stage('optimization','next',objective,decision,campaign,brand,data['baseline'],learning,now)
                     records += [metric,attribution,learning,experiment,next_decision,memory]
                     result.update(state='SHADOW_COMPLETE',metrics=metric,attribution=attribution,learning=learning,
                         experiment=experiment,next_strategy=next_decision,memory=memory)
@@ -91,6 +95,8 @@ def run(data, output_root, now):
         for item in records:
             validate('schemas/marketing-record.schema.json',item)
         result['status']=status
+        if control is not None:
+            control()
         _persist(target,result,records,data)
         return result
 
