@@ -1,0 +1,11 @@
+test_transport_is_local_only (test_command_center.AdapterBoundary.test_transport_is_local_only) ... ok
+test_bad_auth_is_sanitized (test_command_center.CommandCenterRoundtrip.test_bad_auth_is_sanitized) ... ok
+test_incomplete_shadow_is_failed_not_complete (test_command_center.CommandCenterRoundtrip.test_incomplete_shadow_is_failed_not_complete) ... ok
+test_real_authenticated_shadow_roundtrip (test_command_center.CommandCenterRoundtrip.test_real_authenticated_shadow_roundtrip) ... ok
+test_wrong_action_and_payload_are_rejected_before_ack_or_output (test_command_center.CommandCenterRoundtrip.test_wrong_action_and_payload_are_rejected_before_ack_or_output) ... ok
+test_wrong_tenant_and_credentials_rejected_before_transport (test_command_center.CommandCenterRoundtrip.test_wrong_tenant_and_credentials_rejected_before_transport) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 3.648s
+
+OK

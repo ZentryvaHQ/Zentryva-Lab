@@ -1,0 +1,145 @@
+{
+  "completeness": "complete",
+  "deferred": [],
+  "documentType": "codex-security.coverage",
+  "excludePaths": [],
+  "explicitExclusions": [
+    {
+      "pattern": "marketing-center/evidence/**",
+      "reason": "Historical logs and generated non-executable shadow output, not implementation source; current generator code audited."
+    },
+    {
+      "pattern": "marketing-center/{MARKETING_STATUS.md,TRACKER.md,docs/EXECUTION-LEDGER.md}",
+      "reason": "Historical project status and execution ledger, no executable behavior. Other supporting architecture/runbook documentation inspected."
+    }
+  ],
+  "includePaths": [
+    "marketing-center"
+  ],
+  "inventoryStrategy": "scoped_path",
+  "mode": "scoped_path",
+  "openQuestions": [
+    {
+      "question": "Future Command Center integration requires separate authentication, tenant authorization, pause/recovery and exact-request-binding qualification; absent in this audited revision."
+    },
+    {
+      "question": "Multi-user/service deployment, universal sensitive-text classification and malicious-local-writer protection are outside the current supported boundary."
+    }
+  ],
+  "scanId": "9f04aa79-5eb7-474f-8f1c-056ec4896faf",
+  "schemaVersion": "1.0",
+  "surfaces": [
+    {
+      "disposition": "no_issue_found",
+      "id": "surface_local-input-and-tenant-paths",
+      "label": "Local input and tenant paths",
+      "notes": "mc/workflow.py:18-36, mc/modules.py:18-21: input credentials checked before persistence, validated tenant ID anchors paths; digests name runs. Local output_root is operator selected. No authenticated remote tenant boundary exists.",
+      "receiptRefs": []
+    },
+    {
+      "disposition": "no_issue_found",
+      "id": "surface_module-execution-and-lifecycle",
+      "label": "Module execution and lifecycle",
+      "notes": "mc/catalog.py:28-50, mc/modules.py:29-142, mc/recovery.py:78-81: fixed catalog, reference-free schemas, copied inputs, tenant injection, dependency/lifecycle checks including cache reuse. Trusted Python registry is explicitly not hostile-code isolation.",
+      "receiptRefs": []
+    },
+    {
+      "disposition": "no_issue_found",
+      "id": "surface_source-references-and-strategy",
+      "label": "Source references and strategy",
+      "notes": "mc/intelligence.py:5-63: sources validated and URLs parsed without fetching. Confidence and provenance remain caller assertions, not external fact verification; decisions can HOLD. No network/SSRF sink.",
+      "receiptRefs": []
+    },
+    {
+      "disposition": "no_issue_found",
+      "id": "surface_rendering-and-publishing-boundary",
+      "label": "Rendering and publishing boundary",
+      "notes": "mc/workflow.py:105-109; mc/stages.py:6-38,142-150: HTML escaped output, local Markdown handoff only; tenant/campaign/content receipt checks never verify real publication. No provider or payment sink.",
+      "receiptRefs": []
+    },
+    {
+      "disposition": "no_issue_found",
+      "id": "surface_credential-rejection-and-errors",
+      "label": "Credential rejection and errors",
+      "notes": "mc/input_safety.py:1-24; mc/__main__.py:17-19; mc/modules.py:133-137; mc/recovery.py:74-76: normalized credential labels and parsed HTTP(S) credential URLs rejected, exception contents sanitized. Free text is not universally classified as secret-free.",
+      "receiptRefs": []
+    },
+    {
+      "disposition": "no_issue_found",
+      "id": "surface_evidence-persistence-and-recovery",
+      "label": "Evidence persistence and recovery",
+      "notes": "mc/workflow.py:37-53,97-116; mc/recovery.py:20-81: fixed inventory, hashes, atomic staging/checkpoints, OS lock, bounded retry attempts. Trusted local filesystem assumed; checksums not malicious-writer authentication; deadline cooperative.",
+      "receiptRefs": []
+    },
+    {
+      "disposition": "no_issue_found",
+      "id": "surface_process-invocation-and-schema-consumers",
+      "label": "Process invocation and schema consumers",
+      "notes": "mc/core.py:13-41: constant git subprocess argument vector without shell, bundled local schemas. No caller-selected executable or remote schema reference; interpreter and PATH trusted.",
+      "receiptRefs": []
+    },
+    {
+      "disposition": "no_issue_found",
+      "id": "surface_tests-fixtures-contracts-and-dependencies",
+      "label": "Tests, fixtures, contracts and dependencies",
+      "notes": "All 10 mc files, all 10 tests, both schemas, status contract, Salem fixture, tenant example and requirements fully audited by independent baseline. Parent inspected critical consumers. Static source review only; existing 54-test/dependency logs are prior evidence, not tests executed during this scan.",
+      "receiptRefs": []
+    },
+    {
+      "disposition": "no_issue_found",
+      "id": "surface_does-customer-json-select-executable-imports-or-arbitrary-modules",
+      "label": "Does customer JSON select executable imports or arbitrary modules?",
+      "notes": "No. It selects only fixed bundled configurations; all bundled config objects must be empty. Privileged Registry.install accepts trusted Python function objects separately. marketing-center/mc/catalog.py:28-50; marketing-center/mc/modules.py:59-74",
+      "receiptRefs": []
+    },
+    {
+      "disposition": "no_issue_found",
+      "id": "surface_is-tenant-identity-bound-to-an-authenticated-principal",
+      "label": "Is tenant identity bound to an authenticated principal?",
+      "notes": "No authentication boundary is implemented or claimed in this single-user local adapter. Tenant labels are caller-supplied and cross-record consistency is enforced. Future broker identity binding is unresolved. marketing-center/mc/workflow.py:21-27; marketing-center/mc/core.py:43-48; marketing-center/docs/LOCAL-RECOVERY.md:13",
+      "receiptRefs": []
+    },
+    {
+      "disposition": "no_issue_found",
+      "id": "surface_are-output-and-recovery-paths-independently-isolated-resources",
+      "label": "Are output and recovery paths independently isolated resources?",
+      "notes": "They are separate child paths under the same operator-selected tenant output parent, with the same host authority. Checkpoint lock coordination is separate from filesystem authorization. marketing-center/mc/workflow.py:36,53; marketing-center/mc/recovery.py:20-36",
+      "receiptRefs": []
+    },
+    {
+      "disposition": "no_issue_found",
+      "id": "surface_do-checksums-and-timeout-provide-adversarial-tamper-resistance-and-preemption",
+      "label": "Do checksums and timeout provide adversarial tamper resistance and preemption?",
+      "notes": "No; current documentation explicitly limits checksums to corruption detection and calls the deadline soft. Code matches those limitations. marketing-center/mc/recovery.py:54-76; marketing-center/docs/LOCAL-RECOVERY.md:5-9",
+      "receiptRefs": []
+    },
+    {
+      "disposition": "no_issue_found",
+      "id": "surface_are-references-fetched-or-status/handoff-files-delivered-remotely",
+      "label": "Are references fetched or status/handoff files delivered remotely?",
+      "notes": "No remote consumer is implemented in the inspected pipeline. URLs are parsed/stored; status and handoff are local files. marketing-center/mc/intelligence.py:16-35; marketing-center/mc/workflow.py:101-109; marketing-center/docs/RUNBOOK.md:13,29",
+      "receiptRefs": []
+    },
+    {
+      "disposition": "no_issue_found",
+      "id": "surface_are-earlier-intelligence-only-documents-authoritative-for-current-execution",
+      "label": "Are earlier intelligence-only documents authoritative for current execution?",
+      "notes": "No. MODULES.md explicitly marks the earlier limits superseded. Current catalog and LOCAL-RECOVERY describe six bundled modules and durable local checkpoints. The older design remains historical documentation. marketing-center/docs/MODULES.md:1,11; marketing-center/docs/V1-CORE-MODULE-DESIGN.md:6,12; marketing-center/docs/LOCAL-RECOVERY.md:3-9; marketing-center/mc/catalog.py:33-49",
+      "receiptRefs": []
+    },
+    {
+      "disposition": "no_issue_found",
+      "id": "surface_does-credential-rejection-guarantee-no-sensitive-text-is-persisted",
+      "label": "Does credential rejection guarantee no sensitive text is persisted?",
+      "notes": "No universal detector is claimed. Known field and URL credential shapes are rejected, while accepted full inputs are preserved; synthetic non-secret input remains an operator obligation. marketing-center/mc/input_safety.py:1-24; marketing-center/mc/workflow.py:101-103; marketing-center/docs/LOCAL-RECOVERY.md:11",
+      "receiptRefs": []
+    },
+    {
+      "disposition": "no_issue_found",
+      "id": "surface_independent-baseline-review",
+      "label": "Independent baseline review",
+      "receiptRefs": [],
+      "summary": "All ten mc runtime files, ten test files, two schemas, contract, fixture, tenant example and requirements fully reviewed at 7d6c60bc245cd39f9c533bb5957b05e5675ba763. No candidate findings. Single-user trusted local shadow boundary; no network or publication sink. Tenant traversal, HTML injection, credential persistence, cache lifecycle and module selection examined."
+    }
+  ]
+}

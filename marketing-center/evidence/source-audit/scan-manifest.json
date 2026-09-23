@@ -1,0 +1,98 @@
+{
+  "documentType": "codex-security.scan-manifest",
+  "scan": {
+    "artifacts": [
+      {
+        "mediaType": "application/json",
+        "path": "findings.json",
+        "sha256": "5cf3afa2d680ba812f8fadf21e9ca108934de3936e14604c567cef570914e2b8"
+      },
+      {
+        "mediaType": "application/json",
+        "path": "coverage.json",
+        "sha256": "8c6d5bbb83a40787a0b0015ace88993165738e89c75023493741737a3fbe1a9c"
+      }
+    ],
+    "completedAt": "2026-09-23T11:44:42.596916Z",
+    "coverageRef": "coverage.json",
+    "findingsRef": "findings.json",
+    "id": "9f04aa79-5eb7-474f-8f1c-056ec4896faf",
+    "preservedSources": {
+      "checkpoints/4216ddcba517564b26302382b6043362d0cd1f41d58327fc7683d3eaa63e0783.json": "2b69b60e84d15e8f9f65807ca77391adbec9788727583b8934d6bf3d06b95c73",
+      "checkpoints/4b3b7a4681eb1c313a297763a3b699fc81b6f9f544079596cd92d4a06730b4cd.json": "4b3b7a4681eb1c313a297763a3b699fc81b6f9f544079596cd92d4a06730b4cd",
+      "checkpoints/6b4d8a65c75efdb73eeaa2b22e056f14deec4861cd7759a9d2fe2a9482ece29f.json": "33bccd4e723487e33f5225d8101c5b3d208a418e99c10fe65254f7727c4d7f01",
+      "checkpoints/e6d247d5933fc7f46275072bae7b67d9b4d6276ad2b2c0a5a82186f0522f7bf1.json": "b668791893c914d80016e6d52070d69183b7a633bd95574c404009da5fa97cfd"
+    },
+    "producer": {
+      "name": "codex-security-plugin",
+      "version": "0.1.24"
+    },
+    "scope": {
+      "excludePaths": [],
+      "includePaths": [
+        "marketing-center"
+      ],
+      "limitations": [
+        "No production service, provider, multi-user authorization or Command Center transport existed in this revision.",
+        "Prior generated evidence snapshots and historical status documents are non-executable reference artifacts, excluded from vulnerability source coverage.",
+        "Current dependency advisories are not rechecked by this offline source audit."
+      ],
+      "runtimeStatus": "Application code and tests were not executed during this audit.",
+      "summary": "Offline source audit of the current single-user local Marketing Center shadow workflow at 7d6c60bc245cd39f9c533bb5957b05e5675ba763.",
+      "validationMode": "static source review with independent baseline and architecture review"
+    },
+    "sealedAt": "2026-09-23T11:44:42.596916Z",
+    "startedAt": "2026-09-23T11:36:30.407295Z",
+    "status": "completed",
+    "target": {
+      "displayName": "work",
+      "kind": "git_revision",
+      "revision": "7d6c60bc245cd39f9c533bb5957b05e5675ba763",
+      "targetId": "target_sha256_f36ffc09c3952491edeaa6c9e370dfa50682c7641c279c81ef92a02350101ea8"
+    },
+    "threatModel": {
+      "assets": [
+        "Tenant/objective associations and marketing record provenance: scoped comparisons reject mixed identities; record IDs and run identities derive from canonical JSON SHA-256. Sources: marketing-center/mc/core.py:23-24,43-48,57-64; marketing-center/mc/workflow.py:21-35.",
+        "Input snapshots, normalized records, results, rendered dashboard, optional handoff and Command Center status under resolve(output_root)/<tenant_id>/<run_id>. A sibling temporary directory is renamed into the final run directory; the manifest inventories and hashes generated files. Sources: marketing-center/mc/workflow.py:36-52,97-116.",
+        "Recovery state under resolve(output_root)/<tenant_id>/.checkpoints/<run_id>, including writer.lock and step-<SHA256>.json. Checkpoints contain completed operation results, attempts and checksums. Sources: marketing-center/mc/workflow.py:53; marketing-center/mc/recovery.py:20-38,44-81.",
+        "Module identity, source/configuration fingerprints and lifecycle state. These are provenance and accidental-isolation controls for trusted Python, not a hostile-plugin sandbox. Sources: marketing-center/mc/modules.py:1-4,65-71,128-142.",
+        "No-secret/no-spend/no-publication guarantees for the authorized local qualification. Source-backed restrictions include empty connectors, paid_media_authorized=false, shadow-only execution, zero synthetic analytics spend and publication records with production_approved=false. Sources: marketing-center/schemas/tenant.schema.json:10-14; marketing-center/mc/workflow.py:18-29,57-58; marketing-center/mc/stages.py:142-150. User context also requires no irreversible actions and no duplicated Command Center infrastructure."
+      ],
+      "assumptions": [
+        "Review is architecture mapping, not completed vulnerability coverage or runtime qualification. Only offline source was inspected; no code execution, external access, edits or tests were performed.",
+        "Supported deployment is a single-user local checkout with trusted source, interpreter, imported dependencies, PATH-selected git executable and output filesystem. Multi-user ACLs, encryption at rest, RBAC and hostile plugins are explicitly unqualified. Sources: marketing-center/docs/LOCAL-RECOVERY.md:13; marketing-center/mc/core.py:13-21.",
+        "CLI defaults output_root to cwd/runs; direct library callers supply output_root themselves. The application resolves this root but does not establish a separately enforced sandbox around an operator-selected output destination. Sources: marketing-center/mc/__main__.py:10-16; marketing-center/mc/workflow.py:36.",
+        "Known credential-shape rejection does not guarantee that arbitrary free-text or unknown key names contain no secrets. Full input JSON is deliberately persisted; operators must supply non-secret data. Sources: marketing-center/mc/input_safety.py:1-3; marketing-center/mc/workflow.py:101-103; marketing-center/docs/LOCAL-RECOVERY.md:11.",
+        "Checksums detect corruption, not adversarial rewriting by an actor with local write authority. The 60-second deadline is soft. Both limits are accurately disclosed by current recovery documentation. Sources: marketing-center/mc/recovery.py:54-76; marketing-center/docs/LOCAL-RECOVERY.md:5-9.",
+        "Documentation evolution: docs/MODULES.md:11 and docs/V1-CORE-MODULE-DESIGN.md:6,12 describe the earlier intelligence-only/unfinished-recovery checkpoint. docs/MODULES.md:1 explicitly points to LOCAL-RECOVERY.md as superseding those limits; current code and LOCAL-RECOVERY.md:3-9 implement all six bundled modules and recovery. This is retained documentation history, not evidence that the current pipeline remains intelligence-only.",
+        "Source provenance labels are not independently verified: research accepts synthetic, public_observation and authorized_client_data labels, whereas workflow analytics requires synthetic data. The runbook accurately says imported evidence is not independently browsed or verified. Sources: marketing-center/mc/intelligence.py:19-20; marketing-center/mc/workflow.py:28-29; marketing-center/docs/RUNBOOK.md:18.",
+        "Future Command Center authentication, tenant authorization, exact-payload approval binding, provider cancellation, credentials and remote storage controls remain unresolved integration requirements; the current adapter cannot establish them. Sources: marketing-center/docs/RUNBOOK.md:25-29; marketing-center/docs/LOCAL-RECOVERY.md:9,13."
+      ],
+      "attackerCapabilities": [
+        "A realistic input-source adversary may influence structured observations, strings, URLs or imported JSON presented to the operator. They do not thereby gain Python import selection, network access, publication authority or OS privileges; impact must be established through an actual input consumer. Sources: marketing-center/mc/catalog.py:28-50; marketing-center/mc/intelligence.py:5-37; marketing-center/mc/workflow.py:17-95.",
+        "An ordinary library caller can invoke exported functions with caller-selected arguments, including tenant identities. No authenticated multi-user service or per-principal tenant authorization layer is present in the supported deployment. Treating such caller-selected identities as an authentication bypass would require a future broker that exposes the library to less-trusted principals. Sources: marketing-center/mc/workflow.py:17-26; marketing-center/mc/modules.py:18-21,128-134; marketing-center/docs/LOCAL-RECOVERY.md:13.",
+        "An actor able to install arbitrary Python handlers or rewrite application/evidence files already possesses trusted local operator/filesystem authority. Checksum recomputation or malicious handlers are not new privilege gains within this model. Sources: marketing-center/mc/modules.py:1-4,59-74; marketing-center/docs/LOCAL-RECOVERY.md:5,13.",
+        "Remote network attackers, hostile co-tenants with separate authenticated sessions, and provider credential theft require deployment surfaces not established by this local source. No such exposure is inferred."
+      ],
+      "securityObjectives": [
+        "Reject mixed tenant/objective records through relevant stages and keep deterministic run/checkpoint/evidence namespaces tenant-specific. Sources: marketing-center/mc/core.py:43-48; marketing-center/mc/workflow.py:21-36,53; marketing-center/mc/stages.py:128-150.",
+        "Reject supported credential shapes before persistence, sanitize operational error messages, and require synthetic non-secret operator inputs because credential rejection is explicitly not a general secret detector. Sources: marketing-center/mc/input_safety.py:1-24; marketing-center/mc/__main__.py:17-19; marketing-center/mc/modules.py:133-137; marketing-center/mc/recovery.py:74-76.",
+        "Preserve existing evidence on mismatched inventory/content and recover pure operations without duplicate concurrent writers; respect retry budgets and disclose soft deadline limits. Sources: marketing-center/mc/workflow.py:37-53; marketing-center/mc/recovery.py:20-76.",
+        "Permit only the fixed trusted bundled customer execution path; separate lifecycle/provenance checks from unsupported hostile-code isolation. Sources: marketing-center/mc/catalog.py:28-50; marketing-center/mc/modules.py:1-4,29-71.",
+        "Keep all supported workflow results local, zero-cost and unapproved for production; never treat receipt assertions or a local VERIFIED status as live publication verification. Sources: marketing-center/mc/workflow.py:19-20,57-58,86-89; marketing-center/mc/stages.py:22-38,146-149.",
+        "Preserve Command Center ownership of shared scheduling, retries, permissions and evidence services; local recovery/status adapters must remain temporary integration boundaries. Sources: marketing-center/README.md:15-18; marketing-center/mc/recovery.py:1-5; marketing-center/docs/RUNBOOK.md:29. This also reflects the supplied user scope."
+      ],
+      "summary": "Marketing Center is a single-user local Python shadow pipeline. CLI input JSON passes through credential-shape rejection, tenant/objective validation, a fixed trusted module catalog, research/strategy/content/review/measurement stages, then local evidence persistence. Its documented invocation is python -m mc --input fixtures/salem-shadow.json --output runs --at <timestamp>. No publishing API or remote Command Center transport exists in this pipeline; Command Center integration remains explicitly unverified. Sources: marketing-center/mc/__main__.py:8-20; marketing-center/mc/workflow.py:17-95; marketing-center/mc/catalog.py:28-50; marketing-center/docs/RUNBOOK.md:3-13,25-29; marketing-center/docs/LOCAL-RECOVERY.md:13.",
+      "trustBoundaries": [
+        "Input-provider data enters the operator-invoked CLI/library. check_input recursively rejects named credential fields and HTTP(S) userinfo or credential-shaped query/fragment keys before snapshots or checkpoints. Tenant configuration and objective are supplied together by the caller; comparison is consistency enforcement, not authentication of a tenant principal. Sources: marketing-center/mc/__main__.py:10-16; marketing-center/mc/input_safety.py:1-24; marketing-center/mc/workflow.py:18-27.",
+        "Structured evidence crosses into derived decisions. Research validates tenant labels, required fields, HTTPS reference syntax, provenance labels, timestamps and numeric confidence/relevance. References are parsed and stored, not fetched. Evidence truth and permission labels remain caller assertions. Sources: marketing-center/mc/intelligence.py:1-37,47-63.",
+        "Customer module selection crosses into the fixed catalog. Only the documented intelligence shorthand or complete bundled module selection is accepted; bundled configuration schemas require empty objects. Actual install/replace APIs accept trusted inspectable Python function objects and confer operator-level execution, not tenant sandbox privileges. Sources: marketing-center/mc/catalog.py:28-50; marketing-center/mc/modules.py:29-71,109-137.",
+        "Derived results cross into local filesystem evidence. Operator-selected output_root resolves before tenant/run path composition. Tenant naming is checked by both schema and Registry. Existing runs are read and inventory/content hashes checked; new runs are staged and renamed. Filesystem protection is the host/operator boundary, with no application-owned ACL or signature boundary established. Sources: marketing-center/mc/workflow.py:32-53,97-116; marketing-center/mc/modules.py:18-21; marketing-center/schemas/tenant.schema.json:7; marketing-center/docs/LOCAL-RECOVERY.md:5,13.",
+        "Recovery operations cross a per-run writer coordination boundary. Windows uses msvcrt byte locking; other platforms use flock. Atomic checkpoint replacement, checksums, three attempts and before/after soft-deadline checks limit accidental corruption/concurrent reruns. They do not preempt Python execution or authenticate state against an already authorized filesystem writer. Sources: marketing-center/mc/recovery.py:14-76; marketing-center/docs/LOCAL-RECOVERY.md:5-9.",
+        "Local review output crosses into human-readable artifacts. Dashboard fields are HTML escaped. The Markdown handoff contains supplied content and a shadow-only warning; no publication operation consumes it. Receipt parsing requires tenant/campaign/content identity equality and never promotes publication to VERIFIED. Sources: marketing-center/mc/workflow.py:105-109; marketing-center/mc/stages.py:22-38,142-150.",
+        "Marketing status crosses only into a local JSON adapter file. Contract validation and evidence references exist; no external recipient authorization or transport is implemented. Sources: marketing-center/mc/workflow.py:86-94,101-104; marketing-center/contracts/command-center-interface.schema.json:5-19; marketing-center/docs/RUNBOOK.md:29."
+      ]
+    }
+  },
+  "schemaVersion": "1.0"
+}

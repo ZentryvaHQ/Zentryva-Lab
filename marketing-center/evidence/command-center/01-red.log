@@ -1,0 +1,65 @@
+test_transport_is_local_only (test_command_center.AdapterBoundary.test_transport_is_local_only) ... FAIL
+test_bad_auth_is_sanitized (test_command_center.CommandCenterRoundtrip.test_bad_auth_is_sanitized) ... FAIL
+test_incomplete_shadow_is_failed_not_complete (test_command_center.CommandCenterRoundtrip.test_incomplete_shadow_is_failed_not_complete) ... FAIL
+test_real_authenticated_shadow_roundtrip (test_command_center.CommandCenterRoundtrip.test_real_authenticated_shadow_roundtrip) ... FAIL
+test_wrong_action_and_payload_are_rejected_before_ack_or_output (test_command_center.CommandCenterRoundtrip.test_wrong_action_and_payload_are_rejected_before_ack_or_output) ... FAIL
+test_wrong_tenant_and_credentials_rejected_before_transport (test_command_center.CommandCenterRoundtrip.test_wrong_tenant_and_credentials_rejected_before_transport) ... FAIL
+
+======================================================================
+FAIL: test_transport_is_local_only (test_command_center.AdapterBoundary.test_transport_is_local_only)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_command_center.py", line 31, in test_transport_is_local_only
+    self.assertTrue(callable(LocalCommandCenter), 'Local Command Center adapter required')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Local Command Center adapter required
+
+======================================================================
+FAIL: test_bad_auth_is_sanitized (test_command_center.CommandCenterRoundtrip.test_bad_auth_is_sanitized)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_command_center.py", line 49, in setUp
+    self.assertTrue(callable(shadow_once), 'Shadow adapter required')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Shadow adapter required
+
+======================================================================
+FAIL: test_incomplete_shadow_is_failed_not_complete (test_command_center.CommandCenterRoundtrip.test_incomplete_shadow_is_failed_not_complete)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_command_center.py", line 49, in setUp
+    self.assertTrue(callable(shadow_once), 'Shadow adapter required')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Shadow adapter required
+
+======================================================================
+FAIL: test_real_authenticated_shadow_roundtrip (test_command_center.CommandCenterRoundtrip.test_real_authenticated_shadow_roundtrip)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_command_center.py", line 49, in setUp
+    self.assertTrue(callable(shadow_once), 'Shadow adapter required')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Shadow adapter required
+
+======================================================================
+FAIL: test_wrong_action_and_payload_are_rejected_before_ack_or_output (test_command_center.CommandCenterRoundtrip.test_wrong_action_and_payload_are_rejected_before_ack_or_output)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_command_center.py", line 49, in setUp
+    self.assertTrue(callable(shadow_once), 'Shadow adapter required')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Shadow adapter required
+
+======================================================================
+FAIL: test_wrong_tenant_and_credentials_rejected_before_transport (test_command_center.CommandCenterRoundtrip.test_wrong_tenant_and_credentials_rejected_before_transport)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_command_center.py", line 49, in setUp
+    self.assertTrue(callable(shadow_once), 'Shadow adapter required')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Shadow adapter required
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.062s
+
+FAILED (failures=6)
