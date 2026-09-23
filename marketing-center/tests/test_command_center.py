@@ -24,7 +24,7 @@ try:
 except ImportError:
     LocalCommandCenter = shadow_once = request_binding = None
 
-CC_SHA = '6c50292cf91fb4ea94f08e833e899d555290b714'
+CC_SHA = 'fc8e82b51693f938173bc1ce7ca7314a64e2fb74'
 CC_SOURCE = os.environ.get('MC_CC_SOURCE')
 
 
@@ -182,6 +182,21 @@ class CommandCenterRoundtrip(unittest.TestCase):
             self.execute()
         self.assertFalse(self.output.exists())
         self.assertEqual(self.server.load_state()['runs'][0]['status'], 'FAILED')
+
+    def test_pause_arriving_during_shadow_stops_safely(self):
+        self.queue()
+        def pause_then_probe(data, output_root, now, control=None):
+            state=self.server.load_state()
+            state['projects'][0]['desired_state']='PAUSED'
+            self.server.save_state(state)
+            control()
+        with mock.patch('mc.command_center.run', side_effect=pause_then_probe):
+            with self.assertRaisesRegex(ValueError,'stopped by shared control'):
+                self.execute()
+        state=self.server.load_state()
+        self.assertEqual(state['runs'][0]['status'],'FAILED')
+        self.assertEqual(state['workers'][0]['state'],'WAITING_FOR_DEPENDENCY')
+        self.assertFalse(self.output.exists())
 
     def test_local_validation_failure_is_reported_without_exception_content(self):
         self.data['objective'] = 'unapproved-objective'
