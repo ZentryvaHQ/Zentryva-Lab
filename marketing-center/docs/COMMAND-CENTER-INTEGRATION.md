@@ -36,6 +36,14 @@ A research/review/analytics hold becomes FAILED for this full-loop qualification
 never COMPLETE. Local failures publish a sanitized failure result. Real marketing
 publication and spend remain false/zero throughout.
 
+The operator entry point is `python -m mc.worker`. It requires `--url`,
+`--worker-id`, `--run-id`, `--project-id`, `--provider-id`, `--tenant-id`,
+`--input`, `--output`, and `--at`. Supply the already-provisioned worker token
+through `MC_CC_WORKER_TOKEN` in the local process environment, never as a command
+argument. Exit 0 means SHADOW_COMPLETE; exit 1 is an incomplete shadow result;
+exit 2 means adapter failure and requires state reconciliation. This entry point
+does not queue work or launch a background polling loop.
+
 ## Recovery boundary
 
 The adapter never blindly retries HTTP mutations. A lost acknowledgement or

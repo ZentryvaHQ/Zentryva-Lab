@@ -69,7 +69,11 @@ class CommandCenterRoundtrip(unittest.TestCase):
             providers=[dict(id='local', enabled=True)], attention=[], runs=[])), encoding='utf-8')
         self.owner_token, self.worker_token = secrets.token_hex(32), secrets.token_hex(32)
         self.evidence_output = os.environ.get('MC_CC_EVIDENCE')
-        patcher = mock.patch.dict(os.environ, {'ZENTRYVA_CONTROL_TOKEN':self.owner_token,
+        # Windows subprocess sockets require SystemRoot; preserve only OS runtime
+        # settings, never ambient provider/production credentials in this fixture.
+        runtime_env = {key:value for key,value in os.environ.items()
+                       if key.upper() in {'SYSTEMROOT','WINDIR','PATH','TEMP','TMP'}}
+        patcher = mock.patch.dict(os.environ, {**runtime_env, 'ZENTRYVA_CONTROL_TOKEN':self.owner_token,
             'ZENTRYVA_WORKER_TOKENS':json.dumps({'w1':self.worker_token})}, clear=True)
         patcher.start()
         self.addCleanup(patcher.stop)
@@ -110,6 +114,9 @@ class CommandCenterRoundtrip(unittest.TestCase):
         self.queue()
         result = self.execute()
         self.assertEqual(result['state'], 'SHADOW_COMPLETE')
+        marketing_head = subprocess.check_output(['git','rev-parse','HEAD'],
+            cwd=Path(__file__).resolve().parents[1], text=True).strip()
+        self.assertEqual(result['runtime']['git_commit'], marketing_head)
         state = self.server.load_state()
         remote = state['runs'][0]
         self.assertEqual(remote['status'], 'COMPLETE')
@@ -202,6 +209,33 @@ class CommandCenterRoundtrip(unittest.TestCase):
         self.assertEqual(len(list(self.output.glob('*/run-*/result.json'))), 1)
         with self.assertRaises(ValueError): self.execute()
         self.assertEqual(len(list(self.output.glob('*/run-*/result.json'))), 1)
+
+    def worker_command(self):
+        input_path = self.root/'input.json'
+        input_path.write_text(json.dumps(self.data), encoding='utf-8')
+        return [sys.executable, '-m', 'mc.worker', '--url', f'http://127.0.0.1:{self.http.server_port}',
+                '--worker-id', 'w1', '--run-id', 'cc-r1', '--project-id', 'p1', '--provider-id', 'local',
+                '--tenant-id', TENANT, '--input', str(input_path), '--output', str(self.output), '--at', NOW]
+
+    def test_operator_cli_runs_real_queued_shadow(self):
+        self.queue()
+        process = subprocess.run(self.worker_command(), cwd=Path(__file__).resolve().parents[1],
+            env={**os.environ, 'MC_CC_WORKER_TOKEN':self.worker_token}, capture_output=True, text=True, timeout=30)
+        self.assertEqual(process.returncode, 0, process.stderr)
+        output = json.loads(process.stdout)
+        self.assertEqual(output['state'], 'SHADOW_COMPLETE')
+        self.assertFalse(output['production_published'])
+        self.assertNotIn(self.worker_token, process.stdout+process.stderr)
+        self.assertEqual(self.server.load_state()['runs'][0]['status'], 'COMPLETE')
+
+    def test_operator_cli_missing_token_is_sanitized(self):
+        self.queue()
+        process = subprocess.run(self.worker_command(), cwd=Path(__file__).resolve().parents[1],
+            capture_output=True, text=True, timeout=30)
+        self.assertEqual(process.returncode, 2)
+        self.assertEqual(json.loads(process.stdout)['state'], 'ADAPTER_FAILED')
+        self.assertNotIn('Traceback', process.stderr)
+        self.assertFalse(self.output.exists())
 
 
 if __name__ == '__main__': unittest.main()
