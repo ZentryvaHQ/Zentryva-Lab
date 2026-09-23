@@ -26,3 +26,22 @@ Independent review of 9d69874..af58bc9: fixed normalized URL credential bypass (
 ## 2026-09-23T11:57:49.011137+00:00 — source audit to actual local integration
 
 Sealed scan 9f04aa79-5eb7-474f-8f1c-056ec4896faf at 7d6c60bc245cd39f9c533bb5957b05e5675ba763; no confirmed scoped findings. Immediately continued to shared worker integration and operator CLI. Tested implementation c2fe5611e195f864c6c3fa168b0f723a23c24e24; Command Center reference 6c50292cf91fb4ea94f08e833e899d555290b714. Final suite 65/65, exit 0, no skips. SHADOW_COMPLETE, $0, no publication. Exact logs, earlier failed attempts, proof and final roundtrip in evidence/command-center. Shared in-flight pause/recovery remains unverified; MC-017 owner gate stays separate.
+
+
+## 2026-09-23 — shared in-flight supervision candidate
+
+Created isolated Marketing branch `mc-p0-supervision-20260923` from verified head
+`dcc84cb23d44da74139d10fe417eac24bcf81cbd`. Created isolated Command Center branch
+`mc-p0-control-read-20260923` from pinned reference
+`6c50292cf91fb4ea94f08e833e899d555290b714`; draft PR #13, head
+`fc8e82b51693f938173bc1ce7ca7314a64e2fb74`. Shared CI passed.
+
+Marketing candidate adds stage-boundary shared-control checks, completion-race protection,
+safe FAILED terminalization, and deterministic checkpoint reuse after requeue. Added
+workflow and adapter regressions. Branch-only portable Marketing CI passed at
+`fa483f40f100733e9ad25f772af8fbda500bc071`. Cross-repo HTTP qualification against
+the new Command Center supervision head remains UNVERIFIED because the currently
+authorized Desktop Commander device is offline and this repository cannot check out
+the separate private repository in the isolated branch CI without adding credentials.
+No production access, publishing, spend, merge, or deployment performed. MC-017 remains
+the only owner gate and is AWAITING RICH for later live Salem inputs/access/launch.
