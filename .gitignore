@@ -3,3 +3,6 @@ __pycache__/
 .venv/
 marketing-center/runs/
 .superpowers/
+writer.lock
+.writing-*
+.pending-*/
