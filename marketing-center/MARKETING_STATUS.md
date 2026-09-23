@@ -48,3 +48,20 @@ one-shot adapter into a continuous or production worker.
 MC-017 alone requires Richard's later real-data/access/launch decisions. It does
 not block safe local engineering. No background worker or scheduler is running
 or implied by this checkpoint.
+
+
+## Active continuation candidate — 2026-09-23
+
+| Work | Status | Evidence | Next gate |
+|---|---|---|---|
+| Shared worker-scoped control read | VERIFIED CI / UNMERGED | Command Center draft PR #13, `fc8e82b51693f938173bc1ce7ca7314a64e2fb74`; CI success | Cross-repo qualification |
+| Marketing stage-boundary supervision | VERIFIED PORTABLE / CROSS-REPO UNVERIFIED | Marketing code through `568b511a05f527136330ed66d275657a1073df3d`; branch CI passed at `fa483f40f100733e9ad25f772af8fbda500bc071` | Run with `MC_CC_SOURCE` pinned to shared candidate |
+| Pause/reassignment/provider-disable stop | VERIFIED BY PORTABLE TESTS / HTTP PAIR UNVERIFIED | Unit regressions + shared protocol CI; candidate ReleaseProof | Cross-repo real HTTP test |
+| Deterministic checkpoint reuse after safe stop | VERIFIED PORTABLE | `test_control_hook_stops_between_stages_and_reuses_checkpoints` | Cross-repo requeue proof |
+| MC-017 controlled live Salem pilot | 🟠 AWAITING RICH — LATER | No live execution attempted | Real facts/baseline/access/launch approval |
+
+Candidate proof: `evidence/supervision-candidate/ReleaseProof.json`.
+
+Release readiness remains **HOLD**. No production publishing, spending, merge, or deployment
+has occurred. The remaining cross-repository qualification is a technical gate and is
+not AWAITING RICH. MC-017 remains the owner gate for later live Salem execution.

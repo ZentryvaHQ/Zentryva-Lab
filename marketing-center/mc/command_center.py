@@ -1,7 +1,8 @@
 """One-shot local qualification adapter for the shared Command Center protocol.
 
-This is not a supervisor. It cannot resume an acknowledged remote run, observe
-owner pause requests, or publish marketing content. No automatic HTTP retries.
+This is not a scheduler and never publishes marketing content. It observes a
+worker-scoped shared control snapshot between deterministic shadow stages.
+No automatic HTTP retries.
 """
 from copy import deepcopy
 import http.client
@@ -15,6 +16,10 @@ from .workflow import run
 
 _ID = re.compile(r'[A-Za-z0-9][A-Za-z0-9_-]{0,127}\Z')
 _REF = re.compile(r'sha256:[0-9a-f]{64}\Z')
+
+
+class _ControlStop(Exception):
+    pass
 
 
 class LocalCommandCenter:
@@ -85,6 +90,31 @@ def _remote_run(response, run_id, worker_id, project_id, provider_id, status):
     return value
 
 
+def _control_snapshot(client, run_id, project_id, provider_id):
+    response = client.request('/api/execution/status?'+urlencode({
+        'worker_id':client.worker_id, 'run_id':run_id}))
+    current = response.get('run')
+    project = response.get('project')
+    provider = response.get('provider')
+    if (not isinstance(current, dict) or current.get('id') != run_id
+            or current.get('worker_id') != client.worker_id
+            or current.get('project_id') != project_id
+            or current.get('provider_id') != provider_id
+            or not isinstance(project, dict) or project.get('id') != project_id
+            or not isinstance(provider, dict) or provider.get('id') != provider_id):
+        raise ValueError('Command Center control snapshot mismatch')
+    return current, project, provider
+
+
+def _require_runnable(client, run_id, project_id, provider_id):
+    current, project, provider = _control_snapshot(client, run_id, project_id, provider_id)
+    if (current.get('status') != 'RUNNING' or project.get('desired_state') != 'RUNNING'
+            or project.get('assigned_worker_id') != client.worker_id
+            or provider.get('enabled') is not True):
+        raise _ControlStop()
+    return current, project, provider
+
+
 def shadow_once(*, client, run_id, project_id, provider_id, tenant_id, data, output_root, now):
     """Execute one explicitly selected queued fixture; never select or retry other work."""
     data = deepcopy(data)
@@ -122,12 +152,26 @@ def shadow_once(*, client, run_id, project_id, provider_id, tenant_id, data, out
             raise ValueError('Project is not runnable at acknowledgement')
         client.request('/api/heartbeat', dict(worker_id=client.worker_id, current_project_id=project_id,
                                             state='RUNNING', progress=True))
-        result = run(data, output_root, now)
+        def control():
+            _require_runnable(client, run_id, project_id, provider_id)
+        control()
+        result = run(data, output_root, now, control=control)
         manifest = json.loads((Path(result['output_dir'])/'manifest.json').read_text(encoding='utf-8'))
         status = 'COMPLETE' if result['state'] == 'SHADOW_COMPLETE' else 'FAILED'
         summary = dict(shadow_run_id=result['run_id'], tenant_id=tenant_id, state=result['state'],
                        production_published=False, cost_usd=0, manifest_sha256=digest(manifest),
                        files=manifest['files'], **{'request_binding':binding})
+    except _ControlStop:
+        failed = client.evidence(run_id, 'result', dict(
+            state='LOCAL_SHADOW_CONTROL_STOPPED', request_binding=binding,
+            production_published=False, cost_usd=0))
+        done = client.request('/api/execution/complete', dict(run_id=run_id, worker_id=client.worker_id,
+                       status='FAILED', evidence_ref=failed,
+                       summary='Shared control stopped local shadow; deterministic checkpoints preserved'))
+        _remote_run(done, run_id, client.worker_id, project_id, provider_id, 'FAILED')
+        client.request('/api/heartbeat', dict(worker_id=client.worker_id, current_project_id=project_id,
+                                            state='WAITING_FOR_DEPENDENCY', progress=True))
+        raise ValueError('Local shadow stopped by shared control; checkpoint preserved') from None
     except Exception:
         failed = client.evidence(run_id, 'result', dict(state='LOCAL_SHADOW_FAILED', request_binding=binding))
         done = client.request('/api/execution/complete', dict(run_id=run_id, worker_id=client.worker_id,
@@ -137,8 +181,31 @@ def shadow_once(*, client, run_id, project_id, provider_id, tenant_id, data, out
                                             state='FAILED', progress=True))
         raise ValueError('Local shadow failed; evidence preserved') from None
     evidence = client.evidence(run_id, 'result', summary)
-    done = client.request('/api/execution/complete', dict(run_id=run_id, worker_id=client.worker_id,
-                         status=status, evidence_ref=evidence, summary='Synthetic local shadow only; MC-017 remains gated'))
+    try:
+        _require_runnable(client, run_id, project_id, provider_id)
+        done = client.request('/api/execution/complete', dict(run_id=run_id, worker_id=client.worker_id,
+                             status=status, evidence_ref=evidence,
+                             summary='Synthetic local shadow only; MC-017 remains gated'))
+    except _ControlStop:
+        done = client.request('/api/execution/complete', dict(run_id=run_id, worker_id=client.worker_id,
+                             status='FAILED', evidence_ref=evidence,
+                             summary='Shared control stopped completion; local result evidence preserved'))
+        _remote_run(done, run_id, client.worker_id, project_id, provider_id, 'FAILED')
+        client.request('/api/heartbeat', dict(worker_id=client.worker_id, current_project_id=project_id,
+                                            state='WAITING_FOR_DEPENDENCY', progress=True))
+        raise ValueError('Local shadow stopped by shared control; result preserved') from None
+    except ValueError:
+        current, project, provider = _control_snapshot(client, run_id, project_id, provider_id)
+        runnable = (current.get('status') == 'RUNNING' and project.get('desired_state') == 'RUNNING'
+                    and project.get('assigned_worker_id') == client.worker_id
+                    and provider.get('enabled') is True)
+        if current.get('status') == 'RUNNING' and not runnable:
+            done = client.request('/api/execution/complete', dict(run_id=run_id, worker_id=client.worker_id,
+                                 status='FAILED', evidence_ref=evidence,
+                                 summary='Shared control won completion race; result preserved'))
+            _remote_run(done, run_id, client.worker_id, project_id, provider_id, 'FAILED')
+            raise ValueError('Local shadow stopped by shared control; result preserved') from None
+        raise
     _remote_run(done, run_id, client.worker_id, project_id, provider_id, status)
     client.request('/api/heartbeat', dict(worker_id=client.worker_id, current_project_id=project_id,
                                         state=status, progress=True))

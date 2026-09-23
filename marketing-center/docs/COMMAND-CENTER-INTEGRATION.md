@@ -6,9 +6,11 @@ marketing publisher, or a new persistence service.
 
 Reference repository: https://github.com/ZentryvaHQ/Zentryva-Command-Center-Core
 
-Qualified reference: `worker/command-center-backend-adapter-20260921`, exact commit
-`6c50292cf91fb4ea94f08e833e899d555290b714`. This is an unmerged development reference,
-not a released or production-qualified Command Center. No changes are made there.
+Previously qualified reference: `worker/command-center-backend-adapter-20260921`, exact commit
+`6c50292cf91fb4ea94f08e833e899d555290b714`. Supervision candidate: draft PR #13,
+branch `mc-p0-control-read-20260923`, exact commit
+`fc8e82b51693f938173bc1ce7ca7314a64e2fb74`. Its Command Center CI passed. Both are
+unmerged development references, not released or production-qualified Command Center builds.
 
 ## Request and execution
 
@@ -52,13 +54,20 @@ evidence and reconcile through the shared control plane before another attempt.
 The existing local operation journal still supports explicit deterministic replay.
 This adapter does not automatically resume an acknowledged remote run.
 
-The inspected server's worker pending endpoint exposes queued/approved runs only.
-It has no worker-scoped running-run/status, cancellation or control-event read
-interface. A project pause already present in the acknowledgement response blocks
-local execution. A pause arriving during execution cannot be observed through
-this protocol. Therefore continuous service use, shared-supervisor pause/restart,
-and preemptive provider deadlines remain UNVERIFIED, a shared technical dependency,
-not an owner-data request and not a reason to label local qualification production-ready.
+The supervision candidate adds a minimal worker-authenticated execution status read.
+It returns only run identity/status, project desired state/assignment, and provider
+enabled state; it does not expose owner control state or arbitrary execution input.
+Marketing Center checks this snapshot before every deterministic shadow stage and
+again before completion. A pause, reassignment, provider disable, or terminal-state
+change stops the attempt. Command Center also rejects COMPLETE after such a control
+change while still permitting FAILED so evidence can be preserved. Recovery uses a
+new queued attempt with the same bound deterministic request; completed local stage
+checkpoints can be reused. No automatic HTTP mutation retries are introduced.
+
+Portable Marketing CI and Command Center CI pass independently. The final cross-repo
+HTTP qualification using the supervision candidate as `MC_CC_SOURCE` remains
+UNVERIFIED until an execution environment can check out both exact commits together.
+That is a technical qualification item, not an AWAITING RICH gate.
 
 ## Repeat qualification
 
