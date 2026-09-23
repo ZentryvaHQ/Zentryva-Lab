@@ -8,7 +8,7 @@ import shutil
 import tempfile
 from urllib.parse import urlencode, urlsplit, urlunsplit, parse_qsl
 from .core import digest, record, scoped, number, timestamp, validate, runtime_provenance
-from .intelligence import research, competitors, strategy
+from .catalog import configured_registry
 
 def review(tenant, objective, content, brand, now):
     scoped(tenant,[content,brand])
@@ -134,8 +134,12 @@ def run(data, output_root, now):
     _brand(data['brand'])
     if data.get('analytics') and (data['analytics'].get('spend') != 0 or data['analytics'].get('source_type')!='synthetic'):
         raise ValueError('No-spend shadow loop accepts synthetic metrics only')
+    if 'modules' in data and not isinstance(data['modules'],dict):
+        raise ValueError('Module selection must be an object')
+    registry=configured_registry(tenant_id, data.get('modules'))
     runtime=runtime_provenance()
-    run_id='run-'+digest(dict(inputs=data,now=now,source_sha256=runtime['source_sha256'],python=runtime['python'],jsonschema=runtime['jsonschema']))[:20]
+    runtime['modules']=registry.snapshot()
+    run_id='run-'+digest(dict(inputs=data,now=now,source_sha256=runtime['source_sha256'],python=runtime['python'],jsonschema=runtime['jsonschema'],modules=runtime['modules']))[:20]
     target=Path(output_root).resolve()/tenant_id/run_id
     if target.exists():
         manifest=json.loads((target/'manifest.json').read_text(encoding='utf-8'))
@@ -145,6 +149,7 @@ def run(data, output_root, now):
             expected_files.add('handoff.md')
         if (manifest.get('run_id')!=run_id or replay.get('run_id')!=run_id
                 or manifest.get('runtime',{}).get('source_sha256')!=runtime['source_sha256']
+                or manifest.get('runtime',{}).get('modules')!=runtime['modules']
                 or set(manifest.get('files',{}))!=expected_files):
             raise ValueError('Evidence manifest identity or inventory mismatch')
         for name,expected in manifest['files'].items():
@@ -152,9 +157,9 @@ def run(data, output_root, now):
                 raise ValueError('Existing evidence modified; preserve and investigate')
         replay['output_dir']=str(target)
         return replay
-    evidence=research(tenant_id,objective,data['sources'],now)
-    rivals=competitors(tenant_id,objective,evidence,now)
-    decision=strategy(tenant_id,objective,evidence,rivals,now)
+    evidence=registry.call('intelligence','research',objective,data['sources'],now)
+    rivals=registry.call('intelligence','competitors',objective,evidence,now)
+    decision=registry.call('intelligence','strategy',objective,evidence,rivals,now)
     result=dict(run_id=run_id,tenant_id=tenant_id,mode='shadow',production_published=False,
         cost_usd=0,output_dir=str(target),runtime=runtime,evidence=evidence,competitors=rivals,strategy=decision)
     records=evidence+rivals+[decision]
@@ -208,7 +213,7 @@ def run(data, output_root, now):
                 records += [metric,attribution,learning,experiment,next_decision,memory]
                 result.update(state='SHADOW_COMPLETE',metrics=metric,attribution=attribution,learning=learning,
                     experiment=experiment,next_strategy=next_decision,memory=memory)
-    status=dict(work_id='MC-R1-SALEM-001',tenant_id=tenant_id,component='shadow-loop',
+    status=dict(work_id='MC-R1-'+tenant_id,tenant_id=tenant_id,component='shadow-loop',
         state='VERIFIED' if result['state']=='SHADOW_COMPLETE' else 'READY',updated_at=now,heartbeat_at=now,
         cost_usd=0,blocker_id=None,evidence_refs=[r['record_id'] for r in records],
         message=result['state']+'; local adapter only; Command Center integration UNVERIFIED; MC-017 isolated')
@@ -231,7 +236,7 @@ def _persist(target,result,records,inputs):
         if result.get('publication'):
             files['handoff.md']='# SHADOW ONLY — NOT APPROVED FOR PUBLICATION\n\n'+content['copy']+'\n\nCTA: '+content['cta']+'\n\n'+content['tracking_url']+'\n\nMC-017 requires owner approval, actual brand/product facts, baseline and access.\n'
         sections=''.join('<section><h2>'+html.escape(k.replace('_',' ').title())+'</h2><pre>'+html.escape(json.dumps(v,indent=2,ensure_ascii=False))+'</pre></section>' for k,v in result.items() if isinstance(v,(dict,list)))
-        files['dashboard.html']='<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Salem shadow review</title><style>body{font:16px system-ui;background:#101820;color:#eaf4ed;max-width:1100px;margin:40px auto;padding:20px}h1{color:#9bdeb4}section{background:#1c2932;padding:20px;margin:16px 0;border-radius:12px}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:14px monospace}.flag{color:#ffd185}</style><h1>Marketing Center — '+html.escape(result['tenant_id'])+'</h1><p class="flag">SYNTHETIC SHADOW • $0 spend • Nothing published • Live integrations unverified</p><h2>'+html.escape(result['state'])+'</h2>'+sections+'</html>'
+        files['dashboard.html']='<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Marketing Center shadow review</title><style>body{font:16px system-ui;background:#101820;color:#eaf4ed;max-width:1100px;margin:40px auto;padding:20px}h1{color:#9bdeb4}section{background:#1c2932;padding:20px;margin:16px 0;border-radius:12px}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:14px monospace}.flag{color:#ffd185}</style><h1>Marketing Center — '+html.escape(result['tenant_id'])+'</h1><p class="flag">SYNTHETIC SHADOW • $0 spend • Nothing published • Live integrations unverified</p><h2>'+html.escape(result['state'])+'</h2>'+sections+'</html>'
         for name,text in files.items():
             (temp/name).write_text(text,encoding='utf-8')
         (temp/'manifest.json').write_text(json.dumps(dict(run_id=result['run_id'],runtime=result['runtime'],hash_method='SHA256 of canonical JSON string of UTF-8 text',files={name:digest(text) for name,text in files.items()}),indent=2),encoding='utf-8')

@@ -1,0 +1,46 @@
+test_module_version_change_creates_new_run (test_module_hardening.ModuleHardening.test_module_version_change_creates_new_run) ... ok
+test_null_selection_is_not_implicit_enablement (test_module_hardening.ModuleHardening.test_null_selection_is_not_implicit_enablement) ... FAIL
+test_other_tenant_status_and_dashboard_do_not_claim_salem (test_module_hardening.ModuleHardening.test_other_tenant_status_and_dashboard_do_not_claim_salem) ... FAIL
+test_replay_rejects_altered_module_provenance (test_module_hardening.ModuleHardening.test_replay_rejects_altered_module_provenance) ... FAIL
+test_transitive_dependency_crash_blocks_descendant (test_module_hardening.ModuleHardening.test_transitive_dependency_crash_blocks_descendant) ... FAIL
+
+======================================================================
+FAIL: test_null_selection_is_not_implicit_enablement (test_module_hardening.ModuleHardening.test_null_selection_is_not_implicit_enablement)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_module_hardening.py", line 27, in test_null_selection_is_not_implicit_enablement
+    with tempfile.TemporaryDirectory() as directory,self.assertRaises(ValueError):run(data,directory,NOW)
+                                                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_other_tenant_status_and_dashboard_do_not_claim_salem (test_module_hardening.ModuleHardening.test_other_tenant_status_and_dashboard_do_not_claim_salem)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_module_hardening.py", line 37, in test_other_tenant_status_and_dashboard_do_not_claim_salem
+    self.assertNotIn('SALEM',result['status']['work_id'])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'SALEM' unexpectedly found in 'MC-R1-SALEM-001'
+
+======================================================================
+FAIL: test_replay_rejects_altered_module_provenance (test_module_hardening.ModuleHardening.test_replay_rejects_altered_module_provenance)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_module_hardening.py", line 59, in test_replay_rejects_altered_module_provenance
+    with self.assertRaises(ValueError):run(inputs(),directory,NOW)
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_transitive_dependency_crash_blocks_descendant (test_module_hardening.ModuleHardening.test_transitive_dependency_crash_blocks_descendant)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_module_hardening.py", line 23, in test_transitive_dependency_crash_blocks_descendant
+    with self.assertRaises(ValueError):registry.call('leaf','echo','x')
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.598s
+
+FAILED (failures=4)

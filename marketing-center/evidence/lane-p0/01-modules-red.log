@@ -1,0 +1,84 @@
+test_incompatible_manifest_config_and_dependency_rejected (test_modules.Modules.test_incompatible_manifest_config_and_dependency_rejected) ... FAIL
+test_module_crash_is_sanitized_and_health_fails (test_modules.Modules.test_module_crash_is_sanitized_and_health_fails) ... FAIL
+test_replacement_changes_version_and_requires_reenable (test_modules.Modules.test_replacement_changes_version_and_requires_reenable) ... FAIL
+test_tenant_config_is_copied_and_disabled_calls_are_blocked (test_modules.Modules.test_tenant_config_is_copied_and_disabled_calls_are_blocked) ... FAIL
+test_workflow_explicit_disable_and_unknown_module_fail_without_output (test_modules.Modules.test_workflow_explicit_disable_and_unknown_module_fail_without_output) ... 
+  test_workflow_explicit_disable_and_unknown_module_fail_without_output (test_modules.Modules.test_workflow_explicit_disable_and_unknown_module_fail_without_output) (selection={}) ... FAIL
+  test_workflow_explicit_disable_and_unknown_module_fail_without_output (test_modules.Modules.test_workflow_explicit_disable_and_unknown_module_fail_without_output) (selection={'unknown': {}}) ... FAIL
+test_workflow_records_enabled_module_provenance (test_modules.Modules.test_workflow_records_enabled_module_provenance) ... FAIL
+
+======================================================================
+FAIL: test_incompatible_manifest_config_and_dependency_rejected (test_modules.Modules.test_incompatible_manifest_config_and_dependency_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_modules.py", line 45, in test_incompatible_manifest_config_and_dependency_rejected
+    r=self.registry()
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_modules.py", line 28, in registry
+    self.assertTrue(hasattr(modules, 'Registry'), 'P0 requires a module registry')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : P0 requires a module registry
+
+======================================================================
+FAIL: test_module_crash_is_sanitized_and_health_fails (test_modules.Modules.test_module_crash_is_sanitized_and_health_fails)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_modules.py", line 68, in test_module_crash_is_sanitized_and_health_fails
+    r=self.registry();r.install(spec(),{'echo':crash});r.enable('example',{})
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_modules.py", line 28, in registry
+    self.assertTrue(hasattr(modules, 'Registry'), 'P0 requires a module registry')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : P0 requires a module registry
+
+======================================================================
+FAIL: test_replacement_changes_version_and_requires_reenable (test_modules.Modules.test_replacement_changes_version_and_requires_reenable)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_modules.py", line 59, in test_replacement_changes_version_and_requires_reenable
+    r=self.registry();r.install(spec(),{'echo':echo});r.enable('example',{})
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_modules.py", line 28, in registry
+    self.assertTrue(hasattr(modules, 'Registry'), 'P0 requires a module registry')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : P0 requires a module registry
+
+======================================================================
+FAIL: test_tenant_config_is_copied_and_disabled_calls_are_blocked (test_modules.Modules.test_tenant_config_is_copied_and_disabled_calls_are_blocked)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_modules.py", line 32, in test_tenant_config_is_copied_and_disabled_calls_are_blocked
+    a=self.registry(); b=self.registry('tenant-b')
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_modules.py", line 28, in registry
+    self.assertTrue(hasattr(modules, 'Registry'), 'P0 requires a module registry')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : P0 requires a module registry
+
+======================================================================
+FAIL: test_workflow_explicit_disable_and_unknown_module_fail_without_output (test_modules.Modules.test_workflow_explicit_disable_and_unknown_module_fail_without_output) (selection={})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_modules.py", line 79, in test_workflow_explicit_disable_and_unknown_module_fail_without_output
+    with self.assertRaises(ValueError):run(data,directory,NOW)
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_workflow_explicit_disable_and_unknown_module_fail_without_output (test_modules.Modules.test_workflow_explicit_disable_and_unknown_module_fail_without_output) (selection={'unknown': {}})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_modules.py", line 79, in test_workflow_explicit_disable_and_unknown_module_fail_without_output
+    with self.assertRaises(ValueError):run(data,directory,NOW)
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_workflow_records_enabled_module_provenance (test_modules.Modules.test_workflow_records_enabled_module_provenance)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_modules.py", line 85, in test_workflow_records_enabled_module_provenance
+    self.assertIn('modules',result['runtime'])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'modules' not found in {'source_sha256': 'a80e227b9da5798f3f293634c76e890da21c648598096173fbb364060508c31f', 'git_commit': '970a4ac297a7a5465ca3740c98abf1a7c941d357', 'python': '3.14.7', 'jsonschema': '4.26.0'}
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.345s
+
+FAILED (failures=7)
