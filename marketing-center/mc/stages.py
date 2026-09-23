@@ -21,8 +21,9 @@ def review(tenant, objective, content, brand, now):
 
 def delivery(tenant, objective, publication, receipt, now):
     scoped(tenant,[publication])
-    if receipt and receipt.get('tenant_id',tenant) != tenant:
-        raise ValueError('Cross-tenant receipt')
+    if receipt is not None:
+        if not isinstance(receipt,dict) or any(receipt.get(key)!=publication.get(key) for key in ('tenant_id','campaign_id','content_id')):
+            raise ValueError('Receipt identity mismatch')
     state='NOT_PUBLISHED'
     if receipt:
         state='UNVERIFIED'

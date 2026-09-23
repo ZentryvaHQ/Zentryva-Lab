@@ -68,6 +68,7 @@ class Loop(unittest.TestCase):
             (dict(accepted=True,published=True,rendered=True,tracking=True),'UNVERIFIED'),
             (dict(error='expired_auth'),'AUTH_EXPIRED'),(dict(error='rate_limit'),'RETRY_REQUIRED')]:
             with self.subTest(receipt=receipt):
+                receipt=dict(receipt,tenant_id=TENANT,campaign_id='campaign1',content_id='content1')
                 self.assertEqual(delivery(TENANT,OBJECTIVE,base,receipt,NOW)['state'],expected)
 
     def test_mc013_invalid_or_foreign_metrics_rejected(self):

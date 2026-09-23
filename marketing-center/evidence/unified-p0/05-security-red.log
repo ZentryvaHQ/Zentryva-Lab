@@ -1,0 +1,67 @@
+test_credentials_are_rejected_before_persistence (test_security_boundaries.SecurityBoundaries.test_credentials_are_rejected_before_persistence) ... FAIL
+test_receipt_requires_matching_all_identities (test_security_boundaries.SecurityBoundaries.test_receipt_requires_matching_all_identities) ... 
+  test_receipt_requires_matching_all_identities (test_security_boundaries.SecurityBoundaries.test_receipt_requires_matching_all_identities) (key='campaign_id', value='foreign') ... FAIL
+  test_receipt_requires_matching_all_identities (test_security_boundaries.SecurityBoundaries.test_receipt_requires_matching_all_identities) (key='campaign_id', value=None) ... FAIL
+  test_receipt_requires_matching_all_identities (test_security_boundaries.SecurityBoundaries.test_receipt_requires_matching_all_identities) (key='content_id', value='foreign') ... FAIL
+  test_receipt_requires_matching_all_identities (test_security_boundaries.SecurityBoundaries.test_receipt_requires_matching_all_identities) (key='content_id', value=None) ... FAIL
+test_retry_budget_and_deadline_fail_closed (test_security_boundaries.SecurityBoundaries.test_retry_budget_and_deadline_fail_closed) ... ok
+test_sensitive_url_parameters_rejected (test_security_boundaries.SecurityBoundaries.test_sensitive_url_parameters_rejected) ... FAIL
+
+======================================================================
+FAIL: test_credentials_are_rejected_before_persistence (test_security_boundaries.SecurityBoundaries.test_credentials_are_rejected_before_persistence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_security_boundaries.py", line 23, in test_credentials_are_rejected_before_persistence
+    with self.assertRaises(ValueError):run(data,directory,NOW)
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_receipt_requires_matching_all_identities (test_security_boundaries.SecurityBoundaries.test_receipt_requires_matching_all_identities) (key='campaign_id', value='foreign')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_security_boundaries.py", line 17, in test_receipt_requires_matching_all_identities
+    with self.subTest(key=key,value=value),self.assertRaises(ValueError):delivery(TENANT,OBJECTIVE,publication,receipt,NOW)
+                                           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_receipt_requires_matching_all_identities (test_security_boundaries.SecurityBoundaries.test_receipt_requires_matching_all_identities) (key='campaign_id', value=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_security_boundaries.py", line 17, in test_receipt_requires_matching_all_identities
+    with self.subTest(key=key,value=value),self.assertRaises(ValueError):delivery(TENANT,OBJECTIVE,publication,receipt,NOW)
+                                           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_receipt_requires_matching_all_identities (test_security_boundaries.SecurityBoundaries.test_receipt_requires_matching_all_identities) (key='content_id', value='foreign')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_security_boundaries.py", line 17, in test_receipt_requires_matching_all_identities
+    with self.subTest(key=key,value=value),self.assertRaises(ValueError):delivery(TENANT,OBJECTIVE,publication,receipt,NOW)
+                                           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_receipt_requires_matching_all_identities (test_security_boundaries.SecurityBoundaries.test_receipt_requires_matching_all_identities) (key='content_id', value=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_security_boundaries.py", line 17, in test_receipt_requires_matching_all_identities
+    with self.subTest(key=key,value=value),self.assertRaises(ValueError):delivery(TENANT,OBJECTIVE,publication,receipt,NOW)
+                                           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_sensitive_url_parameters_rejected (test_security_boundaries.SecurityBoundaries.test_sensitive_url_parameters_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_security_boundaries.py", line 28, in test_sensitive_url_parameters_rejected
+    with tempfile.TemporaryDirectory() as directory,self.assertRaises(ValueError):run(data,directory,NOW)
+                                                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.723s
+
+FAILED (failures=6)

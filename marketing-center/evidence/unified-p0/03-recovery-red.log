@@ -1,0 +1,55 @@
+test_completed_step_survives_process_crash (test_recovery.Recovery.test_completed_step_survives_process_crash) ... FAIL
+test_failure_is_sanitized_and_manual_restart_recovers (test_recovery.Recovery.test_failure_is_sanitized_and_manual_restart_recovers) ... FAIL
+test_interrupted_workflow_resumes_verified_steps (test_recovery.Recovery.test_interrupted_workflow_resumes_verified_steps) ... FAIL
+test_second_writer_is_rejected_and_retry_after_release_works (test_recovery.Recovery.test_second_writer_is_rejected_and_retry_after_release_works) ... FAIL
+test_tampered_step_is_not_reused (test_recovery.Recovery.test_tampered_step_is_not_reused) ... FAIL
+
+======================================================================
+FAIL: test_completed_step_survives_process_crash (test_recovery.Recovery.test_completed_step_survives_process_crash)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_recovery.py", line 18, in setUp
+    def setUp(self):self.assertTrue(callable(Journal),'Durable shadow step adapter required')
+                    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Durable shadow step adapter required
+
+======================================================================
+FAIL: test_failure_is_sanitized_and_manual_restart_recovers (test_recovery.Recovery.test_failure_is_sanitized_and_manual_restart_recovers)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_recovery.py", line 18, in setUp
+    def setUp(self):self.assertTrue(callable(Journal),'Durable shadow step adapter required')
+                    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Durable shadow step adapter required
+
+======================================================================
+FAIL: test_interrupted_workflow_resumes_verified_steps (test_recovery.Recovery.test_interrupted_workflow_resumes_verified_steps)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_recovery.py", line 18, in setUp
+    def setUp(self):self.assertTrue(callable(Journal),'Durable shadow step adapter required')
+                    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Durable shadow step adapter required
+
+======================================================================
+FAIL: test_second_writer_is_rejected_and_retry_after_release_works (test_recovery.Recovery.test_second_writer_is_rejected_and_retry_after_release_works)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_recovery.py", line 18, in setUp
+    def setUp(self):self.assertTrue(callable(Journal),'Durable shadow step adapter required')
+                    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Durable shadow step adapter required
+
+======================================================================
+FAIL: test_tampered_step_is_not_reused (test_recovery.Recovery.test_tampered_step_is_not_reused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_recovery.py", line 18, in setUp
+    def setUp(self):self.assertTrue(callable(Journal),'Durable shadow step adapter required')
+                    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Durable shadow step adapter required
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.008s
+
+FAILED (failures=5)
