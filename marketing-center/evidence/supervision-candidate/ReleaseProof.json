@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "work_id": "MC-P0-SUPERVISION-20260923",
+  "product": "Zentryva AI Marketing Center",
+  "pilot": "Salem Botanicals",
+  "production_published": false,
+  "spend_usd": 0,
+  "release_readiness": "HOLD",
+  "marketing": {
+    "repository": "ZentryvaHQ/Zentryva-Lab",
+    "base_branch": "mc-r1-salem-sprint",
+    "feature_branch": "mc-p0-supervision-20260923",
+    "verified_base_head": "dcc84cb23d44da74139d10fe417eac24bcf81cbd",
+    "prior_integrated_tested_implementation": "c2fe5611e195f864c6c3fa168b0f723a23c24e24",
+    "candidate_code_test_head": "568b511a05f527136330ed66d275657a1073df3d",
+    "branch_ci_commit": "fa483f40f100733e9ad25f772af8fbda500bc071",
+    "branch_ci_check_run_id": 107425853759,
+    "branch_ci_conclusion": "success",
+    "portable_suite": "PASS; Command Center integration tests skip unless MC_CC_SOURCE is supplied"
+  },
+  "command_center": {
+    "repository": "ZentryvaHQ/Zentryva-Command-Center-Core",
+    "base_ref": "worker/command-center-backend-adapter-20260921",
+    "base_commit": "6c50292cf91fb4ea94f08e833e899d555290b714",
+    "feature_branch": "mc-p0-control-read-20260923",
+    "candidate_head": "fc8e82b51693f938173bc1ce7ca7314a64e2fb74",
+    "draft_pr": 13,
+    "ci_check_run_id": 107425224398,
+    "ci_conclusion": "success"
+  },
+  "implemented": [
+    "worker-scoped minimal execution status read",
+    "stage-boundary control polling",
+    "completion-race protection",
+    "safe FAILED terminalization after pause/reassignment/provider disable",
+    "deterministic local checkpoint reuse on requeue",
+    "no automatic HTTP mutation retry",
+    "no live publishing or spend"
+  ],
+  "unverified": [
+    "cross-repository HTTP qualification with MC_CC_SOURCE at Command Center candidate head",
+    "continuous production supervisor/service lifecycle",
+    "real Salem publishing, rendering, analytics, attribution and uplift"
+  ],
+  "awaiting_rich": [
+    "approved real Salem brand/product facts",
+    "baseline traffic/sales metrics",
+    "authorized account/publishing access",
+    "explicit live launch approval",
+    "any paid spend"
+  ]
+}
