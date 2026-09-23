@@ -1,5 +1,6 @@
 """Real local HTTP qualification against a pinned Command Center checkout."""
 import copy
+import hashlib
 import http.client
 from http.server import ThreadingHTTPServer
 import importlib
@@ -43,8 +44,13 @@ class CommandCenterRoundtrip(unittest.TestCase):
         actual = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=CC_SOURCE, text=True).strip()
         if actual != CC_SHA:
             raise AssertionError('Command Center revision differs from qualified interface')
+        if subprocess.check_output(['git', 'status', '--porcelain', '--untracked-files=no'],
+                                   cwd=CC_SOURCE, text=True).strip():
+            raise AssertionError('Command Center tracked reference files are modified')
         sys.path.insert(0, CC_SOURCE)
         cls.server = importlib.import_module('server')
+        if Path(cls.server.__file__).resolve() != (Path(CC_SOURCE)/'server.py').resolve():
+            raise AssertionError('Loaded Command Center module is outside pinned reference')
 
     def setUp(self):
         self.assertTrue(callable(shadow_once), 'Shadow adapter required')
@@ -124,6 +130,8 @@ class CommandCenterRoundtrip(unittest.TestCase):
             shutil.copytree(self.output, destination/'marketing')
             (destination/'qualification.json').write_text(json.dumps(dict(
                 command_center_sha=CC_SHA, marketing_runtime=result['runtime'],
+                command_center_files={p.name:hashlib.sha256(p.read_bytes()).hexdigest()
+                                      for p in Path(CC_SOURCE).glob('*.py')},
                 state=result['state'], production_published=False, cost_usd=0,
                 transport='real HTTP on ephemeral 127.0.0.1 port',
                 provider_supervision='UNVERIFIED', remote_run=remote), indent=2), encoding='utf-8')
