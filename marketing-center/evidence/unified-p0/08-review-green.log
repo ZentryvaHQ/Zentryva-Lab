@@ -44,6 +44,7 @@ test_interrupted_workflow_resumes_verified_steps (test_recovery.Recovery.test_in
 test_second_writer_is_rejected_and_retry_after_release_works (test_recovery.Recovery.test_second_writer_is_rejected_and_retry_after_release_works) ... ok
 test_tampered_step_is_not_reused (test_recovery.Recovery.test_tampered_step_is_not_reused) ... ok
 test_credentials_are_rejected_before_persistence (test_security_boundaries.SecurityBoundaries.test_credentials_are_rejected_before_persistence) ... ok
+test_normalized_urls_and_oauth_fragments_cannot_bypass_filter (test_security_boundaries.SecurityBoundaries.test_normalized_urls_and_oauth_fragments_cannot_bypass_filter) ... ok
 test_receipt_requires_matching_all_identities (test_security_boundaries.SecurityBoundaries.test_receipt_requires_matching_all_identities) ... ok
 test_retry_budget_and_deadline_fail_closed (test_security_boundaries.SecurityBoundaries.test_retry_budget_and_deadline_fail_closed) ... ok
 test_sensitive_url_parameters_rejected (test_security_boundaries.SecurityBoundaries.test_sensitive_url_parameters_rejected) ... ok
@@ -52,6 +53,6 @@ test_every_marketing_stage_has_lifecycle_identity (test_stage_modules.StageModul
 test_planning_rejects_foreign_strategy (test_stage_modules.StageModules.test_planning_rejects_foreign_strategy) ... ok
 
 ----------------------------------------------------------------------
-Ran 52 tests in 15.178s
+Ran 53 tests in 13.054s
 
 OK

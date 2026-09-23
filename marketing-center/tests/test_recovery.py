@@ -17,6 +17,14 @@ except ImportError:
 class Recovery(unittest.TestCase):
     def setUp(self):self.assertTrue(callable(Journal),'Durable shadow step adapter required')
 
+    def test_cached_operation_cannot_bypass_disabled_module(self):
+        from mc.catalog import configured_registry
+        registry=configured_registry('salem-botanicals')
+        with tempfile.TemporaryDirectory() as directory,Journal(directory) as journal:
+            journal.operation(registry,'intelligence','research','increase qualified leads',[],NOW)
+            for name in ('optimization','measurement','publishing','content','planning','intelligence'):registry.disable(name)
+            with self.assertRaises(ValueError):journal.operation(registry,'intelligence','research','increase qualified leads',[],NOW)
+
     def test_completed_step_survives_process_crash(self):
         with tempfile.TemporaryDirectory() as directory:
             script="from mc.recovery import Journal; import os; j=Journal("+repr(directory)+"); j.__enter__(); j.call('sample',lambda: {'value':7}); os._exit(9)"

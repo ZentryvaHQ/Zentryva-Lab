@@ -76,4 +76,6 @@ class Journal:
             raise ValueError('Shadow stage failed; sanitized checkpoint preserved') from None
 
     def operation(self,registry,module,operation,*args):
-        return self.call([module,operation,args],lambda:registry.call(module,operation,*args))
+        registry._ready(module)
+        identity=[registry.tenant_id,registry.snapshot(),module,operation,args]
+        return self.call(identity,lambda:registry.call(module,operation,*args))

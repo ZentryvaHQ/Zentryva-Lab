@@ -1,0 +1,20 @@
+test_cached_operation_cannot_bypass_disabled_module (test_recovery.Recovery.test_cached_operation_cannot_bypass_disabled_module) ... FAIL
+test_completed_step_survives_process_crash (test_recovery.Recovery.test_completed_step_survives_process_crash) ... ok
+test_failure_is_sanitized_and_manual_restart_recovers (test_recovery.Recovery.test_failure_is_sanitized_and_manual_restart_recovers) ... ok
+test_interrupted_workflow_resumes_verified_steps (test_recovery.Recovery.test_interrupted_workflow_resumes_verified_steps) ... ok
+test_second_writer_is_rejected_and_retry_after_release_works (test_recovery.Recovery.test_second_writer_is_rejected_and_retry_after_release_works) ... ok
+test_tampered_step_is_not_reused (test_recovery.Recovery.test_tampered_step_is_not_reused) ... ok
+
+======================================================================
+FAIL: test_cached_operation_cannot_bypass_disabled_module (test_recovery.Recovery.test_cached_operation_cannot_bypass_disabled_module)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_recovery.py", line 26, in test_cached_operation_cannot_bypass_disabled_module
+    with self.assertRaises(ValueError):journal.operation(registry,'intelligence','research','increase qualified leads',[],NOW)
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.889s
+
+FAILED (failures=1)

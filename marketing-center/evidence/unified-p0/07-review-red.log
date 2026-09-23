@@ -1,0 +1,40 @@
+test_credentials_are_rejected_before_persistence (test_security_boundaries.SecurityBoundaries.test_credentials_are_rejected_before_persistence) ... ok
+test_normalized_urls_and_oauth_fragments_cannot_bypass_filter (test_security_boundaries.SecurityBoundaries.test_normalized_urls_and_oauth_fragments_cannot_bypass_filter) ... 
+  test_normalized_urls_and_oauth_fragments_cannot_bypass_filter (test_security_boundaries.SecurityBoundaries.test_normalized_urls_and_oauth_fragments_cannot_bypass_filter) (url='HTTPS://example.org/path?access_token=fixture-value') ... FAIL
+  test_normalized_urls_and_oauth_fragments_cannot_bypass_filter (test_security_boundaries.SecurityBoundaries.test_normalized_urls_and_oauth_fragments_cannot_bypass_filter) (url=' https://example.org/path?access_token=fixture-value') ... FAIL
+  test_normalized_urls_and_oauth_fragments_cannot_bypass_filter (test_security_boundaries.SecurityBoundaries.test_normalized_urls_and_oauth_fragments_cannot_bypass_filter) (url='https://example.org/path#access_token=fixture-value') ... FAIL
+test_receipt_requires_matching_all_identities (test_security_boundaries.SecurityBoundaries.test_receipt_requires_matching_all_identities) ... ok
+test_retry_budget_and_deadline_fail_closed (test_security_boundaries.SecurityBoundaries.test_retry_budget_and_deadline_fail_closed) ... ok
+test_sensitive_url_parameters_rejected (test_security_boundaries.SecurityBoundaries.test_sensitive_url_parameters_rejected) ... ok
+
+======================================================================
+FAIL: test_normalized_urls_and_oauth_fragments_cannot_bypass_filter (test_security_boundaries.SecurityBoundaries.test_normalized_urls_and_oauth_fragments_cannot_bypass_filter) (url='HTTPS://example.org/path?access_token=fixture-value')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_security_boundaries.py", line 36, in test_normalized_urls_and_oauth_fragments_cannot_bypass_filter
+    with self.assertRaises(ValueError):run(data,directory,NOW)
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_normalized_urls_and_oauth_fragments_cannot_bypass_filter (test_security_boundaries.SecurityBoundaries.test_normalized_urls_and_oauth_fragments_cannot_bypass_filter) (url=' https://example.org/path?access_token=fixture-value')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_security_boundaries.py", line 36, in test_normalized_urls_and_oauth_fragments_cannot_bypass_filter
+    with self.assertRaises(ValueError):run(data,directory,NOW)
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_normalized_urls_and_oauth_fragments_cannot_bypass_filter (test_security_boundaries.SecurityBoundaries.test_normalized_urls_and_oauth_fragments_cannot_bypass_filter) (url='https://example.org/path#access_token=fixture-value')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_security_boundaries.py", line 36, in test_normalized_urls_and_oauth_fragments_cannot_bypass_filter
+    with self.assertRaises(ValueError):run(data,directory,NOW)
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 5 tests in 1.056s
+
+FAILED (failures=3)

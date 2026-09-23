@@ -16,7 +16,9 @@ def check_input(value):
             check_input(item)
     elif isinstance(value,list):
         for item in value:check_input(item)
-    elif isinstance(value,str) and value.startswith(('https://','http://')):
+    elif isinstance(value,str):
         uri=urlsplit(value)
-        if uri.username or uri.password or any(sensitive_key(k) for k,_ in parse_qsl(uri.query)):
+        if uri.scheme.casefold() not in ('http','https'):return
+        parameters=parse_qsl(uri.query)+parse_qsl(uri.fragment)
+        if uri.username or uri.password or any(sensitive_key(k) for k,_ in parameters):
             raise ValueError('Credential-bearing URLs are forbidden')

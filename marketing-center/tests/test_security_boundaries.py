@@ -27,6 +27,15 @@ class SecurityBoundaries(unittest.TestCase):
         data=inputs();data['brand']['landing_url']='https://example.org/path?access_token=fixture-value'
         with tempfile.TemporaryDirectory() as directory,self.assertRaises(ValueError):run(data,directory,NOW)
 
+    def test_normalized_urls_and_oauth_fragments_cannot_bypass_filter(self):
+        for url in ('HTTPS://example.org/path?access_token=fixture-value',
+                    ' https://example.org/path?access_token=fixture-value',
+                    'https://example.org/path#access_token=fixture-value'):
+            data=inputs();data['brand']['landing_url']=url
+            with self.subTest(url=url),tempfile.TemporaryDirectory() as directory:
+                with self.assertRaises(ValueError):run(data,directory,NOW)
+                self.assertEqual(list(Path(directory).iterdir()),[])
+
     def test_retry_budget_and_deadline_fail_closed(self):
         with tempfile.TemporaryDirectory() as directory:
             for _ in range(3):

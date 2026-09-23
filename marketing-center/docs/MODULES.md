@@ -1,3 +1,5 @@
+Current module/recovery behavior: see LOCAL-RECOVERY.md. This supersedes the original intelligence-only checkpoint limits below.
+
 # Module operator notes — P0 local checkpoint
 
 The default shadow CLI enables bundled `intelligence` version `1.0.0` automatically. To specify it explicitly, use top-level input `"modules": {"intelligence": {}}`. Empty, unknown, null and invalid configuration selections fail closed. No customer input selects Python packages or import paths.
