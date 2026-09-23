@@ -25,3 +25,7 @@ Owner isolation: MC-017 blocks live pilot evidence only. ML-002–005 remain act
 Local module lifecycle, dependency/configuration isolation, failure sanitization, replay module identity and tenant-neutral labels are verified. Initial failures and their passing regressions are preserved in evidence/lane-p0. Fresh CLI result: SHADOW_COMPLETE; production_published=false; cost_usd=0. pip check passed; no vulnerability scan or commercial security qualification is claimed.
 
 Next active selection: ML-003 (READY / NEXT), followed by ML-004 and ML-005. Safe work remains; no claim is made that V1 is complete or that an agent continues running after this response.
+
+## Single execution task — 2026-09-23T03:27:58.0331543Z
+
+Canonical task: 01a0c8ac-0afe-7572-b3ab-99cda493e643 (Zentryva AI Marketing Center — Master Build). Resume Marketing Center P0 work is retired/reference-only. Both checkpoints share this repository; no code merge required. Current checkpoint before consolidation: 84629600f555ae4e8580b24d3f1ca107bdf95958. ML-003 remains next. See docs/TASK-CONSOLIDATION.md and repository AGENTS.md.
