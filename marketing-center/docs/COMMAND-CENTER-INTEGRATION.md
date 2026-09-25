@@ -1,5 +1,10 @@
 # Local Command Center qualification
 
+This document preserves the legacy one-shot protocol qualification. The newer
+cooperative local beta is documented in LOCAL-BETA.md and pinned by
+contracts/local-command-center.json. Its evidence is in evidence/supervised-beta.
+The legacy reference below remains unchanged for regression testing.
+
 This adapter implements the existing worker protocol against an isolated local
 Command Center instance. It does not provide scheduling, a supervisor, a live
 marketing publisher, or a new persistence service.

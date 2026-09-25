@@ -11,11 +11,12 @@ import time
 from .core import digest
 
 class Journal:
-    def __init__(self, directory, max_attempts=3, deadline_seconds=60):
+    def __init__(self, directory, max_attempts=3, deadline_seconds=60, control=None):
         self.directory=Path(directory)
         self.max_attempts=max_attempts
         self.deadline_seconds=deadline_seconds
         self.handle=None
+        self.control=control
 
     def __enter__(self):
         self.directory.mkdir(parents=True,exist_ok=True)
@@ -53,6 +54,7 @@ class Journal:
 
     def call(self,key,operation):
         if self.handle is None:raise ValueError('Checkpoint writer lock required')
+        if self.control: self.control()
         if time.monotonic()>=self.deadline:raise ValueError('Shadow execution deadline reached')
         identity=digest(key)
         path=self.directory/('step-'+identity+'.json')
@@ -70,10 +72,12 @@ class Journal:
             result=operation()
             if time.monotonic()>=self.deadline:raise TimeoutError()
             save('COMPLETE',result=result)
-            return result
         except Exception:
             save('FAILED',error='STAGE_FAILED',retry_owner='Command Center or explicit local rerun')
             raise ValueError('Shadow stage failed; sanitized checkpoint preserved') from None
+        # Preserve successful pure-stage work before observing a new pause.
+        if self.control: self.control()
+        return result
 
     def operation(self,registry,module,operation,*args):
         registry._ready(module)

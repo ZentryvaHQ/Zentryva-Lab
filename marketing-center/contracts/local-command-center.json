@@ -1,0 +1,9 @@
+{
+  "commit": "9ab3dcd623b3a5b27738bed52b36a5285f2b4cb8",
+  "hash_method": "SHA256 of UTF-8 text with universal newlines",
+  "files": {
+    "server.py": "0bfce4ad7b879bcb3e252e5bb5017449bfc4fb524fb9e74f55aa2cf3bd2e08df",
+    "state_backend.py": "e8a7d18b525062b66b4e938b1bf75c45ad1bec8cf8cc2fa4417d10cec9fecb09",
+    "transactional_store.py": "5cdd4142e0d45ce9235d4352f29b73304a77389af4a96e805749436adf71aee2"
+  }
+}

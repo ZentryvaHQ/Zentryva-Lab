@@ -14,7 +14,8 @@ from .input_safety import check_input
 # Compatibility exports for existing local consumers.
 from .stages import review, delivery, normalize, attribute, learn, _brand
 
-def run(data, output_root, now):
+def run(data, output_root, now, control=None):
+    if control: control()
     check_input(data)
     if data.get('mode','shadow')!='shadow':
         raise ValueError('Only shadow mode is implemented; MC-017 gates production')
@@ -50,7 +51,7 @@ def run(data, output_root, now):
                 raise ValueError('Existing evidence modified; preserve and investigate')
         replay['output_dir']=str(target)
         return replay
-    with Journal(target.parent/'.checkpoints'/run_id) as steps:
+    with Journal(target.parent/'.checkpoints'/run_id,control=control) as steps:
         evidence=steps.operation(registry,'intelligence','research',objective,data['sources'],now)
         rivals=steps.operation(registry,'intelligence','competitors',objective,evidence,now)
         decision=steps.operation(registry,'intelligence','strategy',objective,evidence,rivals,now)
@@ -86,11 +87,12 @@ def run(data, output_root, now):
         status=dict(work_id='MC-R1-'+tenant_id,tenant_id=tenant_id,component='shadow-loop',
             state='VERIFIED' if result['state']=='SHADOW_COMPLETE' else 'READY',updated_at=now,heartbeat_at=now,
             cost_usd=0,blocker_id=None,evidence_refs=[r['record_id'] for r in records],
-            message=result['state']+'; local adapter only; Command Center integration UNVERIFIED; MC-017 isolated')
+            message=result['state']+'; local shadow evidence only; live integrations unverified; MC-017 isolated')
         validate('contracts/command-center-interface.schema.json',status)
         for item in records:
             validate('schemas/marketing-record.schema.json',item)
         result['status']=status
+        if control: control()
         _persist(target,result,records,data)
         return result
 
