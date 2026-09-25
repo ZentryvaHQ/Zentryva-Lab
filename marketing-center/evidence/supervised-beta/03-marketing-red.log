@@ -1,0 +1,76 @@
+test_lost_acquire_response_and_expired_lease_resume (test_supervised.SupervisedTests.test_lost_acquire_response_and_expired_lease_resume) ... ERROR
+test_lost_completion_response_reconciles_without_rerun (test_supervised.SupervisedTests.test_lost_completion_response_reconciles_without_rerun) ... ERROR
+test_pause_between_stages_preserves_progress_then_resume_finishes (test_supervised.SupervisedTests.test_pause_between_stages_preserves_progress_then_resume_finishes) ... ERROR
+test_success_and_terminal_reconciliation_do_not_reexecute (test_supervised.SupervisedTests.test_success_and_terminal_reconciliation_do_not_reexecute) ... ERROR
+test_supervised_entry_available (test_supervised.SupervisedTests.test_supervised_entry_available) ... FAIL
+test_tampered_terminal_artifacts_are_rejected (test_supervised.SupervisedTests.test_tampered_terminal_artifacts_are_rejected) ... ERROR
+test_worker_cannot_read_another_run_or_invoke_owner_control (test_supervised.SupervisedTests.test_worker_cannot_read_another_run_or_invoke_owner_control) ... ok
+
+======================================================================
+ERROR: test_lost_acquire_response_and_expired_lease_resume (test_supervised.SupervisedTests.test_lost_acquire_response_and_expired_lease_resume)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_supervised.py", line 78, in test_lost_acquire_response_and_expired_lease_resume
+    with self.assertRaises(ValueError): self.execute()
+                                        ~~~~~~~~~~~~^^
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_supervised.py", line 31, in execute
+    from mc.supervised import shadow_supervised
+ModuleNotFoundError: No module named 'mc.supervised'
+
+======================================================================
+ERROR: test_lost_completion_response_reconciles_without_rerun (test_supervised.SupervisedTests.test_lost_completion_response_reconciles_without_rerun)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_supervised.py", line 92, in test_lost_completion_response_reconciles_without_rerun
+    with self.assertRaises(ValueError): self.execute()
+                                        ~~~~~~~~~~~~^^
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_supervised.py", line 31, in execute
+    from mc.supervised import shadow_supervised
+ModuleNotFoundError: No module named 'mc.supervised'
+
+======================================================================
+ERROR: test_pause_between_stages_preserves_progress_then_resume_finishes (test_supervised.SupervisedTests.test_pause_between_stages_preserves_progress_then_resume_finishes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_supervised.py", line 60, in test_pause_between_stages_preserves_progress_then_resume_finishes
+    self.assertEqual(self.execute()['state'],'SUSPENDED')
+                     ~~~~~~~~~~~~^^
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_supervised.py", line 31, in execute
+    from mc.supervised import shadow_supervised
+ModuleNotFoundError: No module named 'mc.supervised'
+
+======================================================================
+ERROR: test_success_and_terminal_reconciliation_do_not_reexecute (test_supervised.SupervisedTests.test_success_and_terminal_reconciliation_do_not_reexecute)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_supervised.py", line 43, in test_success_and_terminal_reconciliation_do_not_reexecute
+    result=self.execute()
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_supervised.py", line 31, in execute
+    from mc.supervised import shadow_supervised
+ModuleNotFoundError: No module named 'mc.supervised'
+
+======================================================================
+ERROR: test_tampered_terminal_artifacts_are_rejected (test_supervised.SupervisedTests.test_tampered_terminal_artifacts_are_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_supervised.py", line 108, in test_tampered_terminal_artifacts_are_rejected
+    result=self.execute()
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_supervised.py", line 31, in execute
+    from mc.supervised import shadow_supervised
+ModuleNotFoundError: No module named 'mc.supervised'
+
+======================================================================
+FAIL: test_supervised_entry_available (test_supervised.SupervisedTests.test_supervised_entry_available)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_supervised.py", line 38, in test_supervised_entry_available
+    self.assertTrue((Path(command_center.__file__).parent/'supervised.py').exists(),
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    'Cooperative worker required')
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Cooperative worker required
+
+----------------------------------------------------------------------
+Ran 7 tests in 4.167s
+
+FAILED (failures=1, errors=5)

@@ -1,0 +1,73 @@
+test_legacy_ack_cannot_bypass_protocol_and_release_allows_resume (test_cooperative.CooperativeTests.test_legacy_ack_cannot_bypass_protocol_and_release_allows_resume) ... ok
+test_pause_resume_and_stale_session_fencing (test_cooperative.CooperativeTests.test_pause_resume_and_stale_session_fencing) ... ok
+test_protocol_available (test_cooperative.CooperativeTests.test_protocol_available) ... ok
+test_reassignment_disabled_provider_and_owner_gate_fail_closed (test_cooperative.CooperativeTests.test_reassignment_disabled_provider_and_owner_gate_fail_closed) ... ok
+test_status_is_scoped_and_never_exposes_session_or_other_projects (test_cooperative.CooperativeTests.test_status_is_scoped_and_never_exposes_session_or_other_projects) ... ok
+test_duplicate_run_and_disabled_provider_are_rejected (test_execution_provider.ExecutionProviderTests.test_duplicate_run_and_disabled_provider_are_rejected) ... ok
+test_non_gated_request_and_completion_are_audited (test_execution_provider.ExecutionProviderTests.test_non_gated_request_and_completion_are_audited) ... ok
+test_owner_gate_blocks_completion_until_approval (test_execution_provider.ExecutionProviderTests.test_owner_gate_blocks_completion_until_approval) ... ok
+test_rejection_is_terminal (test_execution_provider.ExecutionProviderTests.test_rejection_is_terminal) ... ok
+test_api_token_comparison (test_core.CoreTests.test_api_token_comparison) ... ok
+test_api_token_is_deny_by_default (test_core.CoreTests.test_api_token_is_deny_by_default) ... ok
+test_approval_resolves_attention_persistently (test_core.CoreTests.test_approval_resolves_attention_persistently) ... ok
+test_instruction_is_audited (test_core.CoreTests.test_instruction_is_audited) ... ok
+test_invalid_worker_state_rejected (test_core.CoreTests.test_invalid_worker_state_rejected) ... ok
+test_path_traversal_is_contained (test_core.CoreTests.test_path_traversal_is_contained) ... ok
+test_pause_persists (test_core.CoreTests.test_pause_persists) ... ok
+test_unknown_heartbeat_project_rejected (test_core.CoreTests.test_unknown_heartbeat_project_rejected) ... ok
+test_unknown_project_rejected (test_core.CoreTests.test_unknown_project_rejected) ... ok
+test_unsupported_control_rejected (test_core.CoreTests.test_unsupported_control_rejected) ... ok
+test_duplicate_run_and_disabled_provider_are_rejected (test_execution_provider.ExecutionProviderTests.test_duplicate_run_and_disabled_provider_are_rejected) ... ok
+test_non_gated_request_and_completion_are_audited (test_execution_provider.ExecutionProviderTests.test_non_gated_request_and_completion_are_audited) ... ok
+test_owner_gate_blocks_completion_until_approval (test_execution_provider.ExecutionProviderTests.test_owner_gate_blocks_completion_until_approval) ... ok
+test_rejection_is_terminal (test_execution_provider.ExecutionProviderTests.test_rejection_is_terminal) ... ok
+test_authenticated_receipt_checkpoint_and_result_roundtrip (test_http_worker_roundtrip.HttpWorkerRoundtripTests.test_authenticated_receipt_checkpoint_and_result_roundtrip) ... ok
+test_oversized_json_body_is_rejected (test_http_worker_roundtrip.HttpWorkerRoundtripTests.test_oversized_json_body_is_rejected) ... ok
+test_configured_healthy_fallback_is_rerouted (test_stall_recovery.StallRecoveryTests.test_configured_healthy_fallback_is_rerouted) ... ok
+test_missing_fallback_escalates_once (test_stall_recovery.StallRecoveryTests.test_missing_fallback_escalates_once) ... ok
+test_busy_worker_keeps_its_assignment (test_stall_safety.StallSafetyTests.test_busy_worker_keeps_its_assignment) ... ok
+test_idle_but_assigned_worker_is_not_available (test_stall_safety.StallSafetyTests.test_idle_but_assigned_worker_is_not_available) ... ok
+test_missing_stale_invalid_and_future_heartbeats_are_rejected (test_stall_safety.StallSafetyTests.test_missing_stale_invalid_and_future_heartbeats_are_rejected) ... ok
+test_old_worker_cannot_reassign_current_owner (test_stall_safety.StallSafetyTests.test_old_worker_cannot_reassign_current_owner) ... ok
+test_owner_pause_is_preserved (test_stall_safety.StallSafetyTests.test_owner_pause_is_preserved) ... ok
+test_reservation_does_not_fabricate_progress_or_repeat (test_stall_safety.StallSafetyTests.test_reservation_does_not_fabricate_progress_or_repeat) ... ok
+test_invalid_mode_fails_closed (test_state_backend.StateBackendTests.test_invalid_mode_fails_closed) ... ok
+test_json_is_default (test_state_backend.StateBackendTests.test_json_is_default) ... ok
+test_json_mutation_preserves_compatibility (test_state_backend.StateBackendTests.test_json_mutation_preserves_compatibility) ... ok
+test_sqlite_initialization_does_not_overwrite_existing_state (test_state_backend.StateBackendTests.test_sqlite_initialization_does_not_overwrite_existing_state) ... ok
+test_sqlite_mutation_creates_durable_outbox (test_state_backend.StateBackendTests.test_sqlite_mutation_creates_durable_outbox) ... ok
+test_concurrent_independent_connections_do_not_lose_updates (test_transactional_store.SQLiteStateOutboxTests.test_concurrent_independent_connections_do_not_lose_updates) ... ok
+test_duplicate_event_id_rolls_back_state (test_transactional_store.SQLiteStateOutboxTests.test_duplicate_event_id_rolls_back_state) ... ok
+test_initial_state_is_persistent (test_transactional_store.SQLiteStateOutboxTests.test_initial_state_is_persistent) ... ok
+test_initialize_does_not_overwrite_existing_state (test_transactional_store.SQLiteStateOutboxTests.test_initialize_does_not_overwrite_existing_state) ... ok
+test_integrity_check_passes (test_transactional_store.SQLiteStateOutboxTests.test_integrity_check_passes) ... ok
+test_mark_delivered_is_idempotent (test_transactional_store.SQLiteStateOutboxTests.test_mark_delivered_is_idempotent) ... ok
+test_mutator_failure_rolls_back_state_and_outbox (test_transactional_store.SQLiteStateOutboxTests.test_mutator_failure_rolls_back_state_and_outbox) ... ok
+test_pending_is_ordered_and_bounded (test_transactional_store.SQLiteStateOutboxTests.test_pending_is_ordered_and_bounded) ... ok
+test_state_and_outbox_commit_atomically (test_transactional_store.SQLiteStateOutboxTests.test_state_and_outbox_commit_atomically) ... ok
+test_content_security_policy_disallows_inline_scripts (test_ui_security.UiSecurityTests.test_content_security_policy_disallows_inline_scripts) ... ok
+test_dynamic_controls_do_not_use_inline_handlers (test_ui_security.UiSecurityTests.test_dynamic_controls_do_not_use_inline_handlers) ... ok
+test_acknowledgement_requires_owner_and_checkpoint_refs (test_worker_lifecycle.WorkerLifecycleTests.test_acknowledgement_requires_owner_and_checkpoint_refs) ... ok
+test_completion_requires_acknowledgement_identity_and_evidence (test_worker_lifecycle.WorkerLifecycleTests.test_completion_requires_acknowledgement_identity_and_evidence) ... ok
+test_evidence_is_bound_to_kind_run_and_worker (test_worker_lifecycle.WorkerLifecycleTests.test_evidence_is_bound_to_kind_run_and_worker) ... ok
+test_parallel_control_updates_do_not_lose_events (test_worker_lifecycle.WorkerLifecycleTests.test_parallel_control_updates_do_not_lose_events) ... ok
+test_pending_runs_are_scoped_to_worker (test_worker_lifecycle.WorkerLifecycleTests.test_pending_runs_are_scoped_to_worker) ... ok
+test_tampered_evidence_is_rejected (test_worker_lifecycle.WorkerLifecycleTests.test_tampered_evidence_is_rejected) ... ok
+test_worker_must_be_assigned (test_worker_lifecycle.WorkerLifecycleTests.test_worker_must_be_assigned) ... ok
+test_worker_tokens_are_scoped_and_deny_by_default (test_worker_lifecycle.WorkerLifecycleTests.test_worker_tokens_are_scoped_and_deny_by_default) ... ok
+
+----------------------------------------------------------------------
+Ran 57 tests in 4.013s
+
+OK
+25/Sep/2026 06:33:33 - "POST /api/execution/request HTTP/1.1" 201 -
+25/Sep/2026 06:33:33 - "GET /api/execution/pending?worker_id=w1 HTTP/1.1" 401 -
+25/Sep/2026 06:33:33 - "GET /api/execution/pending?worker_id=w1 HTTP/1.1" 200 -
+25/Sep/2026 06:33:33 - "POST /api/evidence HTTP/1.1" 401 -
+25/Sep/2026 06:33:33 - "POST /api/evidence HTTP/1.1" 201 -
+25/Sep/2026 06:33:33 - "POST /api/evidence HTTP/1.1" 201 -
+25/Sep/2026 06:33:33 - "POST /api/execution/acknowledge HTTP/1.1" 200 -
+25/Sep/2026 06:33:33 - "POST /api/execution/complete HTTP/1.1" 400 -
+25/Sep/2026 06:33:33 - "POST /api/evidence HTTP/1.1" 201 -
+25/Sep/2026 06:33:33 - "POST /api/execution/complete HTTP/1.1" 200 -
+25/Sep/2026 06:33:34 - "POST /api/execution/request HTTP/1.1" 400 -

@@ -1,0 +1,97 @@
+test_legacy_ack_cannot_bypass_protocol_and_release_allows_resume (test_cooperative.CooperativeTests.test_legacy_ack_cannot_bypass_protocol_and_release_allows_resume) ... FAIL
+test_pause_resume_and_stale_session_fencing (test_cooperative.CooperativeTests.test_pause_resume_and_stale_session_fencing) ... ERROR
+test_protocol_available (test_cooperative.CooperativeTests.test_protocol_available) ... FAIL
+test_reassignment_disabled_provider_and_owner_gate_fail_closed (test_cooperative.CooperativeTests.test_reassignment_disabled_provider_and_owner_gate_fail_closed) ... 
+  test_reassignment_disabled_provider_and_owner_gate_fail_closed (test_cooperative.CooperativeTests.test_reassignment_disabled_provider_and_owner_gate_fail_closed) (change='pause') ... ERROR
+  test_reassignment_disabled_provider_and_owner_gate_fail_closed (test_cooperative.CooperativeTests.test_reassignment_disabled_provider_and_owner_gate_fail_closed) (change='assignment') ... ERROR
+  test_reassignment_disabled_provider_and_owner_gate_fail_closed (test_cooperative.CooperativeTests.test_reassignment_disabled_provider_and_owner_gate_fail_closed) (change='provider') ... ERROR
+  test_reassignment_disabled_provider_and_owner_gate_fail_closed (test_cooperative.CooperativeTests.test_reassignment_disabled_provider_and_owner_gate_fail_closed) (change='owner') ... ERROR
+test_status_is_scoped_and_never_exposes_session_or_other_projects (test_cooperative.CooperativeTests.test_status_is_scoped_and_never_exposes_session_or_other_projects) ... ERROR
+test_duplicate_run_and_disabled_provider_are_rejected (test_execution_provider.ExecutionProviderTests.test_duplicate_run_and_disabled_provider_are_rejected) ... ok
+test_non_gated_request_and_completion_are_audited (test_execution_provider.ExecutionProviderTests.test_non_gated_request_and_completion_are_audited) ... ok
+test_owner_gate_blocks_completion_until_approval (test_execution_provider.ExecutionProviderTests.test_owner_gate_blocks_completion_until_approval) ... ok
+test_rejection_is_terminal (test_execution_provider.ExecutionProviderTests.test_rejection_is_terminal) ... ok
+
+======================================================================
+ERROR: test_pause_resume_and_stale_session_fencing (test_cooperative.CooperativeTests.test_pause_resume_and_stale_session_fencing)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\command-center-salem\tests\test_cooperative.py", line 33, in test_pause_resume_and_stale_session_fencing
+    with mock.patch.object(server,'lease_clock',return_value=100):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\unittest\mock.py", line 1510, in __enter__
+    original, local = self.get_original()
+                      ~~~~~~~~~~~~~~~~~^^
+  File "C:\Python314\Lib\unittest\mock.py", line 1480, in get_original
+    raise AttributeError(
+        "%s does not have the attribute %r" % (target, name)
+    )
+AttributeError: <module 'server' from 'C:\\Users\\festg\\.codex\\.chatgpt-projects\\g-p-6ab1f727c52c8191968d451f3328652c\\command-center-salem\\server.py'> does not have the attribute 'lease_clock'
+
+======================================================================
+ERROR: test_reassignment_disabled_provider_and_owner_gate_fail_closed (test_cooperative.CooperativeTests.test_reassignment_disabled_provider_and_owner_gate_fail_closed) (change='pause')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\command-center-salem\tests\test_cooperative.py", line 75, in test_reassignment_disabled_provider_and_owner_gate_fail_closed
+    with self.subTest(change=change),self.assertRaises(ValueError): server.acquire_execution(payload)
+                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'server' has no attribute 'acquire_execution'. Did you mean: 'request_execution'?
+
+======================================================================
+ERROR: test_reassignment_disabled_provider_and_owner_gate_fail_closed (test_cooperative.CooperativeTests.test_reassignment_disabled_provider_and_owner_gate_fail_closed) (change='assignment')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\command-center-salem\tests\test_cooperative.py", line 75, in test_reassignment_disabled_provider_and_owner_gate_fail_closed
+    with self.subTest(change=change),self.assertRaises(ValueError): server.acquire_execution(payload)
+                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'server' has no attribute 'acquire_execution'. Did you mean: 'request_execution'?
+
+======================================================================
+ERROR: test_reassignment_disabled_provider_and_owner_gate_fail_closed (test_cooperative.CooperativeTests.test_reassignment_disabled_provider_and_owner_gate_fail_closed) (change='provider')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\command-center-salem\tests\test_cooperative.py", line 75, in test_reassignment_disabled_provider_and_owner_gate_fail_closed
+    with self.subTest(change=change),self.assertRaises(ValueError): server.acquire_execution(payload)
+                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'server' has no attribute 'acquire_execution'. Did you mean: 'request_execution'?
+
+======================================================================
+ERROR: test_reassignment_disabled_provider_and_owner_gate_fail_closed (test_cooperative.CooperativeTests.test_reassignment_disabled_provider_and_owner_gate_fail_closed) (change='owner')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\command-center-salem\tests\test_cooperative.py", line 75, in test_reassignment_disabled_provider_and_owner_gate_fail_closed
+    with self.subTest(change=change),self.assertRaises(ValueError): server.acquire_execution(payload)
+                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'server' has no attribute 'acquire_execution'. Did you mean: 'request_execution'?
+
+======================================================================
+ERROR: test_status_is_scoped_and_never_exposes_session_or_other_projects (test_cooperative.CooperativeTests.test_status_is_scoped_and_never_exposes_session_or_other_projects)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\command-center-salem\tests\test_cooperative.py", line 26, in test_status_is_scoped_and_never_exposes_session_or_other_projects
+    view=server.worker_run_status('r1','w1')
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'server' has no attribute 'worker_run_status'. Did you mean: 'worker_token_status'?
+
+======================================================================
+FAIL: test_legacy_ack_cannot_bypass_protocol_and_release_allows_resume (test_cooperative.CooperativeTests.test_legacy_ack_cannot_bypass_protocol_and_release_allows_resume)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\command-center-salem\tests\test_cooperative.py", line 58, in test_legacy_ack_cannot_bypass_protocol_and_release_allows_resume
+    with self.assertRaises(ValueError): server.acknowledge_execution(payload)
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_protocol_available (test_cooperative.CooperativeTests.test_protocol_available)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\command-center-salem\tests\test_cooperative.py", line 19, in test_protocol_available
+    self.assertTrue(callable(getattr(server,'worker_run_status',None)), 'scoped status required')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : scoped status required
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.377s
+
+FAILED (failures=2, errors=6)

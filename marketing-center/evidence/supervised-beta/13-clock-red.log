@@ -1,0 +1,23 @@
+test_clock_rollback_cannot_revive_expired_session (test_cooperative.CooperativeTests.test_clock_rollback_cannot_revive_expired_session) ... FAIL
+test_concurrent_acquisition_has_one_winner (test_cooperative.CooperativeTests.test_concurrent_acquisition_has_one_winner) ... ok
+test_legacy_ack_cannot_bypass_protocol_and_release_allows_resume (test_cooperative.CooperativeTests.test_legacy_ack_cannot_bypass_protocol_and_release_allows_resume) ... ok
+test_new_session_does_not_inherit_previous_stall_clock (test_cooperative.CooperativeTests.test_new_session_does_not_inherit_previous_stall_clock) ... ok
+test_pause_resume_and_stale_session_fencing (test_cooperative.CooperativeTests.test_pause_resume_and_stale_session_fencing) ... ok
+test_previous_generation_evidence_cannot_complete_recovered_run (test_cooperative.CooperativeTests.test_previous_generation_evidence_cannot_complete_recovered_run) ... ok
+test_protocol_available (test_cooperative.CooperativeTests.test_protocol_available) ... ok
+test_reassignment_disabled_provider_and_owner_gate_fail_closed (test_cooperative.CooperativeTests.test_reassignment_disabled_provider_and_owner_gate_fail_closed) ... ok
+test_status_is_scoped_and_never_exposes_session_or_other_projects (test_cooperative.CooperativeTests.test_status_is_scoped_and_never_exposes_session_or_other_projects) ... ok
+
+======================================================================
+FAIL: test_clock_rollback_cannot_revive_expired_session (test_cooperative.CooperativeTests.test_clock_rollback_cannot_revive_expired_session)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\command-center-salem\tests\test_cooperative.py", line 122, in test_clock_rollback_cannot_revive_expired_session
+    with self.assertRaises(ValueError): server.pulse_execution(payload)
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.924s
+
+FAILED (failures=1)

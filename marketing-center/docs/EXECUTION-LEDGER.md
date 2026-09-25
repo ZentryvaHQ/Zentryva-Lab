@@ -26,3 +26,24 @@ Independent review of 9d69874..af58bc9: fixed normalized URL credential bypass (
 ## 2026-09-23T11:57:49.011137+00:00 — source audit to actual local integration
 
 Sealed scan 9f04aa79-5eb7-474f-8f1c-056ec4896faf at 7d6c60bc245cd39f9c533bb5957b05e5675ba763; no confirmed scoped findings. Immediately continued to shared worker integration and operator CLI. Tested implementation c2fe5611e195f864c6c3fa168b0f723a23c24e24; Command Center reference 6c50292cf91fb4ea94f08e833e899d555290b714. Final suite 65/65, exit 0, no skips. SHADOW_COMPLETE, $0, no publication. Exact logs, earlier failed attempts, proof and final roundtrip in evidence/command-center. Shared in-flight pause/recovery remains unverified; MC-017 owner gate stays separate.
+
+## 2026-09-25 — cooperative local beta qualification
+
+Resumed dcc84cb without restarting completed work. Fresh shared fetch showed no
+newer protocol implementation. Isolated shared worktree command-center-salem;
+sole Marketing writer retained. Implemented shared worker-scoped status, fenced
+30-second sessions, pause/resume and explicit recovery; added controlled Marketing
+stage checks and a one-command isolated synthetic beta launcher.
+
+Tested Marketing source: 5268e808a9cd79aeabf55db35d8db84fcf5bf0bd.
+Tested shared source: 9ab3dcd623b3a5b27738bed52b36a5285f2b4cb8.
+Final tests: 79 Marketing, 58 shared; no failures/skips. Preserved red/green logs,
+real process-crash recovery, pause/resume, response loss, authentication/isolation,
+clock rollback and restart fencing evidence. Independent review's two P2 findings
+were fixed and retested; launcher review found no remaining scoped issue.
+
+Exact source archive executed successfully after extraction. Artifact SHA256:
+42ff8e9b13bcf0018ab577c3698794d88c8953b55a55b83a7edc3677c303644c.
+ReleaseProof: evidence/supervised-beta/ReleaseProof.json, 122 bound evidence files.
+PASS SYNTHETIC LOCAL BETA; commercial/live HOLD. MC-017 alone awaits approved real
+pilot inputs/access/launch. No publishing, spending or background service installed.

@@ -1,0 +1,62 @@
+{
+  "settings": {
+    "stall_after_seconds": 900
+  },
+  "projects": [
+    {
+      "id": "p1",
+      "status": "COMPLETE",
+      "desired_state": "RUNNING",
+      "assigned_worker_id": "w1",
+      "updated_at": "2026-09-25T10:43:03.654081Z",
+      "last_control_event_id": "bb7ddad3-eed7-41ad-a25f-dc3395bee42c"
+    }
+  ],
+  "workers": [
+    {
+      "id": "w1",
+      "state": "COMPLETE",
+      "current_project_id": "p1",
+      "last_progress_at": "2026-09-25T10:43:03.654045Z",
+      "last_heartbeat_at": "2026-09-25T10:43:03.654045Z"
+    }
+  ],
+  "providers": [
+    {
+      "id": "local",
+      "enabled": true
+    }
+  ],
+  "attention": [],
+  "runs": [
+    {
+      "id": "cc-r1",
+      "project_id": "p1",
+      "provider_id": "local",
+      "worker_id": "w1",
+      "action": "marketing.shadow.verify",
+      "status": "COMPLETE",
+      "requires_owner_approval": false,
+      "created_at": "2026-09-25T10:43:02.756776Z",
+      "updated_at": "2026-09-25T10:43:03.654045Z",
+      "input": {
+        "tenant_id": "salem-botanicals",
+        "input_sha256": "7f74b50c51ae809626f066dcd2331ade68313edfd7731d9567d34dee7a655ba8",
+        "at": "2026-09-22T12:00:00Z",
+        "source_sha256": "a5cbb9676076759fc0f5e74dbe8d6b6d21876dc5d732129ff96e187cd8985923"
+      },
+      "protocol": "cooperative-v1",
+      "request_event_id": "4594d89a-a5c8-43ad-806f-bdfa43ac8f8c",
+      "receipt_ref": "sha256:bd716ff69beccf56789ace98c2286ee16fa5b2a33286790e6272173f12e3e83a",
+      "checkpoint_ref": "sha256:b197f573a16b4f8efdd4fd8c391a24e1ea05e05993dc775828f33b51474f84c6",
+      "session_hash": "bd95e05f34c0788fec4dc76caef2d92b9b7a389ba0060270c2253d2d4e438b9f",
+      "lease_until": 1790333013.619206,
+      "session_epoch": "a15d9b069f114101b00a89552a5bbacd",
+      "lease_monotonic_until": 249143.6217658,
+      "session_generation": 2,
+      "completed_at": "2026-09-25T10:43:03.654045Z",
+      "evidence_ref": "sha256:f2ab451b6d818ff80705078a7da43659589b5a1306f953e1506c191ba82662e9",
+      "completion_event_id": "9df01c00-1e26-4e3d-b9d9-76bb062a9ee1"
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+{"type":"EXECUTION_REQUESTED","project_id":"p1","run_id":"cc-r1","provider_id":"local","worker_id":"w1","requested_by":"controller","requires_owner_approval":false,"id":"6f0238f4-3290-4e70-a329-dc75b983b864","created_at":"2026-09-25T10:43:08.813046Z"}
+{"type":"EXECUTION_ACQUIRED","run_id":"cc-r1","worker_id":"w1","project_id":"p1","generation":1,"id":"b1c03ca6-218c-42a6-822f-de290bdc14f5","created_at":"2026-09-25T10:43:09.006523Z"}
+{"type":"EXECUTION_COMPLETED","project_id":"p1","run_id":"cc-r1","provider_id":"local","worker_id":"w1","requested_by":"worker","evidence_ref":"sha256:7acab50493af93c6f8368cabfe4f06fcda4adaf0d9a98f845b0592b8c94a89ef","id":"07ba6c70-770a-4fa9-99cf-6e09a7ef2ce4","created_at":"2026-09-25T10:43:09.767266Z"}

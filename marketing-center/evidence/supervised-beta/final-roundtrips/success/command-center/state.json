@@ -1,0 +1,61 @@
+{
+  "settings": {
+    "stall_after_seconds": 900
+  },
+  "projects": [
+    {
+      "id": "p1",
+      "status": "COMPLETE",
+      "desired_state": "RUNNING",
+      "assigned_worker_id": "w1",
+      "updated_at": "2026-09-25T10:43:09.767266Z"
+    }
+  ],
+  "workers": [
+    {
+      "id": "w1",
+      "state": "COMPLETE",
+      "current_project_id": "p1",
+      "last_progress_at": "2026-09-25T10:43:09.767236Z",
+      "last_heartbeat_at": "2026-09-25T10:43:09.767236Z"
+    }
+  ],
+  "providers": [
+    {
+      "id": "local",
+      "enabled": true
+    }
+  ],
+  "attention": [],
+  "runs": [
+    {
+      "id": "cc-r1",
+      "project_id": "p1",
+      "provider_id": "local",
+      "worker_id": "w1",
+      "action": "marketing.shadow.verify",
+      "status": "COMPLETE",
+      "requires_owner_approval": false,
+      "created_at": "2026-09-25T10:43:08.813013Z",
+      "updated_at": "2026-09-25T10:43:09.767236Z",
+      "input": {
+        "tenant_id": "salem-botanicals",
+        "input_sha256": "7f74b50c51ae809626f066dcd2331ade68313edfd7731d9567d34dee7a655ba8",
+        "at": "2026-09-22T12:00:00Z",
+        "source_sha256": "a5cbb9676076759fc0f5e74dbe8d6b6d21876dc5d732129ff96e187cd8985923"
+      },
+      "protocol": "cooperative-v1",
+      "request_event_id": "6f0238f4-3290-4e70-a329-dc75b983b864",
+      "receipt_ref": "sha256:4f82d1a565a20e632efeb47536ca550d9a425e45b67e90ee12c5fb99927777bc",
+      "checkpoint_ref": "sha256:0c6d2c8c017afdb69b0208302e1fd73f9c3bbadefffb8fa036b25dcb27035f3c",
+      "session_hash": "25244428c1e4d2ff64261b1a95b08d8503c973b3ba7049e56d87123e03f076f9",
+      "lease_until": 1790333019.73983,
+      "session_epoch": "a15d9b069f114101b00a89552a5bbacd",
+      "lease_monotonic_until": 249149.7423929,
+      "session_generation": 1,
+      "completed_at": "2026-09-25T10:43:09.767236Z",
+      "evidence_ref": "sha256:7acab50493af93c6f8368cabfe4f06fcda4adaf0d9a98f845b0592b8c94a89ef",
+      "completion_event_id": "07ba6c70-770a-4fa9-99cf-6e09a7ef2ce4"
+    }
+  ]
+}

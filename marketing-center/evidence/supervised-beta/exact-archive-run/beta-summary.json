@@ -1,0 +1,186 @@
+{
+  "state": "SHADOW_COMPLETE",
+  "run_id": "run-2de2f949381166c77c93",
+  "production_published": false,
+  "cost_usd": 0,
+  "dashboard": "C:\\Users\\festg\\.codex\\.chatgpt-projects\\g-p-6ab1f727c52c8191968d451f3328652c\\outputs\\verified-salem-beta\\beta-output\\marketing\\salem-botanicals\\run-2de2f949381166c77c93\\dashboard.html",
+  "shared_source": {
+    "commit": "9ab3dcd623b3a5b27738bed52b36a5285f2b4cb8",
+    "hash_method": "SHA256 of UTF-8 text with universal newlines",
+    "files": {
+      "server.py": "0bfce4ad7b879bcb3e252e5bb5017449bfc4fb524fb9e74f55aa2cf3bd2e08df",
+      "state_backend.py": "e8a7d18b525062b66b4e938b1bf75c45ad1bec8cf8cc2fa4417d10cec9fecb09",
+      "transactional_store.py": "5cdd4142e0d45ce9235d4352f29b73304a77389af4a96e805749436adf71aee2"
+    }
+  },
+  "marketing_runtime": {
+    "source_sha256": "a5cbb9676076759fc0f5e74dbe8d6b6d21876dc5d732129ff96e187cd8985923",
+    "git_commit": null,
+    "python": "3.14.7",
+    "jsonschema": "4.26.0",
+    "modules": [
+      {
+        "manifest": {
+          "module_id": "content",
+          "version": "1.0.0",
+          "core_api": 1,
+          "dependencies": [
+            "planning"
+          ],
+          "config_schema": {
+            "type": "object",
+            "maxProperties": 0
+          }
+        },
+        "implementations": {
+          "create": {
+            "callable": "create",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          },
+          "review": {
+            "callable": "review",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          }
+        },
+        "enabled": true,
+        "config_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "health": "READY"
+      },
+      {
+        "manifest": {
+          "module_id": "intelligence",
+          "version": "1.0.0",
+          "core_api": 1,
+          "dependencies": [],
+          "config_schema": {
+            "type": "object",
+            "maxProperties": 0
+          }
+        },
+        "implementations": {
+          "research": {
+            "callable": "research",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          },
+          "competitors": {
+            "callable": "competitors",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          },
+          "strategy": {
+            "callable": "strategy",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          }
+        },
+        "enabled": true,
+        "config_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "health": "READY"
+      },
+      {
+        "manifest": {
+          "module_id": "measurement",
+          "version": "1.0.0",
+          "core_api": 1,
+          "dependencies": [
+            "publishing"
+          ],
+          "config_schema": {
+            "type": "object",
+            "maxProperties": 0
+          }
+        },
+        "implementations": {
+          "normalize": {
+            "callable": "normalize",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          },
+          "attribute": {
+            "callable": "attribute",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          }
+        },
+        "enabled": true,
+        "config_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "health": "READY"
+      },
+      {
+        "manifest": {
+          "module_id": "optimization",
+          "version": "1.0.0",
+          "core_api": 1,
+          "dependencies": [
+            "measurement"
+          ],
+          "config_schema": {
+            "type": "object",
+            "maxProperties": 0
+          }
+        },
+        "implementations": {
+          "learn": {
+            "callable": "learn",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          },
+          "next": {
+            "callable": "optimize",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          }
+        },
+        "enabled": true,
+        "config_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "health": "READY"
+      },
+      {
+        "manifest": {
+          "module_id": "planning",
+          "version": "1.0.0",
+          "core_api": 1,
+          "dependencies": [
+            "intelligence"
+          ],
+          "config_schema": {
+            "type": "object",
+            "maxProperties": 0
+          }
+        },
+        "implementations": {
+          "campaign": {
+            "callable": "campaign",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          }
+        },
+        "enabled": true,
+        "config_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "health": "READY"
+      },
+      {
+        "manifest": {
+          "module_id": "publishing",
+          "version": "1.0.0",
+          "core_api": 1,
+          "dependencies": [
+            "content"
+          ],
+          "config_schema": {
+            "type": "object",
+            "maxProperties": 0
+          }
+        },
+        "implementations": {
+          "handoff": {
+            "callable": "handoff",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          },
+          "delivery": {
+            "callable": "delivery",
+            "source_sha256": "bd3c6f660bba607a2d39413330dee7d7fe503d61eaaaff9c06a101e4a5b62a7a"
+          }
+        },
+        "enabled": true,
+        "config_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "health": "READY"
+      }
+    ]
+  },
+  "qualification": "SYNTHETIC LOCAL BETA ONLY",
+  "fixture_clock": "2026-09-22T12:00:00Z"
+}

@@ -1,0 +1,6 @@
+test_isolated_beta_launcher_creates_review_artifacts_without_credentials (test_supervised.SupervisedTests.test_isolated_beta_launcher_creates_review_artifacts_without_credentials) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 2.753s
+
+OK

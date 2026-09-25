@@ -1,0 +1,12 @@
+test_lost_acquire_response_and_expired_lease_resume (test_supervised.SupervisedTests.test_lost_acquire_response_and_expired_lease_resume) ... ok
+test_lost_completion_response_reconciles_without_rerun (test_supervised.SupervisedTests.test_lost_completion_response_reconciles_without_rerun) ... ok
+test_pause_between_stages_preserves_progress_then_resume_finishes (test_supervised.SupervisedTests.test_pause_between_stages_preserves_progress_then_resume_finishes) ... ok
+test_success_and_terminal_reconciliation_do_not_reexecute (test_supervised.SupervisedTests.test_success_and_terminal_reconciliation_do_not_reexecute) ... ok
+test_supervised_entry_available (test_supervised.SupervisedTests.test_supervised_entry_available) ... ok
+test_tampered_terminal_artifacts_are_rejected (test_supervised.SupervisedTests.test_tampered_terminal_artifacts_are_rejected) ... ok
+test_worker_cannot_read_another_run_or_invoke_owner_control (test_supervised.SupervisedTests.test_worker_cannot_read_another_run_or_invoke_owner_control) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 9.661s
+
+OK

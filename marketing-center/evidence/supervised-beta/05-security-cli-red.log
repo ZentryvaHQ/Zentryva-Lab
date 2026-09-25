@@ -1,0 +1,62 @@
+test_cli_cooperative_execution_and_pause_exit (test_supervised.SupervisedTests.test_cli_cooperative_execution_and_pause_exit) ... FAIL
+test_failure_is_terminal_and_sanitized (test_supervised.SupervisedTests.test_failure_is_terminal_and_sanitized) ... FAIL
+test_lost_acquire_response_and_expired_lease_resume (test_supervised.SupervisedTests.test_lost_acquire_response_and_expired_lease_resume) ... ok
+test_lost_completion_response_reconciles_without_rerun (test_supervised.SupervisedTests.test_lost_completion_response_reconciles_without_rerun) ... ok
+test_pause_between_stages_preserves_progress_then_resume_finishes (test_supervised.SupervisedTests.test_pause_between_stages_preserves_progress_then_resume_finishes) ... ok
+test_response_projection_does_not_leak_other_tenant_data (test_supervised.SupervisedTests.test_response_projection_does_not_leak_other_tenant_data) ... FAIL
+test_success_and_terminal_reconciliation_do_not_reexecute (test_supervised.SupervisedTests.test_success_and_terminal_reconciliation_do_not_reexecute) ... FAIL
+test_supervised_entry_available (test_supervised.SupervisedTests.test_supervised_entry_available) ... ok
+test_tampered_terminal_artifacts_are_rejected (test_supervised.SupervisedTests.test_tampered_terminal_artifacts_are_rejected) ... ok
+test_worker_cannot_read_another_run_or_invoke_owner_control (test_supervised.SupervisedTests.test_worker_cannot_read_another_run_or_invoke_owner_control) ... ok
+
+======================================================================
+FAIL: test_cli_cooperative_execution_and_pause_exit (test_supervised.SupervisedTests.test_cli_cooperative_execution_and_pause_exit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_supervised.py", line 121, in test_cli_cooperative_execution_and_pause_exit
+    self.assertEqual(paused.returncode,3,paused.stderr)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 2 != 3 : usage: python.exe -m mc.worker [-h] --url URL --worker-id WORKER_ID
+                               --run-id RUN_ID --project-id PROJECT_ID
+                               --provider-id PROVIDER_ID --tenant-id TENANT_ID
+                               --at AT --input INPUT --output OUTPUT
+python.exe -m mc.worker: error: unrecognized arguments: --supervised
+
+
+======================================================================
+FAIL: test_failure_is_terminal_and_sanitized (test_supervised.SupervisedTests.test_failure_is_terminal_and_sanitized)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_supervised.py", line 135, in test_failure_is_terminal_and_sanitized
+    self.assertEqual(self.server.load_state()['workers'][0]['state'],'FAILED')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'RUNNING' != 'FAILED'
+- RUNNING
++ FAILED
+
+
+======================================================================
+FAIL: test_response_projection_does_not_leak_other_tenant_data (test_supervised.SupervisedTests.test_response_projection_does_not_leak_other_tenant_data)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_supervised.py", line 152, in test_response_projection_does_not_leak_other_tenant_data
+    self.assertNotIn('other-tenant-secret',json.dumps(responses))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'other-tenant-secret' unexpectedly found in '[{"run": {"id": "cc-r1", "project_id": "p1", "provider_id": "local", "worker_id": "w1", "action": "marketing.shadow.verify", "status": "QUEUED", "input": {"tenant_id": "salem-botanicals", "input_sha256": "7f74b50c51ae809626f066dcd2331ade68313edfd7731d9567d34dee7a655ba8", "at": "2026-09-22T12:00:00Z", "source_sha256": "98cec1b47692fa0df3f90e3287bf599bd84e86e5e9fb622e398e7627a6509190"}, "protocol": "cooperative-v1", "requires_owner_approval": false}, "runnable": true}, {"evidence_ref": "sha256:13f5aa4ef8432a7d3bb787a46bdf2f7f03788fb5925627aa49e8c91470545662", "record": {"version": 1, "kind": "receipt", "run_id": "cc-r1", "worker_id": "w1", "created_at": "2026-09-25T10:35:21.266887Z", "evidence": {"adapter": "marketing-cooperative-v1", "tenant_id": "salem-botanicals", "input_sha256": "7f74b50c51ae809626f066dcd2331ade68313edfd7731d9567d34dee7a655ba8", "at": "2026-09-22T12:00:00Z", "source_sha256": "98cec1b47692fa0df3f90e3287bf599bd84e86e5e9fb622e398e7627a6509190"}}}, {"evidence_ref": "sha256:1c7057db68a5a924bb49b55a19aae804bbd62545b1cbc10947a92c98d90fa780", "record": {"version": 1, "kind": "checkpoint", "run_id": "cc-r1", "worker_id": "w1", "created_at": "2026-09-25T10:35:21.276848Z", "evidence": {"state": "BEFORE_LOCAL_SHADOW", "tenant_id": "salem-botanicals", "input_sha256": "7f74b50c51ae809626f066dcd2331ade68313edfd7731d9567d34dee7a655ba8", "at": "2026-09-22T12:00:00Z", "source_sha256": "98cec1b47692fa0df3f90e3287bf599bd84e86e5e9fb622e398e7627a6509190"}}}, {"run": {"id": "cc-r1", "project_id": "p1", "provider_id": "local", "worker_id": "w1", "action": "marketing.shadow.verify", "status": "RUNNING", "input": {"tenant_id": "salem-botanicals", "input_sha256": "7f74b50c51ae809626f066dcd2331ade68313edfd7731d9567d34dee7a655ba8", "at": "2026-09-22T12:00:00Z", "source_sha256": "98cec1b47692fa0df3f90e3287bf599bd84e86e5e9fb622e398e7627a6509190"}, "protocol": "cooperative-v1", "requires_owner_approval": false, "receipt_ref": "sha256:13f5aa4ef8432a7d3bb787a46bdf2f7f03788fb5925627aa49e8c91470545662", "checkpoint_ref": "sha256:1c7057db68a5a924bb49b55a19aae804bbd62545b1cbc10947a92c98d90fa780"}, "runnable": true}, {"runnable": true}, {"runnable": true}, {"runnable": true}, {"runnable": true}, {"runnable": true}, {"runnable": true}, {"runnable": true}, {"runnable": true}, {"runnable": true}, {"runnable": true}, {"runnable": true}, {"runnable": true}, {"runnable": true}, {"runnable": true}, {"runnable": true}, {"runnable": true}, {"runnable": true}, {"runnable": true}, {"runnable": true}, {"runnable": true}, {"runnable": true}, {"runnable": true}, {"runnable": true}, {"runnable": true}, {"runnable": true}, {"runnable": true}, {"runnable": true}, {"evidence_ref": "sha256:6cead5d0bea6cd2eccaab11b21e58a6c78e112e41be33d647ad9abb53e8e0c69", "record": {"version": 1, "kind": "result", "run_id": "cc-r1", "worker_id": "w1", "created_at": "2026-09-25T10:35:21.838106Z", "evidence": {"shadow_run_id": "run-0353a834aadd0bcea51e", "state": "SHADOW_COMPLETE", "tenant_id": "salem-botanicals", "production_published": false, "cost_usd": 0, "request_binding": {"tenant_id": "salem-botanicals", "input_sha256": "7f74b50c51ae809626f066dcd2331ade68313edfd7731d9567d34dee7a655ba8", "at": "2026-09-22T12:00:00Z", "source_sha256": "98cec1b47692fa0df3f90e3287bf599bd84e86e5e9fb622e398e7627a6509190"}, "manifest_sha256": "25ad5e706d502f760fc858bc4e6c7a8f8bb5fd223d23233084d2022514a21436", "files": {"result.json": "3e840e0b24e87dc0eb599f378b6c5f4aaef78fb2ea6b2b6f72e5773ee959ea33", "inputs.json": "68641bc332f38514f29cd3144cff89c84404b4f1652fa41053ac381e76a5dc1e", "records.jsonl": "1f9ed010e3f945fef3a67522029e01e7b67ba23183ae345105c9bec261bda922", "command-center-status.json": "2034bbee15268f8e2f5ee7093f4198c3fd3d0fee82d02f7159fdc9cfd77ffcb4", "handoff.md": "0b842c6e09766f41121c1357b0b6b4d66c3b0f56466c75ec9c17ad58b89d3f68", "dashboard.html": "4355a92f1c9e2dacf3823c8ba191be9da47afc63dd5e1f3ba951164e7dc48ac9"}}, "session_generation": 1}}, {"run": {"id": "cc-r1", "project_id": "p1", "provider_id": "local", "worker_id": "w1", "action": "marketing.shadow.verify", "status": "COMPLETE", "requires_owner_approval": false, "created_at": "2026-09-25T10:35:21.187538Z", "updated_at": "2026-09-25T10:35:21.849605Z", "input": {"tenant_id": "salem-botanicals", "input_sha256": "7f74b50c51ae809626f066dcd2331ade68313edfd7731d9567d34dee7a655ba8", "at": "2026-09-22T12:00:00Z", "source_sha256": "98cec1b47692fa0df3f90e3287bf599bd84e86e5e9fb622e398e7627a6509190"}, "protocol": "cooperative-v1", "request_event_id": "a137cf7b-cb68-43e2-af33-629bffd9e5a1", "receipt_ref": "sha256:13f5aa4ef8432a7d3bb787a46bdf2f7f03788fb5925627aa49e8c91470545662", "checkpoint_ref": "sha256:1c7057db68a5a924bb49b55a19aae804bbd62545b1cbc10947a92c98d90fa780", "session_id": "e3d72977c9329a2b06cc8f7d169dc0b7", "lease_until": 1790332551.8266847, "session_generation": 1, "completed_at": "2026-09-25T10:35:21.849605Z", "evidence_ref": "sha256:6cead5d0bea6cd2eccaab11b21e58a6c78e112e41be33d647ad9abb53e8e0c69", "completion_event_id": "a44dcdcd-ae0e-4b71-a7bb-3fd66168acdb"}, "state": {"settings": {"stall_after_seconds": 900}, "projects": [{"id": "p1", "status": "COMPLETE", "desired_state": "RUNNING", "assigned_worker_id": "w1", "updated_at": "2026-09-25T10:35:21.849643Z"}, {"id": "private", "secret": "other-tenant-secret"}], "workers": [{"id": "w1", "state": "RUNNING", "current_project_id": "p1", "last_heartbeat_at": "2026-09-25T10:35:21.826689Z"}], "providers": [{"id": "local", "enabled": true}], "attention": [], "runs": [{"id": "cc-r1", "project_id": "p1", "provider_id": "local", "worker_id": "w1", "action": "marketing.shadow.verify", "status": "COMPLETE", "requires_owner_approval": false, "created_at": "2026-09-25T10:35:21.187538Z", "updated_at": "2026-09-25T10:35:21.849605Z", "input": {"tenant_id": "salem-botanicals", "input_sha256": "7f74b50c51ae809626f066dcd2331ade68313edfd7731d9567d34dee7a655ba8", "at": "2026-09-22T12:00:00Z", "source_sha256": "98cec1b47692fa0df3f90e3287bf599bd84e86e5e9fb622e398e7627a6509190"}, "protocol": "cooperative-v1", "request_event_id": "a137cf7b-cb68-43e2-af33-629bffd9e5a1", "receipt_ref": "sha256:13f5aa4ef8432a7d3bb787a46bdf2f7f03788fb5925627aa49e8c91470545662", "checkpoint_ref": "sha256:1c7057db68a5a924bb49b55a19aae804bbd62545b1cbc10947a92c98d90fa780", "session_id": "e3d72977c9329a2b06cc8f7d169dc0b7", "lease_until": 1790332551.8266847, "session_generation": 1, "completed_at": "2026-09-25T10:35:21.849605Z", "evidence_ref": "sha256:6cead5d0bea6cd2eccaab11b21e58a6c78e112e41be33d647ad9abb53e8e0c69", "completion_event_id": "a44dcdcd-ae0e-4b71-a7bb-3fd66168acdb"}]}}]'
+
+======================================================================
+FAIL: test_success_and_terminal_reconciliation_do_not_reexecute (test_supervised.SupervisedTests.test_success_and_terminal_reconciliation_do_not_reexecute)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_supervised.py", line 51, in test_success_and_terminal_reconciliation_do_not_reexecute
+    self.assertEqual(self.server.load_state()['workers'][0]['state'],'COMPLETE')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'RUNNING' != 'COMPLETE'
+- RUNNING
++ COMPLETE
+
+
+----------------------------------------------------------------------
+Ran 10 tests in 12.659s
+
+FAILED (failures=4)

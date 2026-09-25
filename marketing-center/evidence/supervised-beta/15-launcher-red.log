@@ -1,0 +1,16 @@
+test_isolated_beta_launcher_creates_review_artifacts_without_credentials (test_supervised.SupervisedTests.test_isolated_beta_launcher_creates_review_artifacts_without_credentials) ... FAIL
+
+======================================================================
+FAIL: test_isolated_beta_launcher_creates_review_artifacts_without_credentials (test_supervised.SupervisedTests.test_isolated_beta_launcher_creates_review_artifacts_without_credentials)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\marketing-center\tests\test_supervised.py", line 242, in test_isolated_beta_launcher_creates_review_artifacts_without_credentials
+    self.assertEqual(process.returncode,0,process.stderr+process.stdout)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 1 != 0 : C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\work\.venv\Scripts\python.exe: No module named mc.beta
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.609s
+
+FAILED (failures=1)

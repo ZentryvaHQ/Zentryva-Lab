@@ -1,0 +1,19 @@
+test_legacy_ack_cannot_bypass_protocol_and_release_allows_resume (test_cooperative.CooperativeTests.test_legacy_ack_cannot_bypass_protocol_and_release_allows_resume) ... FAIL
+test_pause_resume_and_stale_session_fencing (test_cooperative.CooperativeTests.test_pause_resume_and_stale_session_fencing) ... ok
+test_protocol_available (test_cooperative.CooperativeTests.test_protocol_available) ... ok
+test_reassignment_disabled_provider_and_owner_gate_fail_closed (test_cooperative.CooperativeTests.test_reassignment_disabled_provider_and_owner_gate_fail_closed) ... ok
+test_status_is_scoped_and_never_exposes_session_or_other_projects (test_cooperative.CooperativeTests.test_status_is_scoped_and_never_exposes_session_or_other_projects) ... ok
+
+======================================================================
+FAIL: test_legacy_ack_cannot_bypass_protocol_and_release_allows_resume (test_cooperative.CooperativeTests.test_legacy_ack_cannot_bypass_protocol_and_release_allows_resume)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\festg\.codex\.chatgpt-projects\g-p-6ab1f727c52c8191968d451f3328652c\command-center-salem\tests\test_cooperative.py", line 65, in test_legacy_ack_cannot_bypass_protocol_and_release_allows_resume
+    self.assertNotIn('a'*32,server.STATE.read_text())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' unexpectedly found in '{\n  "settings": {\n    "stall_after_seconds": 900\n  },\n  "projects": [\n    {\n      "id": "p1",\n      "name": "P1",\n      "status": "RUNNING",\n      "priority": "P1",\n      "desired_state": "RUNNING",\n      "assigned_worker_id": "w1",\n      "relationships": [],\n      "updated_at": "2026-09-25T10:36:02.523731Z"\n    }\n  ],\n  "workers": [\n    {\n      "id": "w1",\n      "state": "IDLE",\n      "current_project_id": "p1"\n    }\n  ],\n  "attention": [],\n  "runs": [\n    {\n      "id": "r1",\n      "project_id": "p1",\n      "provider_id": "provider-1",\n      "worker_id": "w1",\n      "action": "marketing.shadow.verify",\n      "status": "RUNNING",\n      "requires_owner_approval": false,\n      "created_at": "2026-09-25T10:36:02.523706Z",\n      "updated_at": "2026-09-25T10:36:02.543918Z",\n      "input": {\n        "tenant_id": "salem"\n      },\n      "protocol": "cooperative-v1",\n      "request_event_id": "fd6d9130-3e05-4e5c-8310-b27e532d9725",\n      "receipt_ref": "sha256:115f1bfbb0a1659b2fe6f64edf28b120e84e7e2ea002af8991861bbe41ad14e0",\n      "checkpoint_ref": "sha256:f6599473a9e63b29ed73d5a0f2f5dffc5316fe77210c7fc07e7686e79018d7e6",\n      "session_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",\n      "lease_until": 1790332592.5439165,\n      "session_generation": 1\n    }\n  ],\n  "providers": [\n    {\n      "id": "provider-1",\n      "name": "Test provider",\n      "kind": "MOCK",\n      "capabilities": [\n        "test"\n      ],\n      "enabled": true,\n      "approval_mode": "CONTROLLER"\n    },\n    {\n      "id": "provider-disabled",\n      "name": "Disabled provider",\n      "kind": "MOCK",\n      "capabilities": [],\n      "enabled": false,\n      "approval_mode": "CONTROLLER"\n    }\n  ]\n}\n'
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.719s
+
+FAILED (failures=1)
